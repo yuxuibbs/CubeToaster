@@ -53,10 +53,10 @@ json format:
         },
     ]
 }
-
+'''
 eventsDict = {"222"   : "2x2 Cube",
-              "222bf" : "2x2 Cube: Blindfolded",
               "333"   : "Rubik's Cube",
+              "333oh" : "Rubik's Cube: One-Handed",
               "333bf" : "Rubik's Cube: Blindfolded",
               "333fm" : "Rubik's Cube: Fewest moves",
               "333ft" : "Rubik's Cube: With feet",
@@ -72,7 +72,6 @@ eventsDict = {"222"   : "2x2 Cube",
               "pyram" : "Pyraminx",
               "skewb" : "Skewb",
               "sq1"   : "Square-1"}
-'''
 
 '''
 class Competitor():
@@ -116,10 +115,9 @@ def getData():
 def makeDataList(file):
     data = []
     data.append(file["competitionId"])
-    # this doesn't work
     for event in file["events"]:
-        for person in event["rounds"][0]["results"]
-            print(person)
+        for person in event["rounds"][0]["results"]:
+            print(person['personId'])
     for person in file["persons"]:
         # if person["id"] in file["events"]
         templist = [person['name'], person['id'], person['wcaId']]
