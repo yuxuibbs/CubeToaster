@@ -1,96 +1,29 @@
-import csv
-import os
-import sqlite3
 import json
+import math
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
-'''
-mimic WCA competition scoresheet or use minimum amount of data necessary (id, name, events)?
-how to represent data from json?
-classes? competitor class?
-    id (from cubingUSA JSON)
-    name
-    events
-        how to deal with events?
-            assume all events or only make stuff for events that will be held?
-    advantages: events are with the people instead of separate
-how to get psych sheet data?
-    beautiful soup (easy)
-    wca database export (grabs a ton more data)
-'''
-
-'''
-json format:
-{
-    "formatVersion":"CubingUSA Output",
-    "competitionId":"stuff",
-    "persons":[
-        {
-            "id":"1",
-            "name":"first last",
-            "wcaId":"randomString",
-            "countryId":"US",
-            "gender":"meh",
-            "dob":"stuff"
-        },
-    ],
-    "events":[
-        {
-            "eventId":"222",
-            "rounds":[
-                {
-                    "roundId":"f",
-                    "formatId":"a",
-                    "results":[
-                        {
-                            "personId":"1"
-                        },
-                    ],
-                    "groups":[
-
-                    ]
-                }
-            ]
-        },
-    ]
-}
-'''
-
-eventsDict = {"222"   : "2x2 Cube",
-              "333"   : "Rubik's Cube",
-              "333oh" : "Rubik's Cube: One-Handed",
-              "333bf" : "Rubik's Cube: Blindfolded",
-              "333fm" : "Rubik's Cube: Fewest moves",
-              "333ft" : "Rubik's Cube: With feet",
-              "333mbf": "Rubik's Cube: Multiple Blindfolded",
-              "444"   : "4x4 Cube",
-              "444bf" : "4x4 Cube: Blindfolded",
-              "555"   : "5x5 Cube",
-              "555bf" : "5x5 Cube: Blindfolded",
-              "666"   : "6x6 Cube",
-              "777"   : "7x7 Cube",
-              "clock" : "Rubik's Clock",
-              "minx"  : "Megaminx",
-              "pyram" : "Pyraminx",
-              "skewb" : "Skewb",
-              "sq1"   : "Square-1"}
-
 
 def printMenu():
+    '''
+    Prints program name and instructions for the user
+    '''
     print("CubeToaster")
     print("Type Ctrl-C or Ctrl-Z (whichever one works) to quit the program.")
     print()
 
 
 
-def getData():
+def getDataFile():
+    '''
+    Gets file name from user and gets JSON
+    '''
     # fileName = input('Enter file name (json):').strip()
     fileName = "Michigan 2016.json"
     f = open(fileName, "r")
-    file = json.loads(f.read())
+    fileData = json.loads(f.read())
     f.close()
-    return file
+    return fileData
 '''
     while True:
         try:
@@ -106,35 +39,39 @@ def getData():
         except:
             continue
 '''
-def makeDataList(json_file):
+
+
+def getCompetitionData(jsonFile):
     """
     Parses JSON into a data structure
-    Returns (competition_id, events)
+    Returns (competitionId, events)
     """
-    competition_id = json_file["competitionId"]
+    competitionId = jsonFile["competitionId"]
     persons = {}
     events = {}
 
-    for person in json_file["persons"]:
+    for person in jsonFile["persons"]:
+        # remove dob and replace with heat number
+        person['heat'] = person.pop('dob')
+        person['heat'] = 0
         persons[person["id"]] = person
 
-    for event in json_file["events"]:
+    for event in jsonFile["events"]:
         results = []
         for person in event["rounds"][0]["results"]:
             results.append(persons[person['personId']])
         results.sort(key=lambda x: x['name'].lower())
         event['rounds'][0]['results'] = results
         events[event['eventId']] = event
-    return (competition_id, events)
 
+    return (competitionId, events)
 
-def getEvents(json_file):
-    eventList = list()
-    for event in json_file["events"]:
-        eventList.append(event["eventId"])
-    return eventList
 
 def getPsychSheet(competitionName, eventsList):
+    '''
+    Gets the psych sheet data from Stachu's website
+    Returns (willMakeCutoff, willNotMakeCutoff)
+    '''
     stachuPsychSheet = "http://psychsheets.azurewebsites.net/"
     baseURL = stachuPsychSheet + "/" + competitionName + "/"
     for event in eventsList:
@@ -143,15 +80,67 @@ def getPsychSheet(competitionName, eventsList):
         soup = BeautifulSoup(html, "html.parser")
         print(url)
 
+def heatsInEvents(compData):
+    '''
+    Gets number of heats for each event from user
+    '''
+    eventsDict = {"222"   : "2x2 Cube",
+                  "333"   : "Rubik's Cube",
+                  "333oh" : "Rubik's Cube: One-Handed",
+                  "333bf" : "Rubik's Cube: Blindfolded",
+                  "333fm" : "Rubik's Cube: Fewest moves",
+                  "333ft" : "Rubik's Cube: With feet",
+                  "333mbf": "Rubik's Cube: Multiple Blindfolded",
+                  "444"   : "4x4 Cube",
+                  "444bf" : "4x4 Cube: Blindfolded",
+                  "555"   : "5x5 Cube",
+                  "555bf" : "5x5 Cube: Blindfolded",
+                  "666"   : "6x6 Cube",
+                  "777"   : "7x7 Cube",
+                  "clock" : "Rubik's Clock",
+                  "minx"  : "Megaminx",
+                  "pyram" : "Pyraminx",
+                  "skewb" : "Skewb",
+                  "sq1"   : "Square-1"}
+    heatsDict = {}
+    for event in compData[1]:
+        userSure = False
+        while not userSure:
+            try:
+                numPeople = len(compData[1][event]["rounds"][0]["results"])
+                numPerHeat = int(input("You have {0} competitors in {1}. How many competitors do you want in each heat? ".format(numPeople, eventsDict[event])).strip())
+                confirmed = input("Are you sure you want {0} heats for {1} people in {2}? (Y/N) ".format(numPerHeat, numPeople, eventsDict[event])).strip().lower()
+                if confirmed == 'y' and numPerHeat < numPeople and numPerHeat > 0:
+                    userSure = True
+                    numHeats = math.floor(numPeople/numPerHeat)
+                    print("There will be {0} heats in {1}".format(numHeats, eventsDict[event]))
+                    heatsDict[event] = numHeats
+                else:
+                    print("Invalid input. Try again.")
+                    continue
+            except:
+                continue
+    return heatsDict
+
+
+def easyHeats(compData, heatsDict):
+    '''
+    Goes straight down list of competitors from 1 to numPeopleInHeats
+    '''
+
 
 def main():
     printMenu()
-    jsonFile = getData()
-    dataList = makeDataList(jsonFile)
-    print(json.dumps(dataList[1], indent=2))
-    # events = getEvents(jsonFile)
-    # print(events)
-    # getPsychSheet("Michigan2016", events)
+
+    jsonFile = getDataFile()
+
+    compData = getCompetitionData(jsonFile)
+    # print(json.dumps(dataList[1], indent=2))
+    # (willMakeCutoff, willNotMakeCutoff) = getPsychSheet(dataList[0], events)
+    heatsDict = heatsInEvents(compData)
+    print(heatsDict)
+
+
 
 
 if __name__ == '__main__':
