@@ -51,7 +51,7 @@ def getCompetitionData(jsonFile):
     events = {}
 
     for person in jsonFile["persons"]:
-        # remove dob and replace with heat number
+        # remove dob and replace with initial heat number
         person['heat'] = person.pop('dob')
         person['heat'] = 0
         persons[person["id"]] = person

@@ -1,4 +1,6 @@
 Heats/*.csv
 Heats/*.xls
 Heats/*xlsx
-Heats/*.json
+Heats/Michigan 2016.*
+Heats/formatted.json
+Anonymizer/Michigan 2016.*
