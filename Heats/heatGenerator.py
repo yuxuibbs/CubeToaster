@@ -3,6 +3,8 @@ import os
 import sqlite3
 import json
 from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
 '''
 mimic WCA competition scoresheet or use minimum amount of data necessary (id, name, events)?
 how to represent data from json?
@@ -54,6 +56,7 @@ json format:
     ]
 }
 '''
+
 eventsDict = {"222"   : "2x2 Cube",
               "333"   : "Rubik's Cube",
               "333oh" : "Rubik's Cube: One-Handed",
@@ -73,15 +76,6 @@ eventsDict = {"222"   : "2x2 Cube",
               "skewb" : "Skewb",
               "sq1"   : "Square-1"}
 
-'''
-class Competitor():
-    def __init__(self, id, name, wcaId, countryId, events):
-        self.id = 
-        self.name =
-        self.wcaId =
-        self.countryId =
-        self.events =
-'''
 
 def printMenu():
     print("CubeToaster")
@@ -112,35 +106,53 @@ def getData():
         except:
             continue
 '''
-def makeDataList(file):
-    data = []
-    data.append(file["competitionId"])
-    for event in file["events"]:
-        for person in event["rounds"][0]["results"]:
-            print(person['personId'])
-    for person in file["persons"]:
-        # if person["id"] in file["events"]
-        templist = [person['name'], person['id'], person['wcaId']]
-    return data
+def makeDataList(json_file):
+    """
+    Parses JSON into a data structure
+    Returns (competition_id, events)
+    """
+    competition_id = json_file["competitionId"]
+    persons = {}
+    events = {}
 
-def getEvents(file):
+    for person in json_file["persons"]:
+        persons[person["id"]] = person
+
+    for event in json_file["events"]:
+        results = []
+        for person in event["rounds"][0]["results"]:
+            results.append(persons[person['personId']])
+        results.sort(key=lambda x: x['name'].lower())
+        event['rounds'][0]['results'] = results
+        events[event['eventId']] = event
+    return (competition_id, events)
+
+
+def getEvents(json_file):
     eventList = list()
-    for event in file["events"]:
+    for event in json_file["events"]:
         eventList.append(event["eventId"])
     return eventList
 
 def getPsychSheet(competitionName, eventsList):
     stachuPsychSheet = "http://psychsheets.azurewebsites.net/"
-    baseURL = stachuPsychSheet + competitionName
-    # for event in eventsList:
+    baseURL = stachuPsychSheet + "/" + competitionName + "/"
+    for event in eventsList:
+        url = baseURL + event
+        html = urlopen(url).read()
+        soup = BeautifulSoup(html, "html.parser")
+        print(url)
 
 
 def main():
     printMenu()
     jsonFile = getData()
     dataList = makeDataList(jsonFile)
-    print(dataList)
-    print(getEvents(jsonFile))
+    print(json.dumps(dataList[1], indent=2))
+    # events = getEvents(jsonFile)
+    # print(events)
+    # getPsychSheet("Michigan2016", events)
+
 
 if __name__ == '__main__':
     main()
