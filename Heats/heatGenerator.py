@@ -19,7 +19,8 @@ def getDataFile():
     Gets file name from user and gets JSON
     '''
     # fileName = input('Enter file name (json):').strip()
-    fileName = "Michigan 2016.json"
+    # fileName = "Michigan 2016.json"
+    fileName = "fake.json"
     f = open(fileName, "r")
     fileData = json.loads(f.read())
     f.close()
@@ -54,6 +55,7 @@ def getCompetitionData(jsonFile):
         # remove dob and replace with initial heat number
         person['heat'] = person.pop('dob')
         person['heat'] = 0
+        # make dictionary of 
         persons[person["id"]] = person
 
     for event in jsonFile["events"]:
@@ -80,10 +82,77 @@ def getPsychSheet(competitionName, eventsList):
         soup = BeautifulSoup(html, "html.parser")
         print(url)
 
-def heatsInEvents(compData):
+def heatsInEvents(compData, eventsDict):
     '''
     Gets number of heats for each event from user
     '''
+    sameNumPerHeat = ''
+    while not (sameNumPerHeat == 'y' or sameNumPerHeat == 'n'):
+        sameNumPerHeat = input("Same number of people for all events other than 4BLD, 5BLD, multi BLD, and FMC? (y/n) ").strip().lower()
+
+    if sameNumPerHeat == 'y':
+        while True:
+            try:
+                numPerHeat = int(input("How many competitors do you want in each heat? ").strip())
+                break
+            except:
+                continue
+        automaticHeats = True
+    else:
+        automaticHeats = False
+
+
+    heatsDict = {}
+    for event in compData[1]:
+        # add if thing to only do events that need special number of people per heat
+        numPeople = len(compData[1][event]["rounds"][0]["results"])
+        if automaticHeats:
+            numHeats = math.floor(numPeople / numPerHeat)
+            print("There will be {0} heats in {1}".format(numHeats, eventsDict[event]))
+            heatsDict[event] = numHeats
+        else:
+            userSure = False
+            while not userSure:
+                try:
+                    numPerHeat = int(input("You have {0} competitors in {1}. How many competitors do you want in each heat? ".format(numPeople, eventsDict[event])).strip())
+                    confirmed = input("Are you sure you want {0} heats for {1} people in {2}? (Y/N) ".format(numPerHeat, numPeople, eventsDict[event])).strip().lower()
+                    if confirmed == 'y' and numPerHeat < numPeople and numPerHeat > 0:
+                        userSure = True
+                        numHeats = math.floor(numPeople / numPerHeat)
+                        print("There will be {0} heats in {1}".format(numHeats, eventsDict[event]))
+                        heatsDict[event] = numHeats
+                    else:
+                        print("Invalid input. Try again.")
+                        continue
+                except:
+                    continue
+    return heatsDict
+
+def customHeats(compData):
+    '''
+    Gets number of heats for each event from user
+    '''
+
+
+def easyHeats(compData, heatsDict):
+    '''
+    Goes straight down list of competitors from 1 to numPeopleInHeats
+    '''
+    # print(json.dumps(compData, indent=2))
+    for event in heatsDict:
+        for person in compData[1][event]["rounds"][0]["results"]:
+            person["heat"] = (compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1
+    return compData
+
+
+def main():
+    printMenu()
+
+    jsonFile = getDataFile()
+
+    compData = getCompetitionData(jsonFile)
+    # print(json.dumps(dataList[1], indent=2))
+    # (willMakeCutoff, willNotMakeCutoff) = getPsychSheet(dataList[0], events)
     eventsDict = {"222"   : "2x2 Cube",
                   "333"   : "Rubik's Cube",
                   "333oh" : "Rubik's Cube: One-Handed",
@@ -102,43 +171,11 @@ def heatsInEvents(compData):
                   "pyram" : "Pyraminx",
                   "skewb" : "Skewb",
                   "sq1"   : "Square-1"}
-    heatsDict = {}
-    for event in compData[1]:
-        userSure = False
-        while not userSure:
-            try:
-                numPeople = len(compData[1][event]["rounds"][0]["results"])
-                numPerHeat = int(input("You have {0} competitors in {1}. How many competitors do you want in each heat? ".format(numPeople, eventsDict[event])).strip())
-                confirmed = input("Are you sure you want {0} heats for {1} people in {2}? (Y/N) ".format(numPerHeat, numPeople, eventsDict[event])).strip().lower()
-                if confirmed == 'y' and numPerHeat < numPeople and numPerHeat > 0:
-                    userSure = True
-                    numHeats = math.floor(numPeople/numPerHeat)
-                    print("There will be {0} heats in {1}".format(numHeats, eventsDict[event]))
-                    heatsDict[event] = numHeats
-                else:
-                    print("Invalid input. Try again.")
-                    continue
-            except:
-                continue
-    return heatsDict
+    heatsDict = heatsInEvents(compData, eventsDict)
 
-
-def easyHeats(compData, heatsDict):
-    '''
-    Goes straight down list of competitors from 1 to numPeopleInHeats
-    '''
-
-
-def main():
-    printMenu()
-
-    jsonFile = getDataFile()
-
-    compData = getCompetitionData(jsonFile)
-    # print(json.dumps(dataList[1], indent=2))
-    # (willMakeCutoff, willNotMakeCutoff) = getPsychSheet(dataList[0], events)
-    heatsDict = heatsInEvents(compData)
+    finishedHeats = easyHeats(compData, heatsDict)
     print(heatsDict)
+    print(json.dumps(finishedHeats, indent=2))
 
 
 
