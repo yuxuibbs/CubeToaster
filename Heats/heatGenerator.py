@@ -72,7 +72,7 @@ def getCompetitionData(jsonFile):
 def getPsychSheet(competitionName, eventsList):
     '''
     Gets the psych sheet data from Stachu's website
-    Returns (willMakeCutoff, willNotMakeCutoff)
+    Returns [willMakeCutoff, willNotMakeCutoff]
     '''
     stachuPsychSheet = "http://psychsheets.azurewebsites.net/"
     baseURL = stachuPsychSheet + "/" + competitionName + "/"
@@ -140,8 +140,21 @@ def easyHeats(compData, heatsDict):
     '''
     # print(json.dumps(compData, indent=2))
     for event in heatsDict:
+        test = []
+        test1 = {}
+        print("heatsDict[event]", heatsDict[event])
         for person in compData[1][event]["rounds"][0]["results"]:
             person["heat"] = (compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1
+            print(person)
+            # print("heat number:", (compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1)
+            test.append((compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1)
+        
+        for num in test:
+            if num not in test1:
+                test1[num] = 0
+            test1[num] += 1
+        print(test1)
+
     return compData
 
 
