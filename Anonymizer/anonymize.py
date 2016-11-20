@@ -11,7 +11,7 @@ names = ["Yi", "Stander", "Domonique", "Valadez", "Tona", "Samuels", "Coreen",
 
 numNames = len(names)
 
-fileName = "Michigan 2016.json"
+fileName = "gamma 2015.json"
 f = open(fileName, "r")
 jsonFile = json.loads(f.read())
 f.close()
@@ -22,5 +22,5 @@ for person in jsonFile["persons"]:
     person['wcaId'] = str(random.randrange(1982, 2016)) + "FAKE" + str(random.randrange(100))
 
 
-fakeData = open('fake.json', 'w')
+fakeData = open('fake gamma.json', 'w')
 fakeData.write(json.dumps(jsonFile, indent=2))

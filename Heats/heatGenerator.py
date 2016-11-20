@@ -20,7 +20,7 @@ def getDataFile():
     '''
     # fileName = input('Enter file name (json):').strip()
     # fileName = "Michigan 2016.json"
-    fileName = "fake.json"
+    fileName = "fake gamma.json"
     f = open(fileName, "r")
     fileData = json.loads(f.read())
     f.close()
@@ -107,7 +107,7 @@ def heatsInEvents(compData, eventsDict):
         # add if thing to only do events that need special number of people per heat
         numPeople = len(compData[1][event]["rounds"][0]["results"])
         if automaticHeats:
-            numHeats = math.floor(numPeople / numPerHeat)
+            numHeats = math.ceil(numPeople / numPerHeat)
             print("There will be {0} heats in {1}".format(numHeats, eventsDict[event]))
             heatsDict[event] = numHeats
         else:
@@ -118,7 +118,7 @@ def heatsInEvents(compData, eventsDict):
                     confirmed = input("Are you sure you want {0} heats for {1} people in {2}? (Y/N) ".format(numPerHeat, numPeople, eventsDict[event])).strip().lower()
                     if confirmed == 'y' and numPerHeat < numPeople and numPerHeat > 0:
                         userSure = True
-                        numHeats = math.floor(numPeople / numPerHeat)
+                        numHeats = math.ceil(numPeople / numPerHeat)
                         print("There will be {0} heats in {1}".format(numHeats, eventsDict[event]))
                         heatsDict[event] = numHeats
                     else:
@@ -138,15 +138,15 @@ def easyHeats(compData, heatsDict):
     '''
     Goes straight down list of competitors from 1 to numPeopleInHeats
     '''
-    # print(json.dumps(compData, indent=2))
+    print(json.dumps(compData, indent=2))
     for event in heatsDict:
         test = []
         test1 = {}
-        print("heatsDict[event]", heatsDict[event])
+        print("heatsDict[event]", heatsDict[event], event)
         for person in compData[1][event]["rounds"][0]["results"]:
             person["heat"] = (compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1
             print(person)
-            # print("heat number:", (compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1)
+            print("heat number:", (compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1)
             test.append((compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1)
         
         for num in test:
@@ -154,6 +154,7 @@ def easyHeats(compData, heatsDict):
                 test1[num] = 0
             test1[num] += 1
         print(test1)
+    print(json.dumps(compData, indent=2))
 
     return compData
 
