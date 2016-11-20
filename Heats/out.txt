@@ -2,3917 +2,3917 @@ CubeToaster
 Type Ctrl-C or Ctrl-Z (whichever one works) to quit the program.
 
 Same number of people for all events other than 4BLD, 5BLD, multi BLD, and FMC? (y/n) How many competitors do you want in each heat? There will be 1 heats in Rubik's Cube: With feet
-There will be 2 heats in Square-1
+There will be 2 heats in 6x6 Cube
 There will be 4 heats in Rubik's Cube: One-Handed
 There will be 6 heats in Rubik's Cube
 There will be 3 heats in Megaminx
 There will be 2 heats in Rubik's Cube: Blindfolded
-There will be 2 heats in 6x6 Cube
 There will be 4 heats in Skewb
+There will be 2 heats in Square-1
 333ft 1
-333 6
+666 2
 333oh 4
+333 6
 sq1 2
 minx 3
 333bf 2
-666 2
 skewb 4
 [
   "MCCGamma",
   {
     "333ft": {
-      "eventId": "333ft",
       "rounds": [
         {
-          "groups": [],
           "formatId": "m",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 1
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "333ft"
     },
-    "sq1": {
-      "eventId": "sq1",
+    "666": {
       "rounds": [
         {
+          "formatId": "m",
           "groups": [],
-          "formatId": "a",
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Clow Coreen",
-              "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Hildegard Ferranti",
-              "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Igoe Ngan",
-              "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Lakesha Haywood",
-              "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Lesli Byrom",
-              "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Mcconn Clow",
-              "id": "6",
-              "heat": 1,
-              "wcaId": "1987FAKE90"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Mcconn Saragosa",
-              "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Ngan Arnulfo",
-              "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Abelson",
-              "id": "33",
-              "heat": 2,
-              "wcaId": "1999FAKE83"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Carmela",
-              "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Samuels",
-              "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Vinita Ferranti",
-              "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
-            }
-          ],
-          "roundId": "f"
-        }
-      ]
-    },
-    "333oh": {
-      "eventId": "333oh",
-      "rounds": [
-        {
-          "groups": [],
-          "formatId": "a",
-          "results": [
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Abelson Carmela",
-              "id": "62",
-              "heat": 1,
-              "wcaId": "1987FAKE76"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Abelson Ogata",
-              "id": "47",
-              "heat": 2,
-              "wcaId": "2000FAKE34"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Arnulfo Jamee",
-              "id": "31",
-              "heat": 3,
-              "wcaId": "1996FAKE35"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Athens Saragosa",
-              "id": "74",
-              "heat": 4,
-              "wcaId": "2009FAKE17"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Brittney Coreen",
-              "id": "48",
-              "heat": 1,
-              "wcaId": "2009FAKE63"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Brittney Lesli",
-              "id": "44",
-              "heat": 2,
-              "wcaId": "1987FAKE28"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Byrom Coreen",
-              "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Carmela",
               "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Laroque",
               "id": "41",
-              "heat": 1,
-              "wcaId": "2005FAKE83"
+              "wcaId": "2005FAKE83",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Ferranti Virgilio",
-              "id": "42",
-              "heat": 2,
-              "wcaId": "2000FAKE9"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Abelson",
               "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Igoe Athens",
-              "id": "79",
-              "heat": 4,
-              "wcaId": "2015FAKE59"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 2
             },
             {
+              "countryId": "US",
+              "name": "Laroque Arturo",
+              "id": "45",
+              "wcaId": "2013FAKE3",
               "gender": "m",
+              "heat": 1
+            },
+            {
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Mcconn Clow",
-              "id": "6",
-              "heat": 1,
-              "wcaId": "1987FAKE90"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Saragosa",
               "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Virgilio",
               "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Yi",
               "id": "67",
-              "heat": 1,
-              "wcaId": "2005FAKE93"
+              "wcaId": "2005FAKE93",
+              "gender": "m",
+              "heat": 1
             },
             {
+              "countryId": "US",
+              "name": "Moriah Antonio",
+              "id": "15",
+              "wcaId": "1992FAKE81",
               "gender": "m",
+              "heat": 2
+            },
+            {
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
-            },
-            {
+              "wcaId": "1986FAKE22",
               "gender": "m",
-              "countryId": "US",
-              "name": "Nott Byrom",
-              "id": "3",
-              "heat": 3,
-              "wcaId": "1989FAKE5"
+              "heat": 1
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Samuels Hildegard",
-              "id": "23",
-              "heat": 2,
-              "wcaId": "2015FAKE95"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Shayla Laroque",
-              "id": "20",
-              "heat": 2,
-              "wcaId": "2002FAKE80"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Stander Vinita",
-              "id": "32",
-              "heat": 3,
-              "wcaId": "2014FAKE42"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Stander Vinita",
-              "id": "37",
-              "heat": 3,
-              "wcaId": "2013FAKE58"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Vesta Tona",
-              "id": "43",
-              "heat": 4,
-              "wcaId": "2005FAKE78"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Virgilio",
               "id": "26",
-              "heat": 1,
-              "wcaId": "2002FAKE47"
+              "wcaId": "2002FAKE47",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
-            },
-            {
+              "wcaId": "2014FAKE8",
               "gender": "m",
-              "countryId": "US",
-              "name": "Virgilio Arnulfo",
-              "id": "35",
-              "heat": 2,
-              "wcaId": "2009FAKE91"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Yi Igoe",
-              "id": "22",
-              "heat": 3,
-              "wcaId": "2006FAKE86"
+              "heat": 2
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "666"
     },
-    "333": {
-      "eventId": "333",
+    "333oh": {
       "rounds": [
         {
-          "groups": [],
           "formatId": "a",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Carmela",
               "id": "62",
-              "heat": 1,
-              "wcaId": "1987FAKE76"
+              "wcaId": "1987FAKE76",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Ogata",
               "id": "47",
-              "heat": 2,
-              "wcaId": "2000FAKE34"
+              "wcaId": "2000FAKE34",
+              "gender": "m",
+              "heat": 2
             },
             {
+              "countryId": "US",
+              "name": "Arnulfo Jamee",
+              "id": "31",
+              "wcaId": "1996FAKE35",
               "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Athens Saragosa",
+              "id": "74",
+              "wcaId": "2009FAKE17",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Brittney Coreen",
+              "id": "48",
+              "wcaId": "2009FAKE63",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Brittney Lesli",
+              "id": "44",
+              "wcaId": "1987FAKE28",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Byrom Coreen",
+              "id": "8",
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Clow Carmela",
+              "id": "25",
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Clow Coreen",
+              "id": "7",
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Coreen Abelson",
+              "id": "2",
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Coreen Laroque",
+              "id": "41",
+              "wcaId": "2005FAKE83",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Ferranti Mcconn",
+              "id": "57",
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Ferranti Virgilio",
+              "id": "42",
+              "wcaId": "2000FAKE9",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Hildegard Ferranti",
+              "id": "75",
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Igoe Abelson",
+              "id": "38",
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Igoe Athens",
+              "id": "79",
+              "wcaId": "2015FAKE59",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Igoe Ngan",
+              "id": "63",
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Lakesha Haywood",
+              "id": "11",
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Lesli Byrom",
+              "id": "29",
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Mcconn Clow",
+              "id": "6",
+              "wcaId": "1987FAKE90",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Mcconn Saragosa",
+              "id": "10",
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Miera Virgilio",
+              "id": "49",
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Miera Yi",
+              "id": "67",
+              "wcaId": "2005FAKE93",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Ngan Arnulfo",
+              "id": "5",
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Nott Byrom",
+              "id": "3",
+              "wcaId": "1989FAKE5",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Poulson Antonio",
+              "id": "1",
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Samuels Hildegard",
+              "id": "23",
+              "wcaId": "2015FAKE95",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Carmela",
+              "id": "77",
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Samuels",
+              "id": "51",
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Shayla Laroque",
+              "id": "20",
+              "wcaId": "2002FAKE80",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Stander Vinita",
+              "id": "32",
+              "wcaId": "2014FAKE42",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Stander Vinita",
+              "id": "37",
+              "wcaId": "2013FAKE58",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Vesta Tona",
+              "id": "43",
+              "wcaId": "2005FAKE78",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Vesta Virgilio",
+              "id": "26",
+              "wcaId": "2002FAKE47",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Vinita Ferranti",
+              "id": "9",
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Virgilio Arnulfo",
+              "id": "35",
+              "wcaId": "2009FAKE91",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Yi Igoe",
+              "id": "22",
+              "wcaId": "2006FAKE86",
+              "gender": "m",
+              "heat": 1
+            }
+          ],
+          "roundId": "f"
+        }
+      ],
+      "eventId": "333oh"
+    },
+    "333": {
+      "rounds": [
+        {
+          "formatId": "a",
+          "groups": [],
+          "results": [
+            {
+              "countryId": "US",
+              "name": "Abelson Carmela",
+              "id": "62",
+              "wcaId": "1987FAKE76",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Abelson Ogata",
+              "id": "47",
+              "wcaId": "2000FAKE34",
+              "gender": "m",
+              "heat": 2
+            },
+            {
               "countryId": "US",
               "name": "Abelson Virgilio",
               "id": "73",
-              "heat": 3,
-              "wcaId": "1996FAKE20"
+              "wcaId": "1996FAKE20",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Arnulfo Jamee",
               "id": "31",
-              "heat": 3,
-              "wcaId": "1996FAKE35"
+              "wcaId": "1996FAKE35",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Arturo Arnulfo",
               "id": "36",
-              "heat": 5,
-              "wcaId": "1990FAKE24"
+              "wcaId": "1990FAKE24",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Athens Saragosa",
               "id": "74",
-              "heat": 4,
-              "wcaId": "2009FAKE17"
+              "wcaId": "2009FAKE17",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Brittney Coreen",
               "id": "48",
-              "heat": 1,
-              "wcaId": "2009FAKE63"
+              "wcaId": "2009FAKE63",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Brittney Lesli",
               "id": "44",
-              "heat": 2,
-              "wcaId": "1987FAKE28"
+              "wcaId": "1987FAKE28",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Samuels",
               "id": "53",
-              "heat": 4,
-              "wcaId": "2003FAKE30"
+              "wcaId": "2003FAKE30",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Carmela Virgilio",
               "id": "78",
-              "heat": 4,
-              "wcaId": "1986FAKE34"
+              "wcaId": "1986FAKE34",
+              "gender": "f",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Carmela Yi",
               "id": "28",
-              "heat": 1,
-              "wcaId": "1998FAKE70"
+              "wcaId": "1998FAKE70",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Carmela",
               "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Laroque",
               "id": "41",
-              "heat": 1,
-              "wcaId": "2005FAKE83"
+              "wcaId": "2005FAKE83",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Virgilio",
               "id": "42",
-              "heat": 2,
-              "wcaId": "2000FAKE9"
+              "wcaId": "2000FAKE9",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Gaeta Antonio",
               "id": "14",
-              "heat": 3,
-              "wcaId": "1996FAKE53"
+              "wcaId": "1996FAKE53",
+              "gender": "f",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Gaeta Mcconn",
               "id": "69",
-              "heat": 2,
-              "wcaId": "1994FAKE29"
+              "wcaId": "1994FAKE29",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Haywood Farish",
               "id": "56",
-              "heat": 4,
-              "wcaId": "2002FAKE10"
+              "wcaId": "2002FAKE10",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Haywood Yi",
               "id": "12",
-              "heat": 4,
-              "wcaId": "1996FAKE32"
+              "wcaId": "1996FAKE32",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Virgilio",
               "id": "46",
-              "heat": 2,
-              "wcaId": "1992FAKE97"
+              "wcaId": "1992FAKE97",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Abelson",
               "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Athens",
               "id": "79",
-              "heat": 4,
-              "wcaId": "2015FAKE59"
+              "wcaId": "2015FAKE59",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Ogata",
               "id": "17",
-              "heat": 2,
-              "wcaId": "2014FAKE39"
+              "wcaId": "2014FAKE39",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Arturo",
               "id": "45",
-              "heat": 1,
-              "wcaId": "2013FAKE3"
+              "wcaId": "2013FAKE3",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ferranti",
               "id": "55",
-              "heat": 3,
-              "wcaId": "2002FAKE50"
+              "wcaId": "2002FAKE50",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Gaeta",
               "id": "54",
-              "heat": 4,
-              "wcaId": "2003FAKE97"
+              "wcaId": "2003FAKE97",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ogata",
               "id": "50",
-              "heat": 1,
-              "wcaId": "2003FAKE68"
+              "wcaId": "2003FAKE68",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Igoe",
               "id": "18",
-              "heat": 5,
-              "wcaId": "1988FAKE87"
+              "wcaId": "1988FAKE87",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Clow",
               "id": "6",
-              "heat": 1,
-              "wcaId": "1987FAKE90"
+              "wcaId": "1987FAKE90",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Saragosa",
               "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Jamee",
               "id": "72",
-              "heat": 2,
-              "wcaId": "2004FAKE26"
+              "wcaId": "2004FAKE26",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Virgilio",
               "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Yi",
               "id": "67",
-              "heat": 1,
-              "wcaId": "2005FAKE93"
+              "wcaId": "2005FAKE93",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Antonio",
               "id": "15",
-              "heat": 1,
-              "wcaId": "1992FAKE81"
+              "wcaId": "1992FAKE81",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Byrom",
               "id": "30",
-              "heat": 3,
-              "wcaId": "1999FAKE35"
+              "wcaId": "1999FAKE35",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Ogata",
               "id": "4",
-              "heat": 2,
-              "wcaId": "1998FAKE31"
+              "wcaId": "1998FAKE31",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Ngan Poulson",
               "id": "60",
-              "heat": 3,
-              "wcaId": "1993FAKE93"
+              "wcaId": "1993FAKE93",
+              "gender": "f",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Nott Byrom",
               "id": "3",
-              "heat": 3,
-              "wcaId": "1989FAKE5"
+              "wcaId": "1989FAKE5",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ogata Tona",
               "id": "71",
-              "heat": 5,
-              "wcaId": "1995FAKE49"
+              "wcaId": "1995FAKE49",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Pelaez Coreen",
               "id": "52",
-              "heat": 4,
-              "wcaId": "2005FAKE49"
+              "wcaId": "2005FAKE49",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Hildegard",
               "id": "23",
-              "heat": 2,
-              "wcaId": "2015FAKE95"
+              "wcaId": "2015FAKE95",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Mcconn",
               "id": "34",
-              "heat": 3,
-              "wcaId": "1995FAKE51"
+              "wcaId": "1995FAKE51",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Abelson",
               "id": "33",
-              "heat": 2,
-              "wcaId": "1999FAKE83"
+              "wcaId": "1999FAKE83",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Shayla Laroque",
               "id": "20",
-              "heat": 2,
-              "wcaId": "2002FAKE80"
+              "wcaId": "2002FAKE80",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Shayla Miera",
               "id": "68",
-              "heat": 2,
-              "wcaId": "1991FAKE77"
+              "wcaId": "1991FAKE77",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Stander Vinita",
               "id": "32",
-              "heat": 3,
-              "wcaId": "2014FAKE42"
+              "wcaId": "2014FAKE42",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Stander Vinita",
               "id": "37",
-              "heat": 3,
-              "wcaId": "2013FAKE58"
+              "wcaId": "2013FAKE58",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Tona",
               "id": "43",
-              "heat": 4,
-              "wcaId": "2005FAKE78"
+              "wcaId": "2005FAKE78",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Virgilio",
               "id": "26",
-              "heat": 1,
-              "wcaId": "2002FAKE47"
+              "wcaId": "2002FAKE47",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Vinita Tona",
               "id": "66",
-              "heat": 2,
-              "wcaId": "1985FAKE48"
+              "wcaId": "1985FAKE48",
+              "gender": "f",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Virgilio Arnulfo",
               "id": "35",
-              "heat": 2,
-              "wcaId": "2009FAKE91"
+              "wcaId": "2009FAKE91",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Yi Brittney",
               "id": "64",
-              "heat": 4,
-              "wcaId": "2010FAKE97"
+              "wcaId": "2010FAKE97",
+              "gender": "f",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Yi Igoe",
               "id": "22",
-              "heat": 3,
-              "wcaId": "2006FAKE86"
+              "wcaId": "2006FAKE86",
+              "gender": "m",
+              "heat": 5
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "333"
     },
     "minx": {
-      "eventId": "minx",
       "rounds": [
         {
-          "groups": [],
           "formatId": "a",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Carmela",
               "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Laroque",
               "id": "41",
-              "heat": 1,
-              "wcaId": "2005FAKE83"
+              "wcaId": "2005FAKE83",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Saragosa",
               "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Virgilio",
               "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Yi",
               "id": "67",
-              "heat": 1,
-              "wcaId": "2005FAKE93"
+              "wcaId": "2005FAKE93",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Antonio",
               "id": "15",
-              "heat": 1,
-              "wcaId": "1992FAKE81"
+              "wcaId": "1992FAKE81",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Byrom",
               "id": "30",
-              "heat": 3,
-              "wcaId": "1999FAKE35"
+              "wcaId": "1999FAKE35",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Pelaez Coreen",
               "id": "52",
-              "heat": 4,
-              "wcaId": "2005FAKE49"
+              "wcaId": "2005FAKE49",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Hildegard",
               "id": "23",
-              "heat": 2,
-              "wcaId": "2015FAKE95"
+              "wcaId": "2015FAKE95",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Stander Vinita",
               "id": "37",
-              "heat": 3,
-              "wcaId": "2013FAKE58"
+              "wcaId": "2013FAKE58",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Virgilio",
               "id": "26",
-              "heat": 1,
-              "wcaId": "2002FAKE47"
+              "wcaId": "2002FAKE47",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 3
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "minx"
     },
     "333bf": {
-      "eventId": "333bf",
       "rounds": [
         {
-          "groups": [],
           "formatId": "3",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Ogata",
               "id": "47",
-              "heat": 2,
-              "wcaId": "2000FAKE34"
+              "wcaId": "2000FAKE34",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Gaeta Antonio",
               "id": "14",
-              "heat": 3,
-              "wcaId": "1996FAKE53"
+              "wcaId": "1996FAKE53",
+              "gender": "f",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Abelson",
               "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Ogata",
               "id": "17",
-              "heat": 2,
-              "wcaId": "2014FAKE39"
+              "wcaId": "2014FAKE39",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ogata",
               "id": "50",
-              "heat": 1,
-              "wcaId": "2003FAKE68"
+              "wcaId": "2003FAKE68",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Clow",
               "id": "6",
-              "heat": 1,
-              "wcaId": "1987FAKE90"
+              "wcaId": "1987FAKE90",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Ogata",
               "id": "4",
-              "heat": 2,
-              "wcaId": "1998FAKE31"
+              "wcaId": "1998FAKE31",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Abelson",
               "id": "33",
-              "heat": 2,
-              "wcaId": "1999FAKE83"
+              "wcaId": "1999FAKE83",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 1
             }
           ],
           "roundId": "f"
         }
-      ]
-    },
-    "666": {
-      "eventId": "666",
-      "rounds": [
-        {
-          "groups": [],
-          "formatId": "m",
-          "results": [
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Byrom Coreen",
-              "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Clow Carmela",
-              "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Clow Coreen",
-              "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Coreen Abelson",
-              "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Coreen Laroque",
-              "id": "41",
-              "heat": 1,
-              "wcaId": "2005FAKE83"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Ferranti Mcconn",
-              "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Hildegard Ferranti",
-              "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Igoe Abelson",
-              "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Igoe Ngan",
-              "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Lakesha Haywood",
-              "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Laroque Arturo",
-              "id": "45",
-              "heat": 1,
-              "wcaId": "2013FAKE3"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Lesli Byrom",
-              "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Mcconn Saragosa",
-              "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Miera Virgilio",
-              "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Miera Yi",
-              "id": "67",
-              "heat": 1,
-              "wcaId": "2005FAKE93"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Moriah Antonio",
-              "id": "15",
-              "heat": 1,
-              "wcaId": "1992FAKE81"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Ngan Arnulfo",
-              "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
-            },
-            {
-              "gender": "f",
-              "countryId": "US",
-              "name": "Poulson Antonio",
-              "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Carmela",
-              "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Samuels",
-              "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Vesta Virgilio",
-              "id": "26",
-              "heat": 1,
-              "wcaId": "2002FAKE47"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Vinita Ferranti",
-              "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
-            }
-          ],
-          "roundId": "f"
-        }
-      ]
+      ],
+      "eventId": "333bf"
     },
     "skewb": {
-      "eventId": "skewb",
       "rounds": [
         {
-          "groups": [],
           "formatId": "a",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Carmela",
               "id": "62",
-              "heat": 1,
-              "wcaId": "1987FAKE76"
+              "wcaId": "1987FAKE76",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Ogata",
               "id": "47",
-              "heat": 2,
-              "wcaId": "2000FAKE34"
+              "wcaId": "2000FAKE34",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Arnulfo Jamee",
               "id": "31",
-              "heat": 3,
-              "wcaId": "1996FAKE35"
+              "wcaId": "1996FAKE35",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Athens Saragosa",
               "id": "74",
-              "heat": 4,
-              "wcaId": "2009FAKE17"
+              "wcaId": "2009FAKE17",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Brittney Coreen",
               "id": "48",
-              "heat": 1,
-              "wcaId": "2009FAKE63"
+              "wcaId": "2009FAKE63",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Brittney Lesli",
               "id": "44",
-              "heat": 2,
-              "wcaId": "1987FAKE28"
+              "wcaId": "1987FAKE28",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Carmela Virgilio",
               "id": "78",
-              "heat": 4,
-              "wcaId": "1986FAKE34"
+              "wcaId": "1986FAKE34",
+              "gender": "f",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Carmela Yi",
               "id": "28",
-              "heat": 1,
-              "wcaId": "1998FAKE70"
+              "wcaId": "1998FAKE70",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Carmela",
               "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Virgilio",
               "id": "42",
-              "heat": 2,
-              "wcaId": "2000FAKE9"
+              "wcaId": "2000FAKE9",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Gaeta Antonio",
               "id": "14",
-              "heat": 3,
-              "wcaId": "1996FAKE53"
+              "wcaId": "1996FAKE53",
+              "gender": "f",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Haywood Farish",
               "id": "56",
-              "heat": 4,
-              "wcaId": "2002FAKE10"
+              "wcaId": "2002FAKE10",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Virgilio",
               "id": "46",
-              "heat": 2,
-              "wcaId": "1992FAKE97"
+              "wcaId": "1992FAKE97",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Abelson",
               "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Athens",
               "id": "79",
-              "heat": 4,
-              "wcaId": "2015FAKE59"
+              "wcaId": "2015FAKE59",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ferranti",
               "id": "55",
-              "heat": 3,
-              "wcaId": "2002FAKE50"
+              "wcaId": "2002FAKE50",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Gaeta",
               "id": "54",
-              "heat": 4,
-              "wcaId": "2003FAKE97"
+              "wcaId": "2003FAKE97",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ogata",
               "id": "50",
-              "heat": 1,
-              "wcaId": "2003FAKE68"
+              "wcaId": "2003FAKE68",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Saragosa",
               "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Virgilio",
               "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Antonio",
               "id": "15",
-              "heat": 1,
-              "wcaId": "1992FAKE81"
+              "wcaId": "1992FAKE81",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Nott Byrom",
               "id": "3",
-              "heat": 3,
-              "wcaId": "1989FAKE5"
+              "wcaId": "1989FAKE5",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Pelaez Coreen",
               "id": "52",
-              "heat": 4,
-              "wcaId": "2005FAKE49"
+              "wcaId": "2005FAKE49",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Hildegard",
               "id": "23",
-              "heat": 2,
-              "wcaId": "2015FAKE95"
+              "wcaId": "2015FAKE95",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Mcconn",
               "id": "34",
-              "heat": 3,
-              "wcaId": "1995FAKE51"
+              "wcaId": "1995FAKE51",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Shayla Laroque",
               "id": "20",
-              "heat": 2,
-              "wcaId": "2002FAKE80"
+              "wcaId": "2002FAKE80",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Stander Vinita",
               "id": "37",
-              "heat": 3,
-              "wcaId": "2013FAKE58"
+              "wcaId": "2013FAKE58",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Tona",
               "id": "43",
-              "heat": 4,
-              "wcaId": "2005FAKE78"
+              "wcaId": "2005FAKE78",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Virgilio Arnulfo",
               "id": "35",
-              "heat": 2,
-              "wcaId": "2009FAKE91"
+              "wcaId": "2009FAKE91",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Yi Igoe",
               "id": "22",
-              "heat": 3,
-              "wcaId": "2006FAKE86"
+              "wcaId": "2006FAKE86",
+              "gender": "m",
+              "heat": 3
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "skewb"
+    },
+    "sq1": {
+      "rounds": [
+        {
+          "formatId": "a",
+          "groups": [],
+          "results": [
+            {
+              "countryId": "US",
+              "name": "Byrom Coreen",
+              "id": "8",
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Clow Coreen",
+              "id": "7",
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Hildegard Ferranti",
+              "id": "75",
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Igoe Ngan",
+              "id": "63",
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Lakesha Haywood",
+              "id": "11",
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Lesli Byrom",
+              "id": "29",
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Mcconn Clow",
+              "id": "6",
+              "wcaId": "1987FAKE90",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Mcconn Saragosa",
+              "id": "10",
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Ngan Arnulfo",
+              "id": "5",
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Abelson",
+              "id": "33",
+              "wcaId": "1999FAKE83",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Carmela",
+              "id": "77",
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Samuels",
+              "id": "51",
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Vinita Ferranti",
+              "id": "9",
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 1
+            }
+          ],
+          "roundId": "f"
+        }
+      ],
+      "eventId": "sq1"
     }
   }
 ]
-{'333ft': 1, '333': 6, '333oh': 4, 'sq1': 2, 'minx': 3, '333bf': 2, '666': 2, 'skewb': 4}
+{'333ft': 1, '666': 2, '333oh': 4, '333': 6, 'sq1': 2, 'minx': 3, '333bf': 2, 'skewb': 4}
 [
   "MCCGamma",
   {
     "333ft": {
-      "eventId": "333ft",
       "rounds": [
         {
-          "groups": [],
           "formatId": "m",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 1
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "333ft"
     },
-    "sq1": {
-      "eventId": "sq1",
+    "666": {
       "rounds": [
         {
+          "formatId": "m",
           "groups": [],
-          "formatId": "a",
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Clow Coreen",
-              "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Hildegard Ferranti",
-              "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Igoe Ngan",
-              "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Lakesha Haywood",
-              "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Lesli Byrom",
-              "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Mcconn Clow",
-              "id": "6",
-              "heat": 1,
-              "wcaId": "1987FAKE90"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Mcconn Saragosa",
-              "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Ngan Arnulfo",
-              "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Abelson",
-              "id": "33",
-              "heat": 2,
-              "wcaId": "1999FAKE83"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Carmela",
-              "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Samuels",
-              "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Vinita Ferranti",
-              "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
-            }
-          ],
-          "roundId": "f"
-        }
-      ]
-    },
-    "333oh": {
-      "eventId": "333oh",
-      "rounds": [
-        {
-          "groups": [],
-          "formatId": "a",
-          "results": [
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Abelson Carmela",
-              "id": "62",
-              "heat": 1,
-              "wcaId": "1987FAKE76"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Abelson Ogata",
-              "id": "47",
-              "heat": 2,
-              "wcaId": "2000FAKE34"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Arnulfo Jamee",
-              "id": "31",
-              "heat": 3,
-              "wcaId": "1996FAKE35"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Athens Saragosa",
-              "id": "74",
-              "heat": 4,
-              "wcaId": "2009FAKE17"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Brittney Coreen",
-              "id": "48",
-              "heat": 1,
-              "wcaId": "2009FAKE63"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Brittney Lesli",
-              "id": "44",
-              "heat": 2,
-              "wcaId": "1987FAKE28"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Byrom Coreen",
-              "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Carmela",
               "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Laroque",
               "id": "41",
-              "heat": 1,
-              "wcaId": "2005FAKE83"
+              "wcaId": "2005FAKE83",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Ferranti Virgilio",
-              "id": "42",
-              "heat": 2,
-              "wcaId": "2000FAKE9"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Abelson",
               "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Igoe Athens",
-              "id": "79",
-              "heat": 4,
-              "wcaId": "2015FAKE59"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 2
             },
             {
+              "countryId": "US",
+              "name": "Laroque Arturo",
+              "id": "45",
+              "wcaId": "2013FAKE3",
               "gender": "m",
+              "heat": 1
+            },
+            {
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Mcconn Clow",
-              "id": "6",
-              "heat": 1,
-              "wcaId": "1987FAKE90"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Saragosa",
               "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Virgilio",
               "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Yi",
               "id": "67",
-              "heat": 1,
-              "wcaId": "2005FAKE93"
+              "wcaId": "2005FAKE93",
+              "gender": "m",
+              "heat": 1
             },
             {
+              "countryId": "US",
+              "name": "Moriah Antonio",
+              "id": "15",
+              "wcaId": "1992FAKE81",
               "gender": "m",
+              "heat": 2
+            },
+            {
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
-            },
-            {
+              "wcaId": "1986FAKE22",
               "gender": "m",
-              "countryId": "US",
-              "name": "Nott Byrom",
-              "id": "3",
-              "heat": 3,
-              "wcaId": "1989FAKE5"
+              "heat": 1
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Samuels Hildegard",
-              "id": "23",
-              "heat": 2,
-              "wcaId": "2015FAKE95"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Shayla Laroque",
-              "id": "20",
-              "heat": 2,
-              "wcaId": "2002FAKE80"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Stander Vinita",
-              "id": "32",
-              "heat": 3,
-              "wcaId": "2014FAKE42"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Stander Vinita",
-              "id": "37",
-              "heat": 3,
-              "wcaId": "2013FAKE58"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Vesta Tona",
-              "id": "43",
-              "heat": 4,
-              "wcaId": "2005FAKE78"
-            },
-            {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Virgilio",
               "id": "26",
-              "heat": 1,
-              "wcaId": "2002FAKE47"
+              "wcaId": "2002FAKE47",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
-            },
-            {
+              "wcaId": "2014FAKE8",
               "gender": "m",
-              "countryId": "US",
-              "name": "Virgilio Arnulfo",
-              "id": "35",
-              "heat": 2,
-              "wcaId": "2009FAKE91"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Yi Igoe",
-              "id": "22",
-              "heat": 3,
-              "wcaId": "2006FAKE86"
+              "heat": 2
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "666"
     },
-    "333": {
-      "eventId": "333",
+    "333oh": {
       "rounds": [
         {
-          "groups": [],
           "formatId": "a",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Carmela",
               "id": "62",
-              "heat": 1,
-              "wcaId": "1987FAKE76"
+              "wcaId": "1987FAKE76",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Ogata",
               "id": "47",
-              "heat": 2,
-              "wcaId": "2000FAKE34"
+              "wcaId": "2000FAKE34",
+              "gender": "m",
+              "heat": 2
             },
             {
+              "countryId": "US",
+              "name": "Arnulfo Jamee",
+              "id": "31",
+              "wcaId": "1996FAKE35",
               "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Athens Saragosa",
+              "id": "74",
+              "wcaId": "2009FAKE17",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Brittney Coreen",
+              "id": "48",
+              "wcaId": "2009FAKE63",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Brittney Lesli",
+              "id": "44",
+              "wcaId": "1987FAKE28",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Byrom Coreen",
+              "id": "8",
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Clow Carmela",
+              "id": "25",
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Clow Coreen",
+              "id": "7",
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Coreen Abelson",
+              "id": "2",
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Coreen Laroque",
+              "id": "41",
+              "wcaId": "2005FAKE83",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Ferranti Mcconn",
+              "id": "57",
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Ferranti Virgilio",
+              "id": "42",
+              "wcaId": "2000FAKE9",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Hildegard Ferranti",
+              "id": "75",
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Igoe Abelson",
+              "id": "38",
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Igoe Athens",
+              "id": "79",
+              "wcaId": "2015FAKE59",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Igoe Ngan",
+              "id": "63",
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Lakesha Haywood",
+              "id": "11",
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Lesli Byrom",
+              "id": "29",
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Mcconn Clow",
+              "id": "6",
+              "wcaId": "1987FAKE90",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Mcconn Saragosa",
+              "id": "10",
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Miera Virgilio",
+              "id": "49",
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Miera Yi",
+              "id": "67",
+              "wcaId": "2005FAKE93",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Ngan Arnulfo",
+              "id": "5",
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Nott Byrom",
+              "id": "3",
+              "wcaId": "1989FAKE5",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Poulson Antonio",
+              "id": "1",
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Samuels Hildegard",
+              "id": "23",
+              "wcaId": "2015FAKE95",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Carmela",
+              "id": "77",
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Samuels",
+              "id": "51",
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Shayla Laroque",
+              "id": "20",
+              "wcaId": "2002FAKE80",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Stander Vinita",
+              "id": "32",
+              "wcaId": "2014FAKE42",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Stander Vinita",
+              "id": "37",
+              "wcaId": "2013FAKE58",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Vesta Tona",
+              "id": "43",
+              "wcaId": "2005FAKE78",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Vesta Virgilio",
+              "id": "26",
+              "wcaId": "2002FAKE47",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Vinita Ferranti",
+              "id": "9",
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 3
+            },
+            {
+              "countryId": "US",
+              "name": "Virgilio Arnulfo",
+              "id": "35",
+              "wcaId": "2009FAKE91",
+              "gender": "m",
+              "heat": 4
+            },
+            {
+              "countryId": "US",
+              "name": "Yi Igoe",
+              "id": "22",
+              "wcaId": "2006FAKE86",
+              "gender": "m",
+              "heat": 1
+            }
+          ],
+          "roundId": "f"
+        }
+      ],
+      "eventId": "333oh"
+    },
+    "333": {
+      "rounds": [
+        {
+          "formatId": "a",
+          "groups": [],
+          "results": [
+            {
+              "countryId": "US",
+              "name": "Abelson Carmela",
+              "id": "62",
+              "wcaId": "1987FAKE76",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Abelson Ogata",
+              "id": "47",
+              "wcaId": "2000FAKE34",
+              "gender": "m",
+              "heat": 2
+            },
+            {
               "countryId": "US",
               "name": "Abelson Virgilio",
               "id": "73",
-              "heat": 3,
-              "wcaId": "1996FAKE20"
+              "wcaId": "1996FAKE20",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Arnulfo Jamee",
               "id": "31",
-              "heat": 3,
-              "wcaId": "1996FAKE35"
+              "wcaId": "1996FAKE35",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Arturo Arnulfo",
               "id": "36",
-              "heat": 5,
-              "wcaId": "1990FAKE24"
+              "wcaId": "1990FAKE24",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Athens Saragosa",
               "id": "74",
-              "heat": 4,
-              "wcaId": "2009FAKE17"
+              "wcaId": "2009FAKE17",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Brittney Coreen",
               "id": "48",
-              "heat": 1,
-              "wcaId": "2009FAKE63"
+              "wcaId": "2009FAKE63",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Brittney Lesli",
               "id": "44",
-              "heat": 2,
-              "wcaId": "1987FAKE28"
+              "wcaId": "1987FAKE28",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Samuels",
               "id": "53",
-              "heat": 4,
-              "wcaId": "2003FAKE30"
+              "wcaId": "2003FAKE30",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Carmela Virgilio",
               "id": "78",
-              "heat": 4,
-              "wcaId": "1986FAKE34"
+              "wcaId": "1986FAKE34",
+              "gender": "f",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Carmela Yi",
               "id": "28",
-              "heat": 1,
-              "wcaId": "1998FAKE70"
+              "wcaId": "1998FAKE70",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Carmela",
               "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Laroque",
               "id": "41",
-              "heat": 1,
-              "wcaId": "2005FAKE83"
+              "wcaId": "2005FAKE83",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Virgilio",
               "id": "42",
-              "heat": 2,
-              "wcaId": "2000FAKE9"
+              "wcaId": "2000FAKE9",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Gaeta Antonio",
               "id": "14",
-              "heat": 3,
-              "wcaId": "1996FAKE53"
+              "wcaId": "1996FAKE53",
+              "gender": "f",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Gaeta Mcconn",
               "id": "69",
-              "heat": 2,
-              "wcaId": "1994FAKE29"
+              "wcaId": "1994FAKE29",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Haywood Farish",
               "id": "56",
-              "heat": 4,
-              "wcaId": "2002FAKE10"
+              "wcaId": "2002FAKE10",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Haywood Yi",
               "id": "12",
-              "heat": 4,
-              "wcaId": "1996FAKE32"
+              "wcaId": "1996FAKE32",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Virgilio",
               "id": "46",
-              "heat": 2,
-              "wcaId": "1992FAKE97"
+              "wcaId": "1992FAKE97",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Abelson",
               "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Athens",
               "id": "79",
-              "heat": 4,
-              "wcaId": "2015FAKE59"
+              "wcaId": "2015FAKE59",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Ogata",
               "id": "17",
-              "heat": 2,
-              "wcaId": "2014FAKE39"
+              "wcaId": "2014FAKE39",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Arturo",
               "id": "45",
-              "heat": 1,
-              "wcaId": "2013FAKE3"
+              "wcaId": "2013FAKE3",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ferranti",
               "id": "55",
-              "heat": 3,
-              "wcaId": "2002FAKE50"
+              "wcaId": "2002FAKE50",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Gaeta",
               "id": "54",
-              "heat": 4,
-              "wcaId": "2003FAKE97"
+              "wcaId": "2003FAKE97",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ogata",
               "id": "50",
-              "heat": 1,
-              "wcaId": "2003FAKE68"
+              "wcaId": "2003FAKE68",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Igoe",
               "id": "18",
-              "heat": 5,
-              "wcaId": "1988FAKE87"
+              "wcaId": "1988FAKE87",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Clow",
               "id": "6",
-              "heat": 1,
-              "wcaId": "1987FAKE90"
+              "wcaId": "1987FAKE90",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Saragosa",
               "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Jamee",
               "id": "72",
-              "heat": 2,
-              "wcaId": "2004FAKE26"
+              "wcaId": "2004FAKE26",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Virgilio",
               "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Yi",
               "id": "67",
-              "heat": 1,
-              "wcaId": "2005FAKE93"
+              "wcaId": "2005FAKE93",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Antonio",
               "id": "15",
-              "heat": 1,
-              "wcaId": "1992FAKE81"
+              "wcaId": "1992FAKE81",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Byrom",
               "id": "30",
-              "heat": 3,
-              "wcaId": "1999FAKE35"
+              "wcaId": "1999FAKE35",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Ogata",
               "id": "4",
-              "heat": 2,
-              "wcaId": "1998FAKE31"
+              "wcaId": "1998FAKE31",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Ngan Poulson",
               "id": "60",
-              "heat": 3,
-              "wcaId": "1993FAKE93"
+              "wcaId": "1993FAKE93",
+              "gender": "f",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Nott Byrom",
               "id": "3",
-              "heat": 3,
-              "wcaId": "1989FAKE5"
+              "wcaId": "1989FAKE5",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ogata Tona",
               "id": "71",
-              "heat": 5,
-              "wcaId": "1995FAKE49"
+              "wcaId": "1995FAKE49",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Pelaez Coreen",
               "id": "52",
-              "heat": 4,
-              "wcaId": "2005FAKE49"
+              "wcaId": "2005FAKE49",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Hildegard",
               "id": "23",
-              "heat": 2,
-              "wcaId": "2015FAKE95"
+              "wcaId": "2015FAKE95",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Mcconn",
               "id": "34",
-              "heat": 3,
-              "wcaId": "1995FAKE51"
+              "wcaId": "1995FAKE51",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Abelson",
               "id": "33",
-              "heat": 2,
-              "wcaId": "1999FAKE83"
+              "wcaId": "1999FAKE83",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Shayla Laroque",
               "id": "20",
-              "heat": 2,
-              "wcaId": "2002FAKE80"
+              "wcaId": "2002FAKE80",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Shayla Miera",
               "id": "68",
-              "heat": 2,
-              "wcaId": "1991FAKE77"
+              "wcaId": "1991FAKE77",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Stander Vinita",
               "id": "32",
-              "heat": 3,
-              "wcaId": "2014FAKE42"
+              "wcaId": "2014FAKE42",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Stander Vinita",
               "id": "37",
-              "heat": 3,
-              "wcaId": "2013FAKE58"
+              "wcaId": "2013FAKE58",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Tona",
               "id": "43",
-              "heat": 4,
-              "wcaId": "2005FAKE78"
+              "wcaId": "2005FAKE78",
+              "gender": "m",
+              "heat": 5
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Virgilio",
               "id": "26",
-              "heat": 1,
-              "wcaId": "2002FAKE47"
+              "wcaId": "2002FAKE47",
+              "gender": "m",
+              "heat": 6
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Vinita Tona",
               "id": "66",
-              "heat": 2,
-              "wcaId": "1985FAKE48"
+              "wcaId": "1985FAKE48",
+              "gender": "f",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Virgilio Arnulfo",
               "id": "35",
-              "heat": 2,
-              "wcaId": "2009FAKE91"
+              "wcaId": "2009FAKE91",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Yi Brittney",
               "id": "64",
-              "heat": 4,
-              "wcaId": "2010FAKE97"
+              "wcaId": "2010FAKE97",
+              "gender": "f",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Yi Igoe",
               "id": "22",
-              "heat": 3,
-              "wcaId": "2006FAKE86"
+              "wcaId": "2006FAKE86",
+              "gender": "m",
+              "heat": 5
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "333"
     },
     "minx": {
-      "eventId": "minx",
       "rounds": [
         {
-          "groups": [],
           "formatId": "a",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Carmela",
               "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Laroque",
               "id": "41",
-              "heat": 1,
-              "wcaId": "2005FAKE83"
+              "wcaId": "2005FAKE83",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Saragosa",
               "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Virgilio",
               "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Yi",
               "id": "67",
-              "heat": 1,
-              "wcaId": "2005FAKE93"
+              "wcaId": "2005FAKE93",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Antonio",
               "id": "15",
-              "heat": 1,
-              "wcaId": "1992FAKE81"
+              "wcaId": "1992FAKE81",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Byrom",
               "id": "30",
-              "heat": 3,
-              "wcaId": "1999FAKE35"
+              "wcaId": "1999FAKE35",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Pelaez Coreen",
               "id": "52",
-              "heat": 4,
-              "wcaId": "2005FAKE49"
+              "wcaId": "2005FAKE49",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Hildegard",
               "id": "23",
-              "heat": 2,
-              "wcaId": "2015FAKE95"
+              "wcaId": "2015FAKE95",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Stander Vinita",
               "id": "37",
-              "heat": 3,
-              "wcaId": "2013FAKE58"
+              "wcaId": "2013FAKE58",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Virgilio",
               "id": "26",
-              "heat": 1,
-              "wcaId": "2002FAKE47"
+              "wcaId": "2002FAKE47",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 3
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "minx"
     },
     "333bf": {
-      "eventId": "333bf",
       "rounds": [
         {
-          "groups": [],
           "formatId": "3",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Ogata",
               "id": "47",
-              "heat": 2,
-              "wcaId": "2000FAKE34"
+              "wcaId": "2000FAKE34",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Gaeta Antonio",
               "id": "14",
-              "heat": 3,
-              "wcaId": "1996FAKE53"
+              "wcaId": "1996FAKE53",
+              "gender": "f",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Abelson",
               "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Ogata",
               "id": "17",
-              "heat": 2,
-              "wcaId": "2014FAKE39"
+              "wcaId": "2014FAKE39",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ogata",
               "id": "50",
-              "heat": 1,
-              "wcaId": "2003FAKE68"
+              "wcaId": "2003FAKE68",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Clow",
               "id": "6",
-              "heat": 1,
-              "wcaId": "1987FAKE90"
+              "wcaId": "1987FAKE90",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Ogata",
               "id": "4",
-              "heat": 2,
-              "wcaId": "1998FAKE31"
+              "wcaId": "1998FAKE31",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Abelson",
               "id": "33",
-              "heat": 2,
-              "wcaId": "1999FAKE83"
+              "wcaId": "1999FAKE83",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 1
             }
           ],
           "roundId": "f"
         }
-      ]
-    },
-    "666": {
-      "eventId": "666",
-      "rounds": [
-        {
-          "groups": [],
-          "formatId": "m",
-          "results": [
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Byrom Coreen",
-              "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Clow Carmela",
-              "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Clow Coreen",
-              "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Coreen Abelson",
-              "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Coreen Laroque",
-              "id": "41",
-              "heat": 1,
-              "wcaId": "2005FAKE83"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Ferranti Mcconn",
-              "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Hildegard Ferranti",
-              "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Igoe Abelson",
-              "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Igoe Ngan",
-              "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Lakesha Haywood",
-              "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Laroque Arturo",
-              "id": "45",
-              "heat": 1,
-              "wcaId": "2013FAKE3"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Lesli Byrom",
-              "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Mcconn Saragosa",
-              "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Miera Virgilio",
-              "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Miera Yi",
-              "id": "67",
-              "heat": 1,
-              "wcaId": "2005FAKE93"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Moriah Antonio",
-              "id": "15",
-              "heat": 1,
-              "wcaId": "1992FAKE81"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Ngan Arnulfo",
-              "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
-            },
-            {
-              "gender": "f",
-              "countryId": "US",
-              "name": "Poulson Antonio",
-              "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Carmela",
-              "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Saragosa Samuels",
-              "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Vesta Virgilio",
-              "id": "26",
-              "heat": 1,
-              "wcaId": "2002FAKE47"
-            },
-            {
-              "gender": "m",
-              "countryId": "US",
-              "name": "Vinita Ferranti",
-              "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
-            }
-          ],
-          "roundId": "f"
-        }
-      ]
+      ],
+      "eventId": "333bf"
     },
     "skewb": {
-      "eventId": "skewb",
       "rounds": [
         {
-          "groups": [],
           "formatId": "a",
+          "groups": [],
           "results": [
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Carmela",
               "id": "62",
-              "heat": 1,
-              "wcaId": "1987FAKE76"
+              "wcaId": "1987FAKE76",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Abelson Ogata",
               "id": "47",
-              "heat": 2,
-              "wcaId": "2000FAKE34"
+              "wcaId": "2000FAKE34",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Arnulfo Jamee",
               "id": "31",
-              "heat": 3,
-              "wcaId": "1996FAKE35"
+              "wcaId": "1996FAKE35",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Athens Saragosa",
               "id": "74",
-              "heat": 4,
-              "wcaId": "2009FAKE17"
+              "wcaId": "2009FAKE17",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Brittney Coreen",
               "id": "48",
-              "heat": 1,
-              "wcaId": "2009FAKE63"
+              "wcaId": "2009FAKE63",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Brittney Lesli",
               "id": "44",
-              "heat": 2,
-              "wcaId": "1987FAKE28"
+              "wcaId": "1987FAKE28",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Byrom Coreen",
               "id": "8",
-              "heat": 3,
-              "wcaId": "1990FAKE50"
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Carmela Virgilio",
               "id": "78",
-              "heat": 4,
-              "wcaId": "1986FAKE34"
+              "wcaId": "1986FAKE34",
+              "gender": "f",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Carmela Yi",
               "id": "28",
-              "heat": 1,
-              "wcaId": "1998FAKE70"
+              "wcaId": "1998FAKE70",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Carmela",
               "id": "25",
-              "heat": 2,
-              "wcaId": "1997FAKE78"
+              "wcaId": "1997FAKE78",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Clow Coreen",
               "id": "7",
-              "heat": 3,
-              "wcaId": "2000FAKE21"
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Coreen Abelson",
               "id": "2",
-              "heat": 4,
-              "wcaId": "2012FAKE30"
+              "wcaId": "2012FAKE30",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Mcconn",
               "id": "57",
-              "heat": 1,
-              "wcaId": "1987FAKE27"
+              "wcaId": "1987FAKE27",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ferranti Virgilio",
               "id": "42",
-              "heat": 2,
-              "wcaId": "2000FAKE9"
+              "wcaId": "2000FAKE9",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Gaeta Antonio",
               "id": "14",
-              "heat": 3,
-              "wcaId": "1996FAKE53"
+              "wcaId": "1996FAKE53",
+              "gender": "f",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Haywood Farish",
               "id": "56",
-              "heat": 4,
-              "wcaId": "2002FAKE10"
+              "wcaId": "2002FAKE10",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Ferranti",
               "id": "75",
-              "heat": 1,
-              "wcaId": "1993FAKE11"
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Hildegard Virgilio",
               "id": "46",
-              "heat": 2,
-              "wcaId": "1992FAKE97"
+              "wcaId": "1992FAKE97",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Abelson",
               "id": "38",
-              "heat": 3,
-              "wcaId": "1993FAKE66"
+              "wcaId": "1993FAKE66",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Athens",
               "id": "79",
-              "heat": 4,
-              "wcaId": "2015FAKE59"
+              "wcaId": "2015FAKE59",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Igoe Ngan",
               "id": "63",
-              "heat": 1,
-              "wcaId": "1998FAKE53"
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lakesha Haywood",
               "id": "11",
-              "heat": 2,
-              "wcaId": "1995FAKE0"
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ferranti",
               "id": "55",
-              "heat": 3,
-              "wcaId": "2002FAKE50"
+              "wcaId": "2002FAKE50",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Gaeta",
               "id": "54",
-              "heat": 4,
-              "wcaId": "2003FAKE97"
+              "wcaId": "2003FAKE97",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Laroque Ogata",
               "id": "50",
-              "heat": 1,
-              "wcaId": "2003FAKE68"
+              "wcaId": "2003FAKE68",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Lesli Byrom",
               "id": "29",
-              "heat": 2,
-              "wcaId": "1999FAKE71"
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Mcconn Saragosa",
               "id": "10",
-              "heat": 3,
-              "wcaId": "1992FAKE62"
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Miera Virgilio",
               "id": "49",
-              "heat": 4,
-              "wcaId": "2011FAKE81"
+              "wcaId": "2011FAKE81",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Moriah Antonio",
               "id": "15",
-              "heat": 1,
-              "wcaId": "1992FAKE81"
+              "wcaId": "1992FAKE81",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Ngan Arnulfo",
               "id": "5",
-              "heat": 2,
-              "wcaId": "1986FAKE22"
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Nott Byrom",
               "id": "3",
-              "heat": 3,
-              "wcaId": "1989FAKE5"
+              "wcaId": "1989FAKE5",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Pelaez Coreen",
               "id": "52",
-              "heat": 4,
-              "wcaId": "2005FAKE49"
+              "wcaId": "2005FAKE49",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "f",
               "countryId": "US",
               "name": "Poulson Antonio",
               "id": "1",
-              "heat": 1,
-              "wcaId": "1989FAKE50"
+              "wcaId": "1989FAKE50",
+              "gender": "f",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Hildegard",
               "id": "23",
-              "heat": 2,
-              "wcaId": "2015FAKE95"
+              "wcaId": "2015FAKE95",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Samuels Mcconn",
               "id": "34",
-              "heat": 3,
-              "wcaId": "1995FAKE51"
+              "wcaId": "1995FAKE51",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Carmela",
               "id": "77",
-              "heat": 4,
-              "wcaId": "1997FAKE70"
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Saragosa Samuels",
               "id": "51",
-              "heat": 1,
-              "wcaId": "2013FAKE92"
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Shayla Laroque",
               "id": "20",
-              "heat": 2,
-              "wcaId": "2002FAKE80"
+              "wcaId": "2002FAKE80",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Stander Vinita",
               "id": "37",
-              "heat": 3,
-              "wcaId": "2013FAKE58"
+              "wcaId": "2013FAKE58",
+              "gender": "m",
+              "heat": 3
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vesta Tona",
               "id": "43",
-              "heat": 4,
-              "wcaId": "2005FAKE78"
+              "wcaId": "2005FAKE78",
+              "gender": "m",
+              "heat": 4
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Vinita Ferranti",
               "id": "9",
-              "heat": 1,
-              "wcaId": "2014FAKE8"
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 1
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Virgilio Arnulfo",
               "id": "35",
-              "heat": 2,
-              "wcaId": "2009FAKE91"
+              "wcaId": "2009FAKE91",
+              "gender": "m",
+              "heat": 2
             },
             {
-              "gender": "m",
               "countryId": "US",
               "name": "Yi Igoe",
               "id": "22",
-              "heat": 3,
-              "wcaId": "2006FAKE86"
+              "wcaId": "2006FAKE86",
+              "gender": "m",
+              "heat": 3
             }
           ],
           "roundId": "f"
         }
-      ]
+      ],
+      "eventId": "skewb"
+    },
+    "sq1": {
+      "rounds": [
+        {
+          "formatId": "a",
+          "groups": [],
+          "results": [
+            {
+              "countryId": "US",
+              "name": "Byrom Coreen",
+              "id": "8",
+              "wcaId": "1990FAKE50",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Clow Coreen",
+              "id": "7",
+              "wcaId": "2000FAKE21",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Hildegard Ferranti",
+              "id": "75",
+              "wcaId": "1993FAKE11",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Igoe Ngan",
+              "id": "63",
+              "wcaId": "1998FAKE53",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Lakesha Haywood",
+              "id": "11",
+              "wcaId": "1995FAKE0",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Lesli Byrom",
+              "id": "29",
+              "wcaId": "1999FAKE71",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Mcconn Clow",
+              "id": "6",
+              "wcaId": "1987FAKE90",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Mcconn Saragosa",
+              "id": "10",
+              "wcaId": "1992FAKE62",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Ngan Arnulfo",
+              "id": "5",
+              "wcaId": "1986FAKE22",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Abelson",
+              "id": "33",
+              "wcaId": "1999FAKE83",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Carmela",
+              "id": "77",
+              "wcaId": "1997FAKE70",
+              "gender": "m",
+              "heat": 1
+            },
+            {
+              "countryId": "US",
+              "name": "Saragosa Samuels",
+              "id": "51",
+              "wcaId": "2013FAKE92",
+              "gender": "m",
+              "heat": 2
+            },
+            {
+              "countryId": "US",
+              "name": "Vinita Ferranti",
+              "id": "9",
+              "wcaId": "2014FAKE8",
+              "gender": "m",
+              "heat": 1
+            }
+          ],
+          "roundId": "f"
+        }
+      ],
+      "eventId": "sq1"
     }
   }
 ]

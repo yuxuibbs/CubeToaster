@@ -20,7 +20,7 @@ def getDataFile():
     '''
     # fileName = input('Enter file name (json):').strip()
     # fileName = "Michigan 2016.json"
-    fileName = "fake gamma.json"
+    fileName = "fake.json"
     f = open(fileName, "r")
     fileData = json.loads(f.read())
     f.close()
@@ -61,7 +61,7 @@ def getCompetitionData(jsonFile):
     for event in jsonFile["events"]:
         results = []
         for person in event["rounds"][0]["results"]:
-            results.append(persons[person['personId']])
+            results.append(persons[person['personId']].copy())
         results.sort(key=lambda x: x['name'].lower())
         event['rounds'][0]['results'] = results
         events[event['eventId']] = event
