@@ -138,22 +138,10 @@ def easyHeats(compData, heatsDict):
     '''
     Goes straight down list of competitors from 1 to numPeopleInHeats
     '''
-    print(json.dumps(compData, indent=2))
     for event in heatsDict:
-        test = []
-        test1 = {}
-        print("heatsDict[event]", heatsDict[event], event)
-        for person in compData[1][event]["rounds"][0]["results"]:
-            person["heat"] = (compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1
-            print(person)
-            print("heat number:", (compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1)
-            test.append((compData[1][event]["rounds"][0]["results"].index(person) % heatsDict[event]) + 1)
-        
-        for num in test:
-            if num not in test1:
-                test1[num] = 0
-            test1[num] += 1
-        print(test1)
+        print(event, heatsDict[event])
+        for i, person in enumerate(compData[1][event]["rounds"][0]["results"]):
+            person["heat"] = (i % heatsDict[event]) + 1
     print(json.dumps(compData, indent=2))
 
     return compData
