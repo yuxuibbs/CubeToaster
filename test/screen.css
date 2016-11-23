@@ -1,6 +1,44 @@
-table, th, td {
-    border: 1px solid black;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
-tr{
-    height:25px;
+
+table, th, td {
+    border: 3px solid black;
+}
+
+.cutoffs td {
+    border: 0;
+}
+
+.CompName {
+
+}
+
+.attempt {
+
+}
+
+.empty {
+
+}
+
+.event {
+
+}
+
+.heat {
+
+}
+
+.round {
+
+}
+
+.personID {
+
+}
+
+.personName {
+
 }

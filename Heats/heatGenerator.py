@@ -152,6 +152,96 @@ def easyHeats(compData, heatsDict):
     return compData
 
 
+def makeScoreSheets(finishedHeats, heatsDict):
+    startHTML = '''
+    <html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="screen.css" media="screen" />
+    </head>
+    <body>
+    '''
+    
+    scoreSheetTable = '''
+      <table>
+      <tr>
+        <th colspan="5" class="CompName">competitionName</th>
+      </tr>
+      <tr>
+        <th colspan="3" class="event">eventName</th>
+        <th colspan="1" class="heat">heatNumber</th>
+        <th colspan="1" class="round">roundNumber</th>
+      </tr>
+      <tr>
+        <th colspan="1" class="personID">competitorID</th>
+        <th colspan="4" class="personName">competitorName</th>
+      </tr>
+      <tr>
+        <th colspan="3">Results</th>
+        <th colspan="1">Comp</th>
+        <th colspan="1">Judge</th>
+      </tr>
+      <tr class="attempt">
+        <td colspan="1">1</td>
+        <td colspan="2">insertTimeHere</td>
+        <td colspan="1">initial1</td>
+        <td colspan="1">initial2</td>
+      </tr>
+      <tr class="attempt">
+        <td colspan="1">2</td>
+        <td colspan="2">insertTimeHere</td>
+        <td colspan="1">initial1</td>
+        <td colspan="1">initial2</td>
+      </tr>
+      <tr class="cutoffs">
+        <td colspan="2">Soft Cutoff: SOFTCUTOFF</td>
+        <td colspan="1"></td>
+        <td colspan="2">Hard Cutoff: HARDCUTOFF</td>
+      </tr>
+      <tr class="attempt">
+        <td colspan="1">3</td>
+        <td colspan="2">insertTimeHere</td>
+        <td colspan="1">initial1</td>
+        <td colspan="1">initial2</td>
+      </tr>
+      <tr class="attempt">
+        <td colspan="1">4</td>
+        <td colspan="2">insertTimeHere</td>
+        <td colspan="1">initial1</td>
+        <td colspan="1">initial2</td>
+      </tr>
+      <tr class="attempt">
+        <td colspan="1">5</td>
+        <td colspan="2">insertTimeHere</td>
+        <td colspan="1">initial1</td>
+        <td colspan="1">initial2</td>
+      </tr>
+      <tr class="empty">
+        <td colspan="5"></td>
+      </tr>
+      <tr class="attempt">
+        <td colspan="1">6</td>
+        <td colspan="2">insertTimeHere</td>
+        <td colspan="1">initial1</td>
+        <td colspan="1">initial2</td>
+      </tr>
+      </table>
+    '''
+        for person in finishedHeats[1][event]["rounds"][0]["results"]:
+            scoreSheetTable.replace("competitionName", finishedHeats[0])
+            scoreSheetTable.replace("eventName", event)
+            scoreSheetTable.replace("heatNumber", str(person["heat"]))
+            scoreSheetTable.replace("roundNumber", str(1))
+            scoreSheetTable.replace("competitorID", person["id"])
+            scoreSheetTable.replace("competitorName", person["name"])
+        startHTML += scoreSheetTable
+    endHTML = '''
+    </body>
+    </html>
+    '''
+    return startHTML + endHTML
+
+
+
 def main():
     printMenu()
 
@@ -182,8 +272,10 @@ def main():
 
     finishedHeats = easyHeats(compData, heatsDict)
     print(heatsDict)
-    print(json.dumps(finishedHeats, indent=2))
-
+    # print(json.dumps(finishedHeats, indent=2))
+    newFile = makeScoreSheets(finishedHeats, heatsDict)
+    webpage = open('output.html', 'w')
+    webpage.write(newFile)
 
 
 
