@@ -1,7 +1,23 @@
 import json
 import math
-from urllib.request import urlopen
-from bs4 import BeautifulSoup
+import re
+
+
+def validateInt(prompt):
+    while True:
+        try:
+            response = int(input(prompt).strip())
+            break
+        except:
+            continue
+    return response
+
+
+def validateYesNo(prompt):
+    response = ""
+    while not (response == 'y' or response == 'n'):
+        response = input(prompt).strip().lower()
+    return response
 
 
 def printMenu():
@@ -86,17 +102,10 @@ def heatsInEvents(compData, eventsDict):
     '''
     Gets number of heats for each event from user
     '''
-    sameNumPerHeat = ''
-    while not (sameNumPerHeat == 'y' or sameNumPerHeat == 'n'):
-        sameNumPerHeat = input("Same number of people for all events other than 4BLD, 5BLD, multi BLD, and FMC? (y/n) ").strip().lower()
-
+    sameNumPerHeat = validateYesNo("Same number of people for all events other than 4BLD, 5BLD, multi BLD, and FMC? (y/n) ")
+    
     if sameNumPerHeat == 'y':
-        while True:
-            try:
-                numPerHeat = int(input("How many competitors do you want in each heat? ").strip())
-                break
-            except:
-                continue
+        numPerHeat = validateInt("How many competitors do you want in each heat? ")
         automaticHeats = True
     else:
         automaticHeats = False
@@ -104,28 +113,24 @@ def heatsInEvents(compData, eventsDict):
 
     heatsDict = {}
     for event in compData[1]:
-        # add if thing to only do events that need special number of people per heat
         numPeople = len(compData[1][event]["rounds"][0]["results"])
         if automaticHeats:
-            numHeats = math.ceil(numPeople / numPerHeat)
-            print("There will be {0} heats in {1}".format(numHeats, eventsDict[event]))
-            heatsDict[event] = numHeats
+            if event == "444bf" or event == "555bf" or event == "333fm" or event == "333mbf":
+                heatsDict[event] = numHeats = 0
+            else:
+                numHeats = math.ceil(numPeople / numPerHeat)
+                heatsDict[event] = numHeats
+            print("There will be {0} heats for {1} for {2} people".format(heatsDict[event], eventsDict[event], numPeople))
         else:
             userSure = False
             while not userSure:
-                try:
-                    numPerHeat = int(input("You have {0} competitors in {1}. How many competitors do you want in each heat? ".format(numPeople, eventsDict[event])).strip())
-                    confirmed = input("Are you sure you want {0} heats for {1} people in {2}? (Y/N) ".format(numPerHeat, numPeople, eventsDict[event])).strip().lower()
-                    if confirmed == 'y' and numPerHeat < numPeople and numPerHeat > 0:
-                        userSure = True
-                        numHeats = math.ceil(numPeople / numPerHeat)
-                        print("There will be {0} heats in {1}".format(numHeats, eventsDict[event]))
-                        heatsDict[event] = numHeats
-                    else:
-                        print("Invalid input. Try again.")
-                        continue
-                except:
-                    continue
+                numPerHeat = validateInt("You have {0} competitors for {1}. How many competitors do you want in each heat? ".format(numPeople, eventsDict[event]))
+                confirmed = validateYesNo("Are you sure you want {0} heats for {1} people in {2}? (Y/N) ".format(numPerHeat, numPeople, eventsDict[event]))
+                if confirmed == 'y' and numPerHeat < numPeople and numPerHeat > 0:
+                    userSure = True
+                    numHeats = math.ceil(numPeople / numPerHeat)
+                    print("There will be {0} heats for {1} for {2} people".format(numHeats, eventsDict[event], numPeople))
+                    heatsDict[event] = numHeats
     return heatsDict
 
 def customHeats(compData):
@@ -141,8 +146,8 @@ def easyHeats(compData, heatsDict):
     for event in heatsDict:
         print(event, heatsDict[event])
         for i, person in enumerate(compData[1][event]["rounds"][0]["results"]):
-            person["heat"] = (i % heatsDict[event]) + 1
-    print(json.dumps(compData, indent=2))
+            if (heatsDict[event] != 0):
+                person["heat"] = (i % heatsDict[event]) + 1
 
     return compData
 
