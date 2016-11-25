@@ -36,6 +36,7 @@ def getDataFile():
     '''
     # fileName = input('Enter file name (json):').strip()
     # fileName = "Michigan 2016.json"
+    # TODO: get csv data to get accurate competitor ID numbers
     fileName = "fake.json"
     f = open(fileName, "r")
     fileData = json.loads(f.read())
@@ -226,6 +227,7 @@ def makeScoreSheets(finishedHeats, heatsDict):
       </tr>
       </table>
     '''
+    for event in finishedHeats[1]:
         for person in finishedHeats[1][event]["rounds"][0]["results"]:
             scoreSheetTable.replace("competitionName", finishedHeats[0])
             scoreSheetTable.replace("eventName", event)
