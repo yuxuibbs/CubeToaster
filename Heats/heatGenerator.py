@@ -153,7 +153,7 @@ def easyHeats(compData, heatsDict):
     return compData
 
 
-def makeScoreSheets(finishedHeats, heatsDict):
+def makeScoreSheets(finishedHeats, heatsDict, eventsDict):
     startHTML = '''
     <html>
     <head>
@@ -161,7 +161,7 @@ def makeScoreSheets(finishedHeats, heatsDict):
     </head>
     <body>
     '''
-    
+    scoreSheetList = []
     scoreSheetTable = '''
       <table>
       <tr>
@@ -169,11 +169,11 @@ def makeScoreSheets(finishedHeats, heatsDict):
       </tr>
       <tr>
         <th colspan="3" class="event">eventName</th>
-        <th colspan="1" class="heat">heatNumber</th>
-        <th colspan="1" class="round">roundNumber</th>
+        <th colspan="1" class="heat">Heat: heatNumber</th>
+        <th colspan="1" class="round">Round: roundNumber</th>
       </tr>
       <tr>
-        <th colspan="1" class="personID">competitorID</th>
+        <th colspan="1" class="personID">ID: competitorID</th>
         <th colspan="4" class="personName">competitorName</th>
       </tr>
       <tr>
@@ -229,18 +229,22 @@ def makeScoreSheets(finishedHeats, heatsDict):
     '''
     for event in finishedHeats[1]:
         for person in finishedHeats[1][event]["rounds"][0]["results"]:
-            scoreSheetTable.replace("competitionName", finishedHeats[0])
-            scoreSheetTable.replace("eventName", event)
-            scoreSheetTable.replace("heatNumber", str(person["heat"]))
-            scoreSheetTable.replace("roundNumber", str(1))
-            scoreSheetTable.replace("competitorID", person["id"])
-            scoreSheetTable.replace("competitorName", person["name"])
-        startHTML += scoreSheetTable
+            updatedScoreSheetTable = scoreSheetTable
+            # python and it's weird rules for strings
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", finishedHeats[0])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsDict[event])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person["heat"]))
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", person["name"])
+            scoreSheetList.append(updatedScoreSheetTable)
     endHTML = '''
     </body>
     </html>
     '''
-    return startHTML + endHTML
+    scoreSheets = str.join("\n", scoreSheetList)
+
+    return startHTML + scoreSheets + endHTML
 
 
 
@@ -275,7 +279,7 @@ def main():
     finishedHeats = easyHeats(compData, heatsDict)
     print(heatsDict)
     # print(json.dumps(finishedHeats, indent=2))
-    newFile = makeScoreSheets(finishedHeats, heatsDict)
+    newFile = makeScoreSheets(finishedHeats, heatsDict, eventsDict)
     webpage = open('output.html', 'w')
     webpage.write(newFile)
 
