@@ -12,33 +12,41 @@ table, th, td {
 }
 
 .CompName {
+    font-size: 300%;
+    font-weight: bold;
+}
 
+.labels {
+    font-size: 150%;
+    font-weight: bold;
 }
 
 .attempt {
-
+    font-size: 300%;
 }
 
 .empty {
-
+    font-size: 150%;
 }
 
 .event {
-
+    font-size: 150%;
+    font-weight: bold;
 }
 
 .heat {
-
+    font-size: 150%;
 }
 
 .round {
-
+    font-size: 150%;
 }
 
 .personID {
-
+    font-size: 150%;
 }
 
 .personName {
-
+    font-size: 250%;
+    font-weight: bold;
 }

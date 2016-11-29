@@ -1,6 +1,7 @@
 import json
 import math
-import re
+# import pdfkit
+# from pdfnup import generateNup
 
 
 def validateInt(prompt):
@@ -153,7 +154,24 @@ def easyHeats(compData, heatsDict):
     return compData
 
 
-def makeScoreSheets(finishedHeats, heatsDict, eventsDict):
+def sortHeats(assignedHeats):
+    '''
+    sorts people in each event by heat
+    '''
+    for event in assignedHeats[1]:
+        for people in assignedHeats[1][event]["rounds"][0]["results"]:
+            print(type(people), people["heat"])
+            people.sort(key=lambda x: x["heat"])
+        print()
+
+
+def makeScoreSheets(assignedHeats, heatsDict, eventsDict):
+    '''
+    '''
+    # TODO: -add scoresheets with only 3 attempts for BLD events
+    #       -remove scoresheets for FMC
+    #           -remind user that they need to print those out
+    #       -find better way to get cutoffs for events
     startHTML = '''
     <html>
     <head>
@@ -163,80 +181,90 @@ def makeScoreSheets(finishedHeats, heatsDict, eventsDict):
     '''
     scoreSheetList = []
     scoreSheetTable = '''
-      <table>
+    <table>
       <tr>
-        <th colspan="5" class="CompName">competitionName</th>
+        <th colspan="6" class="CompName">competitionName</th>
       </tr>
       <tr>
-        <th colspan="3" class="event">eventName</th>
+        <th colspan="4" class="event">eventName</th>
         <th colspan="1" class="heat">Heat: heatNumber</th>
         <th colspan="1" class="round">Round: roundNumber</th>
       </tr>
       <tr>
         <th colspan="1" class="personID">ID: competitorID</th>
-        <th colspan="4" class="personName">competitorName</th>
+        <th colspan="5" class="personName">competitorName</th>
       </tr>
-      <tr>
-        <th colspan="3">Results</th>
+      <tr class="labels">
+        <th colspan="4">Results</th>
         <th colspan="1">Comp</th>
         <th colspan="1">Judge</th>
       </tr>
       <tr class="attempt">
         <td colspan="1">1</td>
-        <td colspan="2">insertTimeHere</td>
-        <td colspan="1">initial1</td>
-        <td colspan="1">initial2</td>
+        <td colspan="3"> </td>
+        <td colspan="1"> </td>
+        <td colspan="1"> </td>
       </tr>
       <tr class="attempt">
         <td colspan="1">2</td>
-        <td colspan="2">insertTimeHere</td>
-        <td colspan="1">initial1</td>
-        <td colspan="1">initial2</td>
+        <td colspan="3"> </td>
+        <td colspan="1"> </td>
+        <td colspan="1"> </td>
       </tr>
       <tr class="cutoffs">
-        <td colspan="2">Soft Cutoff: SOFTCUTOFF</td>
-        <td colspan="1"></td>
-        <td colspan="2">Hard Cutoff: HARDCUTOFF</td>
+        <td colspan="2">Soft Cutoff: softCutoff</td>
+        <td colspan="2"></td>
+        <td colspan="2">Time Limit: timeLimit</td>
       </tr>
       <tr class="attempt">
         <td colspan="1">3</td>
-        <td colspan="2">insertTimeHere</td>
-        <td colspan="1">initial1</td>
-        <td colspan="1">initial2</td>
+        <td colspan="3"> </td>
+        <td colspan="1"> </td>
+        <td colspan="1"> </td>
       </tr>
       <tr class="attempt">
         <td colspan="1">4</td>
-        <td colspan="2">insertTimeHere</td>
-        <td colspan="1">initial1</td>
-        <td colspan="1">initial2</td>
+        <td colspan="3"> </td>
+        <td colspan="1"> </td>
+        <td colspan="1"> </td>
       </tr>
       <tr class="attempt">
         <td colspan="1">5</td>
-        <td colspan="2">insertTimeHere</td>
-        <td colspan="1">initial1</td>
-        <td colspan="1">initial2</td>
+        <td colspan="3"> </td>
+        <td colspan="1"> </td>
+        <td colspan="1"> </td>
       </tr>
       <tr class="empty">
-        <td colspan="5"></td>
+        <td colspan="6"></td>
       </tr>
       <tr class="attempt">
         <td colspan="1">6</td>
-        <td colspan="2">insertTimeHere</td>
-        <td colspan="1">initial1</td>
-        <td colspan="1">initial2</td>
+        <td colspan="3"> </td>
+        <td colspan="1"> </td>
+        <td colspan="1"> </td>
       </tr>
       </table>
+      <br>
     '''
-    for event in finishedHeats[1]:
-        for person in finishedHeats[1][event]["rounds"][0]["results"]:
+    for event in assignedHeats[1]:
+        # hasCutoff = validateYesNo("Does {0} have a cutoff? ".format(event))
+        # softCutoff = "None"
+        # hardCutoff = "None"
+        # if hasCutoff == "y":
+        #     print("If there is no cutoff, write None")
+        #     softCutoff = input("Soft cutoff for {0}? ".format(event))
+        #     hardCutoff = input("Time limit for {0}? ".format(event))
+        for person in assignedHeats[1][event]["rounds"][0]["results"]:
             updatedScoreSheetTable = scoreSheetTable
             # python and it's weird rules for strings
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", finishedHeats[0])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", assignedHeats[0])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsDict[event])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person["heat"]))
             updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", person["name"])
+            # updatedScoreSheetTable = updatedScoreSheetTable.replace("softCutoff", softCutoff)
+            # updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", hardCutoff)
             scoreSheetList.append(updatedScoreSheetTable)
     endHTML = '''
     </body>
@@ -276,13 +304,15 @@ def main():
                   "sq1"   : "Square-1"}
     heatsDict = heatsInEvents(compData, eventsDict)
 
-    finishedHeats = easyHeats(compData, heatsDict)
+    assignedHeats = easyHeats(compData, heatsDict)
     print(heatsDict)
-    # print(json.dumps(finishedHeats, indent=2))
-    newFile = makeScoreSheets(finishedHeats, heatsDict, eventsDict)
-    webpage = open('output.html', 'w')
+    print(json.dumps(assignedHeats, indent=2))
+    # sortByHeats = sortHeats(assignedHeats)
+    newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict)
+    webpage = open('scoresheets.html', 'w')
     webpage.write(newFile)
-
+    # pdfkit.from_file('scoresheets.html', "scoresheets.pdf")
+    # pdfnup.generateNup("scoresheets.pdf", 4)
 
 
 if __name__ == '__main__':
