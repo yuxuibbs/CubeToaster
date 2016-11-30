@@ -100,9 +100,18 @@ def getPsychSheet(competitionName, eventsList):
         soup = BeautifulSoup(html, "html.parser")
         print(url)
 
+
+def createInputFile(heatsDict):
+    '''
+    creates json file for users to edit number of people per heat and cutoffs
+    '''
+
+
+
 def heatsInEvents(compData, eventsDict):
     '''
     Gets number of heats for each event from user
+    recommended number of people per heat: ceil(1.5*numStations) to the nearest even number
     '''
     sameNumPerHeat = validateYesNo("Same number of people for all events other than 4BLD, 5BLD, multi BLD, and FMC? (y/n) ")
     
@@ -118,7 +127,13 @@ def heatsInEvents(compData, eventsDict):
         numPeople = len(compData[1][event]["rounds"][0]["results"])
         if automaticHeats:
             if event == "444bf" or event == "555bf" or event == "333fm" or event == "333mbf":
-                heatsDict[event] = numHeats = 0
+                # preparing to have a JSON that gets all necessary user input information
+                # heatsDict[event]["numPeoplePerHeat"] = 
+                # heatsDict[event]["numPeople"] = numPeople
+                # heatsDict[event]["numHeats"] = numHeats
+                # heatsDict[event]["softCutoff"] = None
+                # heatsDict[event]["timeLimit"] = None
+                heatsDict[event] = numHeats
             else:
                 numHeats = math.ceil(numPeople / numPerHeat)
                 heatsDict[event] = numHeats
@@ -135,9 +150,10 @@ def heatsInEvents(compData, eventsDict):
                     heatsDict[event] = numHeats
     return heatsDict
 
+
 def customHeats(compData):
     '''
-    Gets number of heats for each event from user
+    uses psych sheet data and staff data to assign heats
     '''
 
 
@@ -306,7 +322,7 @@ def main():
 
     assignedHeats = easyHeats(compData, heatsDict)
     print(heatsDict)
-    print(json.dumps(assignedHeats, indent=2))
+    # print(json.dumps(assignedHeats, indent=2))
     # sortByHeats = sortHeats(assignedHeats)
     newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict)
     webpage = open('scoresheets.html', 'w')
