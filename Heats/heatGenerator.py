@@ -133,7 +133,7 @@ def heatsInEvents(compData, eventsDict):
                 # heatsDict[event]["numHeats"] = numHeats
                 # heatsDict[event]["softCutoff"] = None
                 # heatsDict[event]["timeLimit"] = None
-                heatsDict[event] = numHeats
+                heatsDict[event] = 0
             else:
                 numHeats = math.ceil(numPeople / numPerHeat)
                 heatsDict[event] = numHeats
@@ -172,13 +172,10 @@ def easyHeats(compData, heatsDict):
 
 def sortHeats(assignedHeats):
     '''
-    sorts people in each event by heat
+    sorts people in each event by heat for easy scoresheet cutting and sorting
     '''
     for event in assignedHeats[1]:
-        for people in assignedHeats[1][event]["rounds"][0]["results"]:
-            print(type(people), people["heat"])
-            people.sort(key=lambda x: x["heat"])
-        print()
+        (assignedHeats[1][event]["rounds"][0]["results"]).sort(key=lambda x: x["heat"])
 
 
 def makeScoreSheets(assignedHeats, heatsDict, eventsDict):
@@ -323,7 +320,7 @@ def main():
     assignedHeats = easyHeats(compData, heatsDict)
     print(heatsDict)
     # print(json.dumps(assignedHeats, indent=2))
-    # sortByHeats = sortHeats(assignedHeats)
+    sortByHeats = sortHeats(assignedHeats)
     newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict)
     webpage = open('scoresheets.html', 'w')
     webpage.write(newFile)
