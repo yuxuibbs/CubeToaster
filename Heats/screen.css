@@ -1,10 +1,10 @@
+/*
+ * Uses pt instead of percentages so that the score sheets are as 
+ * consistent as possible
+ */
+
 table {
     border-collapse: collapse;
-/*    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;*/
     height: 100%;
     width: 100%;
 }
@@ -24,38 +24,38 @@ table, th, td {
     font-weight: bold;
 }
 
-.CompName {
-    font-size: 300%;
+.compName {
+    font-size: 60pt;
     font-weight: bold;
 }
 
 .labels {
-    font-size: 150%;
+    font-size: 24pt;
     font-weight: bold;
 }
 
 .attempt {
-    font-size: 250%;
+    font-size: 36pt;
     font-weight: bold;
     text-align: center;
 }
 
 .event, .personID {
-    font-size: 200%;
+    font-size: 24pt;
     font-weight: bold;
     width: 60px;
 }
 
 .round, .heat {
-    font-size: 150%;
+    font-size: 24pt;
     font-weight: bold;
 }
 
 .personName {
-    font-size: 250%;
+    font-size: 40pt;
     font-weight: bold;
 }
 
 .initial {
-    width: 100px;
+    width: 120px;
 }
