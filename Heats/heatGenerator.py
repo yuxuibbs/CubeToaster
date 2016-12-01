@@ -188,7 +188,7 @@ def makeScoreSheets(assignedHeats, heatsDict, eventsDict):
     startHTML = '''
     <html>
     <head>
-    <link rel="stylesheet" type="text/css" href="screen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="screen.css" />
     </head>
     <body>
     '''
@@ -199,18 +199,19 @@ def makeScoreSheets(assignedHeats, heatsDict, eventsDict):
         <th colspan="6" class="CompName">competitionName</th>
       </tr>
       <tr>
-        <th colspan="4" class="event">eventName</th>
+        <th colspan="1" class="personID">competitorID</th>
+        <th colspan="3" class="event">eventName</th>
         <th colspan="1" class="heat">Heat: heatNumber</th>
         <th colspan="1" class="round">Round: roundNumber</th>
       </tr>
       <tr>
-        <th colspan="1" class="personID">ID: competitorID</th>
-        <th colspan="5" class="personName">competitorName</th>
+        <th colspan="6" class="personName">competitorName</th>
       </tr>
       <tr class="labels">
-        <th colspan="4">Results</th>
-        <th colspan="1">Comp</th>
-        <th colspan="1">Judge</th>
+        <th colspan="1"> </th>
+        <th colspan="3">Results</th>
+        <th colspan="1" class="initial">Comp</th>
+        <th colspan="1" class="initial">Judge</th>
       </tr>
       <tr class="attempt">
         <td colspan="1">1</td>
@@ -225,9 +226,12 @@ def makeScoreSheets(assignedHeats, heatsDict, eventsDict):
         <td colspan="1"> </td>
       </tr>
       <tr class="cutoffs">
-        <td colspan="2">Soft Cutoff: softCutoff</td>
-        <td colspan="2"></td>
-        <td colspan="2">Time Limit: timeLimit</td>
+        <td colspan="1"></td>
+        <td colspan="1">Soft Cutoff: softCutoff</td>
+        <td colspan="1"></td>
+        <td colspan="1">Time Limit: timeLimit</td>
+        <td colspan="1"></td>
+        <td colspan="1"></td>
       </tr>
       <tr class="attempt">
         <td colspan="1">3</td>

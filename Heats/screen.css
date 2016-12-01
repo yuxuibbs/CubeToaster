@@ -1,16 +1,3 @@
-@media print{
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    }
-
-    table, th, td {
-        border: 3px solid black;
-    }  
-
-}
-
-
 table {
     border-collapse: collapse;
     width: 100%;
@@ -22,6 +9,7 @@ table, th, td {
 
 .cutoffs td {
     border: 0;
+    font-weight: bold;
 }
 
 .CompName {
@@ -35,32 +23,27 @@ table, th, td {
 }
 
 .attempt {
-    font-size: 300%;
-    width:20px;
+    font-size: 250%;
+    font-weight: bold;
+    text-align: center;
 }
 
-.empty {
-    font-size: 150%;
+.event, .personID {
+    font-size: 200%;
+    font-weight: bold;
+    width: 60px;
 }
 
-.event {
+.round, .heat {
     font-size: 150%;
     font-weight: bold;
-}
-
-.heat {
-    font-size: 150%;
-}
-
-.round {
-    font-size: 150%;
-}
-
-.personID {
-    font-size: 150%;
 }
 
 .personName {
     font-size: 250%;
     font-weight: bold;
+}
+
+.initial {
+    width: 100px;
 }
