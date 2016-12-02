@@ -42,8 +42,7 @@ def getDataFile():
     Gets file name from user and reads in the JSON
     '''
     # fileName = input('Enter file name (json):').strip()
-    # fileName = "Michigan 2016.json"
-    # TODO: get csv data to get accurate competitor ID numbers
+    # TODO: get csv or excel data to get accurate competitor ID numbers
     fileName = "fake gamma.json"
     f = open(fileName, "r")
     fileData = json.loads(f.read())
@@ -107,12 +106,6 @@ def calcNumHeats(compData, eventsDict):
         numPeople = len(compData[1][event]["rounds"][0]["results"])
         if automaticHeats:
             if event == "444bf" or event == "555bf" or event == "333fm" or event == "333mbf":
-                # preparing to have a JSON that gets all necessary user input information
-                # heatsDict[event]["numPeoplePerHeat"] = 
-                # heatsDict[event]["numPeople"] = numPeople
-                # heatsDict[event]["numHeats"] = numHeats
-                # heatsDict[event]["softCutoff"] = None
-                # heatsDict[event]["timeLimit"] = None
                 heatsDict[event] = 0
             else:
                 numHeats = math.ceil(numPeople / numPerHeat)
@@ -158,12 +151,12 @@ def sortHeats(assignedHeats):
         (assignedHeats[1][event]["rounds"][0]["results"]).sort(key=lambda x: x["heat"])
 
 
-def makePrintableHeatSheet(assignedHeats, jsonFile):
+def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
     '''
     Gets all the heats for each competitor and turns it into a printable format
-    makes a list of [name, [list of events with heat numbers]] 
+    Makes a list of [name, [list of events with heat numbers]] 
         sorted by name (with events sorted by alphabetical order)
-    prints to file
+    outputs a file with everyone's heat numbers on it
     '''
     # make list of dictionaries with person name and all the events
     competitorHeats = []
@@ -172,7 +165,8 @@ def makePrintableHeatSheet(assignedHeats, jsonFile):
         tempDict["name"] = person["name"]
         for event in assignedHeats[1]:
             for personData in assignedHeats[1][event]["rounds"][0]["results"]:
-                tempDict[event] = personData["heat"]
+                if person["name"] == personData["name"]:
+                    tempDict[event] = personData["heat"]
         if tempDict not in competitorHeats:
             competitorHeats.append(tempDict)
 
@@ -192,8 +186,12 @@ def makePrintableHeatSheet(assignedHeats, jsonFile):
     printableHeats.sort()
     
     # print to file
-
-
+    with open("printableHeatSheet.txt", 'w') as f:
+        for person in printableHeats:
+            print(person[0], file=f)
+            for event, heat in person[1]:
+                print("{0:25} - {1}".format(eventsDict[event], heat), file=f)
+            print(file=f)
 
 
 def makeScoreSheets(assignedHeats, heatsDict, eventsDict):
@@ -242,7 +240,7 @@ def main():
     jsonFile = getDataFile()
 
     compData = getCompetitionData(jsonFile)
-    # (willMakeCutoff, willNotMakeCutoff) = getPsychSheet(dataList[0], events)
+
     eventsDict = {"222"   : "2x2 Cube",
                   "333"   : "Rubik's Cube",
                   "333oh" : "Rubik's Cube: One-Handed",
@@ -261,13 +259,17 @@ def main():
                   "pyram" : "Pyraminx",
                   "skewb" : "Skewb",
                   "sq1"   : "Square-1"}
-    heatsDict = calcNumHeats(compData, eventsDict)
 
+    # figure out how many heats there will be for each event
+    heatsDict = calcNumHeats(compData, eventsDict)
+    # assign heats
     assignedHeats = easyHeats(compData, heatsDict)
-    makePrintableHeatSheet(assignedHeats, jsonFile)
+    # make output files
+    makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict)
     sortHeats(assignedHeats)
     newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict)
     
+    # make HTML file with all the scoresheets
     webpage = open('scoresheets.html', 'w')
     webpage.write(newFile)
     

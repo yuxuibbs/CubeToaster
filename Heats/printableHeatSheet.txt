@@ -1,0 +1,357 @@
+Abelson Carmela
+Rubik's Cube              - 1
+Rubik's Cube: One-Handed  - 1
+Skewb                     - 1
+
+Abelson Ogata
+Rubik's Cube              - 2
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: One-Handed  - 2
+Skewb                     - 2
+
+Abelson Virgilio
+Rubik's Cube              - 3
+
+Arnulfo Jamee
+Rubik's Cube              - 4
+Rubik's Cube: One-Handed  - 3
+Skewb                     - 3
+
+Arturo Arnulfo
+Rubik's Cube              - 5
+
+Athens Saragosa
+Rubik's Cube              - 6
+Rubik's Cube: One-Handed  - 4
+Skewb                     - 4
+
+Brittney Coreen
+Rubik's Cube              - 1
+Rubik's Cube: One-Handed  - 1
+Skewb                     - 1
+
+Brittney Lesli
+Rubik's Cube              - 2
+Rubik's Cube: One-Handed  - 2
+Skewb                     - 2
+
+Byrom Coreen
+Rubik's Cube              - 3
+Rubik's Cube: Blindfolded - 2
+Rubik's Cube: With feet   - 1
+Rubik's Cube: One-Handed  - 3
+6x6 Cube                  - 1
+Megaminx                  - 1
+Skewb                     - 3
+Square-1                  - 1
+
+Byrom Samuels
+Rubik's Cube              - 4
+
+Carmela Virgilio
+Rubik's Cube              - 5
+Skewb                     - 4
+
+Carmela Yi
+Rubik's Cube              - 6
+Skewb                     - 1
+
+Clow Carmela
+Rubik's Cube              - 1
+Rubik's Cube: One-Handed  - 4
+6x6 Cube                  - 2
+Megaminx                  - 2
+Skewb                     - 2
+
+Clow Coreen
+Rubik's Cube              - 2
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: With feet   - 1
+Rubik's Cube: One-Handed  - 1
+6x6 Cube                  - 1
+Megaminx                  - 3
+Skewb                     - 3
+Square-1                  - 2
+
+Coreen Abelson
+Rubik's Cube              - 3
+Rubik's Cube: Blindfolded - 2
+Rubik's Cube: With feet   - 1
+Rubik's Cube: One-Handed  - 2
+6x6 Cube                  - 2
+Megaminx                  - 1
+Skewb                     - 4
+
+Coreen Laroque
+Rubik's Cube              - 4
+Rubik's Cube: One-Handed  - 3
+6x6 Cube                  - 1
+Megaminx                  - 2
+
+Ferranti Mcconn
+Rubik's Cube              - 5
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: One-Handed  - 4
+6x6 Cube                  - 2
+Megaminx                  - 3
+Skewb                     - 1
+
+Ferranti Virgilio
+Rubik's Cube              - 6
+Rubik's Cube: One-Handed  - 1
+Skewb                     - 2
+
+Gaeta Antonio
+Rubik's Cube              - 1
+Rubik's Cube: Blindfolded - 2
+Skewb                     - 3
+
+Gaeta Mcconn
+Rubik's Cube              - 2
+
+Haywood Farish
+Rubik's Cube              - 3
+Skewb                     - 4
+
+Haywood Yi
+Rubik's Cube              - 4
+
+Hildegard Ferranti
+Rubik's Cube              - 5
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: With feet   - 1
+Rubik's Cube: One-Handed  - 2
+6x6 Cube                  - 1
+Megaminx                  - 1
+Skewb                     - 1
+Square-1                  - 1
+
+Hildegard Virgilio
+Rubik's Cube              - 6
+Skewb                     - 2
+
+Igoe Abelson
+Rubik's Cube              - 1
+Rubik's Cube: Blindfolded - 2
+Rubik's Cube: One-Handed  - 3
+6x6 Cube                  - 2
+Skewb                     - 3
+
+Igoe Athens
+Rubik's Cube              - 2
+Rubik's Cube: One-Handed  - 4
+Skewb                     - 4
+
+Igoe Ngan
+Rubik's Cube              - 3
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: With feet   - 1
+Rubik's Cube: One-Handed  - 1
+6x6 Cube                  - 1
+Megaminx                  - 2
+Skewb                     - 1
+Square-1                  - 2
+
+Lakesha Haywood
+Rubik's Cube              - 4
+Rubik's Cube: With feet   - 1
+Rubik's Cube: One-Handed  - 2
+6x6 Cube                  - 2
+Megaminx                  - 3
+Skewb                     - 2
+Square-1                  - 1
+
+Lakesha Ogata
+Rubik's Cube              - 5
+Rubik's Cube: Blindfolded - 2
+
+Laroque Arturo
+Rubik's Cube              - 6
+6x6 Cube                  - 1
+
+Laroque Ferranti
+Rubik's Cube              - 1
+Skewb                     - 3
+
+Laroque Gaeta
+Rubik's Cube              - 2
+Skewb                     - 4
+
+Laroque Ogata
+Rubik's Cube              - 3
+Rubik's Cube: Blindfolded - 1
+Skewb                     - 1
+
+Lesli Byrom
+Rubik's Cube              - 4
+Rubik's Cube: Blindfolded - 2
+Rubik's Cube: One-Handed  - 3
+6x6 Cube                  - 2
+Megaminx                  - 1
+Skewb                     - 2
+Square-1                  - 2
+
+Lesli Igoe
+Rubik's Cube              - 5
+
+Mcconn Clow
+Rubik's Cube              - 6
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: One-Handed  - 4
+Square-1                  - 1
+
+Mcconn Saragosa
+Rubik's Cube              - 1
+Rubik's Cube: One-Handed  - 1
+6x6 Cube                  - 1
+Megaminx                  - 2
+Skewb                     - 3
+Square-1                  - 2
+
+Miera Jamee
+Rubik's Cube              - 2
+
+Miera Virgilio
+Rubik's Cube              - 3
+Rubik's Cube: One-Handed  - 2
+6x6 Cube                  - 2
+Megaminx                  - 3
+Skewb                     - 4
+
+Miera Yi
+Rubik's Cube              - 4
+Rubik's Cube: One-Handed  - 3
+6x6 Cube                  - 1
+Megaminx                  - 1
+
+Moriah Antonio
+Rubik's Cube              - 5
+6x6 Cube                  - 2
+Megaminx                  - 2
+Skewb                     - 1
+
+Moriah Byrom
+Rubik's Cube              - 6
+Megaminx                  - 3
+
+Moriah Ogata
+Rubik's Cube              - 1
+Rubik's Cube: Blindfolded - 2
+
+Ngan Arnulfo
+Rubik's Cube              - 2
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: One-Handed  - 4
+6x6 Cube                  - 1
+Megaminx                  - 1
+Skewb                     - 2
+Square-1                  - 1
+
+Ngan Poulson
+Rubik's Cube              - 3
+
+Nott Byrom
+Rubik's Cube              - 4
+Rubik's Cube: One-Handed  - 1
+Skewb                     - 3
+
+Ogata Tona
+Rubik's Cube              - 5
+
+Pelaez Coreen
+Rubik's Cube              - 6
+Megaminx                  - 2
+Skewb                     - 4
+
+Poulson Antonio
+Rubik's Cube              - 1
+Rubik's Cube: With feet   - 1
+Rubik's Cube: One-Handed  - 2
+6x6 Cube                  - 2
+Megaminx                  - 3
+Skewb                     - 1
+
+Samuels Hildegard
+Rubik's Cube              - 2
+Rubik's Cube: One-Handed  - 3
+Megaminx                  - 1
+Skewb                     - 2
+
+Samuels Mcconn
+Rubik's Cube              - 3
+Skewb                     - 3
+
+Saragosa Abelson
+Rubik's Cube              - 4
+Rubik's Cube: Blindfolded - 2
+Square-1                  - 2
+
+Saragosa Carmela
+Rubik's Cube              - 5
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: One-Handed  - 4
+6x6 Cube                  - 1
+Megaminx                  - 2
+Skewb                     - 4
+Square-1                  - 1
+
+Saragosa Samuels
+Rubik's Cube              - 6
+Rubik's Cube: Blindfolded - 2
+Rubik's Cube: With feet   - 1
+Rubik's Cube: One-Handed  - 1
+6x6 Cube                  - 2
+Megaminx                  - 3
+Skewb                     - 1
+Square-1                  - 2
+
+Shayla Laroque
+Rubik's Cube              - 1
+Rubik's Cube: One-Handed  - 2
+Skewb                     - 2
+
+Shayla Miera
+Rubik's Cube              - 2
+
+Stander Vinita
+Rubik's Cube              - 4
+Rubik's Cube: One-Handed  - 4
+Megaminx                  - 1
+Skewb                     - 3
+
+Vesta Tona
+Rubik's Cube              - 5
+Rubik's Cube: One-Handed  - 1
+Skewb                     - 4
+
+Vesta Virgilio
+Rubik's Cube              - 6
+Rubik's Cube: One-Handed  - 2
+6x6 Cube                  - 1
+Megaminx                  - 2
+
+Vinita Ferranti
+Rubik's Cube              - 1
+Rubik's Cube: Blindfolded - 1
+Rubik's Cube: One-Handed  - 3
+6x6 Cube                  - 2
+Megaminx                  - 3
+Skewb                     - 1
+Square-1                  - 1
+
+Vinita Tona
+Rubik's Cube              - 2
+
+Virgilio Arnulfo
+Rubik's Cube              - 3
+Rubik's Cube: One-Handed  - 4
+Skewb                     - 2
+
+Yi Brittney
+Rubik's Cube              - 4
+
+Yi Igoe
+Rubik's Cube              - 5
+Rubik's Cube: One-Handed  - 1
+Skewb                     - 3
+
