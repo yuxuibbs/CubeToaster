@@ -1,6 +1,15 @@
 # CubeToaster
 Generates heats for WCA competitions to save time for organizers.
 
+Outputs score sheets sorted by heat number and event and a txt file with everyone's heat numbers. 
+
+1. Run heatsGenerator.py
+2. Double check the information
+3. Print stuff (score sheets and heat sheets)
+4. Cut the score sheets in order
+????
+5. Profit (save at least 4 hours of figuring out heats and sorting score sheets) 
+
 Project started out as project 4 for SI 206 (was due on 12/02/2016). 
 
 Now taking pull requests.

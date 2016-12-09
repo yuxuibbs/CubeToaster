@@ -29,6 +29,8 @@ def getCompetitionData(jsonFile):
         del person["countryId"]
         del person["gender"]
         del person["dob"]
+        # make sure name is in title case
+        person["name"] = person["name"].title()
         # initialize heat number
         person["heat"] = 0
         # put person data into a dictionary with id number as key
@@ -38,16 +40,19 @@ def getCompetitionData(jsonFile):
         results = []
         # replace id in events part of JSON with the person's data
         for person in event["rounds"][0]["results"]:
-            results.append(persons[person['personId']].copy())
-        results.sort(key=lambda x: x['name'].lower())
-        event['rounds'][0]['results'] = results
-        events[event['eventId']] = event
+            try:
+                results.append(persons[person["personId"]].copy())
+            except:
+                print("POSSIBLE ERROR: Make sure all registered competitors are in competitors.txt")
+        results.sort(key=lambda x: x["name"].lower())
+        event["rounds"][0]["results"] = results
+        events[event["eventId"]] = event
 
     return (competitionId, events)
 
 def getStaffList():
     staff = []
-    with open('competitors.txt', 'r') as f:
+    with open("competitors.txt", "r") as f:
         for line in f:
             staff.append(line.strip())
     return staff

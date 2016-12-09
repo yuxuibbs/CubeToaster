@@ -6,4 +6,3 @@ Heats/*.json
 Heats/*.html
 Heats/*.txt
 Heats/__pycache__
-!Heats/inputData.json

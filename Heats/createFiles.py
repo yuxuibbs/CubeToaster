@@ -78,7 +78,7 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
         person[1].sort(key=lambda x: x[0])
     printableHeats.sort()
     
-    # print to file
+    # print heat sheet to file
     with open("printableHeatSheet.txt", "w") as f:
         for person in printableHeats:
             print(person[0], file=f)
@@ -86,8 +86,8 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
                 print("{0:25} - {1}".format(eventsDict[event], heat), file=f)
             print(file=f)
 
-    # print to file
-    with open("competitors.txt", "w") as f:
+    # print list of competitors to file
+    with open("competitors.txt", "w") and open("staff.txt", "w") as f:
         for person in printableHeats:
             print(person[0], file=f)
 
