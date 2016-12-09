@@ -1,10 +1,30 @@
 import scoresheetsHtml
+import json
+
+def makeCompetitorList(jsonFile):
+    '''
+    Creates txt file with all of the competitors at the competition
+    '''
+    # print to file
+    with open("competitors.txt", "w") as f:
+        for person in jsonFile["persons"]:
+            print(person["name"], file=f)
 
 def createInputFile(heatsDict):
     '''
     creates json file for users to edit number of people per heat and cutoffs
     '''
-    # Need to figure out how the competition organizers want to input data
+    data = {}
+    # temporarily does not have "numPeoplePerHeat": ""
+    inputData = {
+        "cutoff": "",
+        "timeLimit": "",
+    }
+    for event in heatsDict:
+        data[event] = inputData
+    with open("inputData.json", "w") as f:
+        print(json.dumps(data, indent=4), file=f)
+
 
 def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
     '''
@@ -41,7 +61,7 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
     printableHeats.sort()
     
     # print to file
-    with open("printableHeatSheet.txt", 'w') as f:
+    with open("printableHeatSheet.txt", "w") as f:
         for person in printableHeats:
             print(person[0], file=f)
             for event, heat in person[1]:
@@ -49,32 +69,27 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
             print(file=f)
 
     # print to file
-    with open("competitors.txt", 'w') as f:
+    with open("competitors.txt", "w") as f:
         for person in printableHeats:
             print(person[0], file=f)
 
 
-def makeScoreSheets(assignedHeats, heatsDict, eventsDict):
+def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData):
     '''
     Creates string with HTML that contains all of the necessary 
     score sheets for the first round of the competition
     '''
-    # TODO: -add score sheets with only 3 attempts for BLD events
-    #       -remove score sheets for FMC
-    #           -remind user that they need to print those out
-    #       -find better way to get cutoffs for events
     scoreSheetList = []
     notAo5Events = ["333ft", "333fm", "333bf", "666", "777", "444bf", "555bf", "333mbf"]
     for event in assignedHeats[1]:
         if event == "333fm":
             continue
-        # hasCutoff = validateYesNo("Does {0} have a cutoff? ".format(event))
-        # softCutoff = "None"
-        # hardCutoff = "None"
-        # if hasCutoff == "y":
-        #     print("If there is no cutoff, write None")
-        #     softCutoff = input("Soft cutoff for {0}? ".format(event))
-        #     hardCutoff = input("Time limit for {0}? ".format(event))
+        cutoff = inputData[event]["cutoff"]
+        timeLimit = inputData[event]["timeLimit"]
+        if cutoff == "":
+            cutoff = "None"
+        if timeLimit == "":
+            timeLimit = "None"
         for person in assignedHeats[1][event]["rounds"][0]["results"]:
             if event in notAo5Events:
                 updatedScoreSheetTable = scoresheetsHtml.mo3Table
@@ -87,8 +102,8 @@ def makeScoreSheets(assignedHeats, heatsDict, eventsDict):
             updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", person["name"])
-            # updatedScoreSheetTable = updatedScoreSheetTable.replace("softCutoff", softCutoff)
-            # updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", hardCutoff)
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
             scoreSheetList.append(updatedScoreSheetTable)
 
     scoreSheets = str.join("\n", scoreSheetList)

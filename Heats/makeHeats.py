@@ -1,5 +1,21 @@
 import math
 import responseValidation
+import createFiles
+import getData
+
+def specialStaffHeats(jsonFile):
+    print()
+    staffHeats = responseValidation.validateYesNo("Special staff heats? ")
+    if staffHeats:
+        print("Open competitors.txt and delete everyone that is NOT a staff member (competitors.txt should only have staff members who are competing)")
+        createFiles.makeCompetitorList(jsonFile)
+        while True:
+            if responseValidation.validateYesNo("Type y when done. "):
+                staffList = getData.getStaffList()
+                break
+            else:
+                continue
+    return staffList
 
 def calcNumHeats(compData, eventsDict):
     '''
@@ -8,7 +24,7 @@ def calcNumHeats(compData, eventsDict):
     '''
     sameNumPerHeat = responseValidation.validateYesNo("Same number of people for all events other than 4BLD, 5BLD, multi BLD, and FMC? (y/n) ")
     
-    if sameNumPerHeat == 'y':
+    if sameNumPerHeat:
         numPerHeat = responseValidation.validateInt("How many competitors do you want in each heat? ")
         automaticHeats = True
     else:
@@ -31,7 +47,7 @@ def calcNumHeats(compData, eventsDict):
             while not userSure:
                 numPerHeat = responseValidation.validateInt("You have {0} competitors for {1}. How many competitors do you want in each heat? ".format(numPeople, eventsDict[event]))
                 confirmed = responseValidation.validateYesNo("Are you sure you want {0} heats for {1} people in {2}? (Y/N) ".format(numPerHeat, numPeople, eventsDict[event]))
-                if confirmed == 'y' and numPerHeat < numPeople and numPerHeat > 0:
+                if confirmed and numPerHeat < numPeople and numPerHeat > 0:
                     userSure = True
                     numHeats = math.ceil(numPeople / numPerHeat)
                     print("There will be {0} heats for {1} for {2} people".format(numHeats, eventsDict[event], numPeople))
@@ -49,6 +65,12 @@ def customHeats(compData):
 def easyHeats(compData, heatsDict):
     '''
     Goes straight down list of competitors from 1 to numPeopleInHeats
+    '''
+    ''' TODO: later
+    staff = False
+    # assumes that number of people on staff is always less than 60% of the number of people in 3x3x3
+    if len(staffList) < len(compData[1][event]["rounds"][0]["results"]) * 0.6:
+        staff = True
     '''
     for event in heatsDict:
         for i, person in enumerate(compData[1][event]["rounds"][0]["results"]):

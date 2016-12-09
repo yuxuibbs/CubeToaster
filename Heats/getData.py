@@ -4,9 +4,10 @@ def getDataFile():
     '''
     Gets file name from user and reads in the JSON
     '''
-    # fileName = input('Enter file name (json):').strip()
+    fileName = input('Enter file name (json): ').strip()
+    if not fileName.endswith(".json"):
+        fileName = fileName + ".json"
     # TODO: get csv or excel data to get accurate competitor ID numbers
-    fileName = "fake gamma.json"
     f = open(fileName, "r")
     fileData = json.loads(f.read())
     f.close()
@@ -23,9 +24,13 @@ def getCompetitionData(jsonFile):
     events = {}
 
     for person in jsonFile["persons"]:
-        # remove dob and replace with initial heat number
-        person['heat'] = person.pop('dob')
-        person['heat'] = 0
+        # remove unnecessary data (WCA ID, country, gender, and dob)
+        del person["wcaId"]
+        del person["countryId"]
+        del person["gender"]
+        del person["dob"]
+        # initialize heat number
+        person["heat"] = 0
         # put person data into a dictionary with id number as key
         persons[person["id"]] = person
 
@@ -39,3 +44,16 @@ def getCompetitionData(jsonFile):
         events[event['eventId']] = event
 
     return (competitionId, events)
+
+def getStaffList():
+    staff = []
+    with open('competitors.txt', 'r') as f:
+        for line in f:
+            staff.append(line.strip())
+    return staff
+
+def getInputInfo():
+    f = open("inputData.json", "r")
+    inputData = json.loads(f.read())
+    f.close()
+    return inputData

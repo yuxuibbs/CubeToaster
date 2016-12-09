@@ -40,7 +40,7 @@ ao5Table = '''
         </tr>
         <tr class="cutoffs">
           <td colspan="1"></td>
-          <td colspan="1">Soft Cutoff: softCutoff</td>
+          <td colspan="1">Cutoff: cutoffTime</td>
           <td colspan="1"></td>
           <td colspan="1">Time Limit: timeLimit</td>
           <td colspan="1"></td>
@@ -105,7 +105,7 @@ mo3Table = '''
         </tr>
         <tr class="cutoffs">
           <td colspan="1"></td>
-          <td colspan="1">Soft Cutoff: softCutoff</td>
+          <td colspan="1">Cutoff: cutoffTime</td>
           <td colspan="1"></td>
           <td colspan="1">Time Limit: timeLimit</td>
           <td colspan="1"></td>

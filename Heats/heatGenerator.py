@@ -1,7 +1,7 @@
 import getData
 import createFiles
 import makeHeats
-
+import responseValidation
 
 def printMenu():
     '''
@@ -17,6 +17,8 @@ def main():
     printMenu()
 
     jsonFile = getData.getDataFile()
+
+    # staffList = makeHeats.specialStaffHeats(jsonFile)
 
     compData = getData.getCompetitionData(jsonFile)
 
@@ -41,12 +43,15 @@ def main():
 
     # figure out how many heats there will be for each event
     heatsDict = makeHeats.calcNumHeats(compData, eventsDict)
+    # get user input to make heats
+    createFiles.createInputFile(heatsDict)
+    inputData = responseValidation.validateInputFile(jsonFile)
     # assign heats
     assignedHeats = makeHeats.easyHeats(compData, heatsDict)
     # make output files
     createFiles.makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict)
     makeHeats.sortHeats(assignedHeats)
-    newFile = createFiles.makeScoreSheets(assignedHeats, heatsDict, eventsDict)
+    newFile = createFiles.makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData)
     
     # make HTML file with all the score sheets
     webpage = open('scoresheets.html', 'w')

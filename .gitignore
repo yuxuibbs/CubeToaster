@@ -1,7 +1,9 @@
+Anonymizer/*.json
 Heats/*.csv
 Heats/*.xls
 Heats/*.xlsx
 Heats/*.json
 Heats/*.html
 Heats/*.txt
-Anonymizer/*.json
+Heats/__pycache__
+!Heats/inputData.json
