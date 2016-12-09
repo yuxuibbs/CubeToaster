@@ -3,18 +3,25 @@ import createFiles
 import makeHeats
 import responseValidation
 
-def printMenu():
+def printIntro():
     '''
     Prints program name and instructions for the user
     '''
     print("CubeToaster")
     print("Takes in a JSON file with the competition data and outputs an HTML website with all the score sheets for the competition sorted by heat number")
     print("Type Ctrl-C or Ctrl-Z (whichever one works) to quit the program if something goes wrong.")
-    print()
+
+def printEnding():
+    print("HEATS HAVE BEEN GENERATED")
+    print("1. Make sure screen.css is in the same folder as scoresheets.html")
+    print("2. Open scoresheets.html")
+    print("3. Print to file (save as PDF) with 4 sheets per page")
+    print("4. Print score sheets and cut them (everything is already sorted by event and heat number)")
 
 
 def main():
-    printMenu()
+    printIntro()
+    print()
 
     jsonFile = getData.getDataFile()
 
@@ -41,11 +48,12 @@ def main():
                   "skewb" : "Skewb",
                   "sq1"   : "Square-1"}
 
-    # figure out how many heats there will be for each event
-    heatsDict = makeHeats.calcNumHeats(compData, eventsDict)
     # get user input to make heats
-    createFiles.createInputFile(heatsDict)
+    createFiles.createInputFile(compData)
+    print()
     inputData = responseValidation.validateInputFile(jsonFile)
+    # figure out how many heats there will be for each event
+    heatsDict = makeHeats.calcNumHeats(compData, eventsDict, inputData)
     # assign heats
     assignedHeats = makeHeats.easyHeats(compData, heatsDict)
     # make output files
@@ -58,11 +66,7 @@ def main():
     webpage.write(newFile)
     
     print()
-    print("HEATS HAVE BEEN GENERATED")
-    print("1. Make sure screen.css is in the same folder as scoresheets.html")
-    print("2. Open scoresheets.html")
-    print("3. Print to file (save as PDF) with 4 sheets per page")
-    print("4. Print score sheets and cut them (everything is already sorted by event and heat number)")
+    printEnding()
 
 
 if __name__ == '__main__':

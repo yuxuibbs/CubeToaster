@@ -30,6 +30,7 @@ def validateYesNo(prompt):
 
 def validateInputFile(jsonFile):
     print("Fill out inputData.json (you can leave as many things blank as you want)")
+    print("There is a recommended number of heats already listed. You can change it if you want to.")
     while True:
         
         if responseValidation.validateYesNo("Type y when done. "):

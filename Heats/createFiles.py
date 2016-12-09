@@ -1,5 +1,7 @@
 import scoresheetsHtml
 import json
+import responseValidation
+import math
 
 def makeCompetitorList(jsonFile):
     '''
@@ -10,18 +12,34 @@ def makeCompetitorList(jsonFile):
         for person in jsonFile["persons"]:
             print(person["name"], file=f)
 
-def createInputFile(heatsDict):
+def createInputFile(compData):
     '''
     creates json file for users to edit number of people per heat and cutoffs
     '''
     data = {}
-    # temporarily does not have "numPeoplePerHeat": ""
-    inputData = {
-        "cutoff": "",
-        "timeLimit": "",
-    }
-    for event in heatsDict:
+    fastEvents = ["222", "333", "333oh", "skewb", "pyram"]
+
+    numStations = responseValidation.validateInt("How many timing stations will you be using per stage? ")
+    
+    for event in compData[1]:
+        inputData = {}
+        numPeople = len(compData[1][event]["rounds"][0]["results"])
+        
+        if event in fastEvents:
+            recommendNumHeats = round(numPeople / (1.7 * numStations))
+        else:
+            recommendNumHeats = round(numPeople / (1.5 * numStations))
+        if recommendNumHeats < 1:
+            recommendNumHeats = 1
+
+        inputData["numPeople"] = numPeople
+        inputData["numHeats"] = recommendNumHeats
+        inputData["cutoff"] = ""
+        inputData["timeLimit"] = ""
+        inputData["peoplePerHeat"] = numPeople/recommendNumHeats
+        
         data[event] = inputData
+
     with open("inputData.json", "w") as f:
         print(json.dumps(data, indent=4), file=f)
 
