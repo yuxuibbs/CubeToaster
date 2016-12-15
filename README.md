@@ -44,5 +44,7 @@ Anonymizes JSON data
 
 ## List of competition CubeToaster has been used in:
 * Shaker Fall 2016
+
+Future competitions:
 * Dayton Winter 2017
 * MCC Alpha 2017

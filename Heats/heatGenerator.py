@@ -59,8 +59,9 @@ def validateYesNo(prompt):
 def validateInputFile(jsonFile):
     print("Fill out inputData.json (you can leave as many things blank as you want)")
     print("There is a recommended number of heats already listed. You can change it if you want to.")
+    print("If you want to use psych sheet data to put all the slower people in the first few heats, change usePsychSheet to yes (all lowercase)")
+   
     while True:
-        
         if validateYesNo("Type y when done. "):
             inputData = getInputInfo()
             break
@@ -97,13 +98,25 @@ def getPsychSheet(competitionName, eventsList):
     Gets the psych sheet data from Stachu's website
     Returns [willMakeCutoff, willNotMakeCutoff]
     '''
+    psychSheetData = {}
     stachuPsychSheet = "http://psychsheets.azurewebsites.net/"
     baseURL = stachuPsychSheet + "/" + competitionName + "/"
     for event in eventsList:
         url = baseURL + event
         html = urlopen(url).read()
         soup = BeautifulSoup(html, "html.parser")
-        print(soup.tr)
+        # code from https://stackoverflow.com/questions/2870667/how-to-convert-an-html-table-to-an-array-in-python
+        result = []
+        allrows = soup.findAll('tr')
+        for row in allrows:
+            result.append([])
+            allcols = row.findAll('td')
+            for col in allcols:
+                thestrings = [s for s in col.findAll(text=True)]
+                thetext = ''.join(thestrings)
+                result[-1].append(thetext)
+        psychSheetData[event] = result
+    return psychSheetData
 
 
 def getID():
@@ -166,7 +179,7 @@ def getInputInfo():
 
 
 ################################################################################
-# Everything related  to making/calculating heats
+# Everything related to making/calculating heats
 def specialStaffHeats(jsonFile):
     print()
     staffHeats = validateYesNo("Special staff heats? ")
@@ -180,6 +193,10 @@ def specialStaffHeats(jsonFile):
             else:
                 continue
     return staffList
+
+
+def willMakeCutoff(psychSheetData, compData, inputData):
+    return
 
 
 def calcNumHeats(compData, eventsDict, inputData):
@@ -204,7 +221,7 @@ def customHeats(compData):
     '''
     # waiting for the WCA Software Team to add psych sheet data into the JSON file
     # Temporary solution
-    
+   
 
 def easyHeats(compData, heatsDict):
     '''
@@ -244,11 +261,11 @@ def createInputFile(compData):
     fastEvents = ["222", "333", "333oh", "skewb", "pyram"]
 
     numStations = validateInt("How many timing stations will you be using per stage? ")
-    
+   
     for event in compData[1]:
         inputData = {}
         numPeople = len(compData[1][event]["rounds"][0]["results"])
-        
+       
         if event in fastEvents:
             recommendNumHeats = round(numPeople / (1.7 * numStations))
         else:
@@ -261,7 +278,8 @@ def createInputFile(compData):
         inputData["cutoff"] = ""
         inputData["timeLimit"] = ""
         inputData["peoplePerHeat"] = numPeople/recommendNumHeats
-        
+        inputData["usePsychSheet?"] = "no"
+       
         data[event] = inputData
 
     with open("inputData.json", "w") as f:
@@ -271,7 +289,7 @@ def createInputFile(compData):
 def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
     '''
     Gets all the heats for each competitor and turns it into a printable format
-    Makes a list of [name, [list of events with heat numbers]] 
+    Makes a list of [name, [list of events with heat numbers]]
         sorted by name (with events sorted by alphabetical order)
     outputs a file with everyone's heat numbers on it
     '''
@@ -301,7 +319,7 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
     for person in printableHeats:
         person[1].sort(key=lambda x: x[0])
     printableHeats.sort()
-    
+   
     # print heat sheet to file
     with open("printableHeatSheet.txt", "w") as f:
         for person in printableHeats:
@@ -318,7 +336,7 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict):
 
 def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData):
     '''
-    Creates string with HTML that contains all of the necessary 
+    Creates string with HTML that contains all of the necessary
     score sheets for the first round of the competition
     '''
     scoreSheetList = []
@@ -404,13 +422,13 @@ def main():
     makePrintableHeatSheet(assignedHeats, jsonFile, eventsDict)
     sortHeats(assignedHeats)
     newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData)
-    
-    # getPsychSheet(compData[0], eventsList)
+   
+    getPsychSheet(compData[0], heatsDict)
 
     # make HTML file with all the score sheets
     webpage = open('scoresheets.html', 'w')
     webpage.write(newFile)
-    
+   
     print()
     printEnding()
 
