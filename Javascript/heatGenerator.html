@@ -24,6 +24,7 @@
 			var i;
 			setGlobal("JSON",JSON.parse(document.getElementById("jsoncontent").value));
 			setGlobal("timingStations",document.getElementById("timingstations").value);
+			setGlobal("compName",document.getElementById("compName").value);
 
 			if(JSON.formatVersion!="CubingUSA Output")
 				alert("Script may not work correctly!");
@@ -76,7 +77,7 @@
 						cutoffTime="None",
 						roundNumber=1,
 						timeLimit="None",
-						competitionName=JSON.competitionId,
+						competitionName=compName==""?JSON.competitionId:compName,
 						htmlTemplate=getFormat(JSON.events[i].eventId)<0?htmlSnippets[2]:htmlSnippets[1];
 					html+=htmlTemplate.replace("eventName",eventName).replace("competitorID",competitorID).replace("competitionName",competitionName).replace("competitorName",competitorName).replace("cutoffTime",cutoffTime).replace("roundNumber",roundNumber).replace("timeLimit",timeLimit).replace("heatNumber",(~~((j/JSON.events[i].rounds[0].results.length)*eventHeat[JSON.events[i].eventId]))+1);
 				}
@@ -84,6 +85,7 @@
 			document.body.innerHTML=html;
 		}
 		</script>
+		<meta name="author" content="yuxuibbs,YTCuber"/>
 	</head>
 	<body>
 		<div class="container">
@@ -94,7 +96,8 @@
 				<textarea id="jsoncontent" rows="20" cols="100">
 //Paste content of JSON file here
 				</textarea><br/>
-				Number of timing stations: <input type="text" id="timingstations" valu="12"/><br/>
+				Number of timing stations: <input type="text" id="timingstations" value="12"/><br/>
+				Competition name (leave blank for taking the name from JSON): <input type="text" id="compName" value=""/><br/>
 				<button onclick="submit1()" class="button">Continue</button>
 			</div>
 			<div id="step-2">
