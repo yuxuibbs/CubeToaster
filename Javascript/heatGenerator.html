@@ -39,6 +39,7 @@
 			});
 
 			setGlobal("eventHeat",eventsHeatsMapping);
+			setGlobal("eventPerson",eventsPersonsMapping);
 
 			//Generate and write HTML
 			display1();
@@ -49,7 +50,7 @@
 		function display1(){
 			var html="<table class='table table-condensed table-hover table-bordered'>";
 			Object.keys(eventHeat).forEach(function(key){
-				html+="<tr><td>"+codeToEvent(key)+"</td><td>"+eventHeat[key]+"</td><td><button class='button' onclick='eventHeat[\""+key+"\"]++;display1();'>+1</button><button class='button' onclick='eventHeat[\""+key+"\"]--;display1();'>-1</button></td></tr>";
+				html+="<tr><td>"+codeToEvent(key)+"</td><td>"+eventHeat[key]+"</td><td>"+eventPerson[key]+" People</td><td><button class='button' onclick='eventHeat[\""+key+"\"]++;display1();'>+1</button><button class='button' onclick='eventHeat[\""+key+"\"]--;display1();'>-1</button></td></tr>";
 			});
 			document.getElementById("numberOfHeats").innerHTML=html+"</table>";
 		}
