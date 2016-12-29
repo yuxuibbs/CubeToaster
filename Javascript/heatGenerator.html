@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<title>CubeToaster</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 		<style>
 		#step-1,#step-2{
-			border: 1px solid black;
 			position: absolute;
 			top:10px;
 			left:10px;
@@ -47,11 +47,11 @@
 			document.getElementById("step-2").style.visibility="visible";
 		}
 		function display1(){
-			var html="";
+			var html="<table class='table table-condensed table-hover table-bordered'>";
 			Object.keys(eventHeat).forEach(function(key){
-				html+=key+": "+eventHeat[key]+" <button onclick='eventHeat[\""+key+"\"]++;display1();'>+1</button><button onclick='eventHeat[\""+key+"\"]--;display1();'>-1</button><br/>";
+				html+="<tr><td>"+codeToEvent(key)+"</td><td>"+eventHeat[key]+"</td><td><button class='button' onclick='eventHeat[\""+key+"\"]++;display1();'>+1</button><button class='button' onclick='eventHeat[\""+key+"\"]--;display1();'>-1</button></td></tr>";
 			});
-			document.getElementById("numberOfHeats").innerHTML=html;
+			document.getElementById("numberOfHeats").innerHTML=html+"</table>";
 		}
 		function getHeats(ev,numPeople){
 			return(~ev.search("bf")||~ev.search("ft"))?0:(~"222,333,333oh,pyram,skewb,".search(ev+",")?Math.round(numPeople/(1.7*timingStations)):Math.round(numPeople/(1.5*timingStations)));
@@ -85,18 +85,24 @@
 		</script>
 	</head>
 	<body>
-		<div id="step-1">
-			<h2>Step 1: Input JSON file</h2>
-			<textarea id="jsoncontent" rows="42" cols="100">
-				//Paste content of JSON file here
-			</textarea><br/>
-			Number of timing stations: <input type="text" id="timingstations" valu="12"/><br/>
-			<button onclick="submit1()">Continue</button>
-		</div>
-		<div id="step-2">
-			<h2>Step 2: Set number of groups</h2>
-			<span id="numberOfHeats">!</span>
-			<button onclick="submit2()">Generate</button>
+		<div class="container">
+			<div id="step-1">
+				<div class="page-header">
+					<h2>Step 1: Input JSON file</h2>
+				</div>
+				<textarea id="jsoncontent" rows="20" cols="100">
+//Paste content of JSON file here
+				</textarea><br/>
+				Number of timing stations: <input type="text" id="timingstations" valu="12"/><br/>
+				<button onclick="submit1()" class="button">Continue</button>
+			</div>
+			<div id="step-2">
+				<div class="page-header">
+					<h2>Step 2: Set number of groups</h2>
+				</div>
+				<span id="numberOfHeats">!</span>
+				<button onclick="submit2()" class="button">Generate</button>
+			</div>
 		</div>
 	</body>
 </html>
