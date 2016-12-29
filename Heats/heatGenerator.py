@@ -24,7 +24,9 @@ def printEnding():
     print("1. Make sure screen.css is in the same folder as scoresheets.html")
     print("2. Open scoresheets.html")
     print("3. Print to file (save as PDF) with 4 sheets per page")
-    print("4. Print score sheets and cut them (everything is already sorted by event and heat number)")
+    print("4. Print score sheets and cut them (everything is already sorted by event and group number)")
+    print()
+    print("MAKE SURE COMPETITOR ID'S IN testCompetitorID.txt MATCHES CUBECOMPS COMPETITOR ID'S")
 
 
 ################################################################################
@@ -58,12 +60,13 @@ def validateYesNo(prompt):
 
 def validateInputFile(jsonFile):
     print("Fill out inputData.json (you can leave as many things blank as you want)")
-    print("There is a recommended number of heats already listed. You can change it if you want to.")
-    print("If you want to use psych sheet data to put all the slower people in the first few heats, change usePsychSheet to yes (all lowercase)")
+    print("There is a recommended number of groups already listed. You can change it if you want to.")
+    print("If you want to use psych sheet data to put all the slower people in the first few groups, change usePsychSheet to yes (all lowercase)")
    
     while True:
         if validateYesNo("Type y when done. "):
             inputData = getInputInfo()
+            print()
             break
         '''
         try:
@@ -182,7 +185,7 @@ def getInputInfo():
 # Everything related to making/calculating heats
 def specialStaffHeats(jsonFile):
     print()
-    staffHeats = validateYesNo("Special staff heats? ")
+    staffHeats = validateYesNo("Special staff groups? ")
     if staffHeats:
         print("Open competitors.txt and delete everyone that is NOT a staff member (competitors.txt should only have staff members who are competing)")
         createFiles.makeCompetitorList(jsonFile)
@@ -210,11 +213,11 @@ def calcNumHeats(compData, eventsDict, inputData):
         if event == "444bf" or event == "555bf" or event == "333fm" or event == "333mbf":
             heatsDict[event] = 1
         else:
-            heatsDict[event] = inputData[event]["numHeats"]
+            heatsDict[event] = inputData[event]["numGroups"]
         if heatsDict[event] == 1:
-            print("There will be 1 heat for {0} for {1} people".format(eventsDict[event], numPeople))
+            print("There will be 1 group for {0} for {1} people".format(eventsDict[event], numPeople))
         else:
-            print("There will be {0} heats for {1} for {2} people".format(heatsDict[event], eventsDict[event], numPeople))
+            print("There will be {0} groups for {1} for {2} people".format(heatsDict[event], eventsDict[event], numPeople))
     return heatsDict
 
 
@@ -277,10 +280,10 @@ def createInputFile(compData):
             recommendNumHeats = 1
 
         inputData["numPeople"] = numPeople
-        inputData["numHeats"] = recommendNumHeats
+        inputData["numGroups"] = recommendNumHeats
         inputData["cutoff"] = ""
         inputData["timeLimit"] = ""
-        inputData["peoplePerHeat"] = numPeople/recommendNumHeats
+        inputData["peoplePerGroup"] = numPeople / recommendNumHeats
         inputData["usePsychSheet?"] = "no"
        
         data[event] = inputData
@@ -327,7 +330,7 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict):
     printableHeats.sort()
    
     # print heat sheet to file
-    with open("printableHeatSheet.txt", "w") as f:
+    with open("printableGroups.txt", "w") as f:
         for person in printableHeats:
             print(person[0], file=f)
             for event, heat in person[1]:
@@ -339,8 +342,19 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict):
         for person in printableHeats:
             print(person[0], file=f)
 
+    # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
+    newIDs = {}
+    newNum = 1
+    for person in printableHeats:
+        newIDs[person[0]] = str(newNum)
+        newNum += 1
+    with open("testCompetitorID.txt", "w") as f:
+        for person in printableHeats:
+            print(person[0], newIDs[person[0]], file=f)
+    return newIDs
 
-def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData):
+
+def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs):
     '''
     Creates string with HTML that contains all of the necessary
     score sheets for the first round of the competition
@@ -366,7 +380,9 @@ def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData):
             updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsDict[event])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person["heat"]))
             updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
+            # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
+            # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", newIDs[person["name"]])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", person["name"])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
             updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
@@ -393,7 +409,7 @@ def main():
 
     jsonFile = getDataFile()
 
-    # staffList = makeHeats.specialStaffHeats(jsonFile)
+    # staffList = specialStaffHeats(jsonFile)
 
     compData = getCompetitionData(jsonFile)
 
@@ -427,10 +443,12 @@ def main():
 
     # make output files
     # heats
-    makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict)
+    # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
+    newIDs = makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict)
     # score sheets
     sortHeats(assignedHeats)
-    newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData)
+    # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
+    newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs)
    
     # getPsychSheet(compData[0], heatsDict)
 

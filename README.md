@@ -1,14 +1,12 @@
 # CubeToaster
-Generates heats for WCA competitions to save time for organizers.
+Generates groups (heats) for WCA competitions to save time for organizers.
 
-Outputs score sheets sorted by heat number and event and a txt file with everyone's heat numbers. 
+Outputs score sheets sorted by group number and event and a txt file with everyone's heat numbers. 
 
 1. Run heatsGenerator.py
-2. Double check the information
-3. Print stuff (score sheets and heat sheets)
+2. Double check the information (especially competitor ID)
+3. Print stuff
 4. Cut the score sheets in order
-5. ????
-6. Profit (save at least 4 hours of figuring out heats and sorting score sheets) 
 
 Project started out as project 4 for SI 206 (was due on 12/02/2016). 
 
@@ -16,7 +14,7 @@ Now taking pull requests.
 
 
 ## Heats
-Generates heats based on JSON input (currently works for CubingUSA)
+Generates groups based on JSON input (currently works for CubingUSA)
 
 **Instructions for organizers:**
 
@@ -36,11 +34,11 @@ Generates heats based on JSON input (currently works for CubingUSA)
 
 8. Print to file (save as PDF) with 4 sheets per page
 
-9. Print score sheets and cut them (everything is already sorted by event and heat number)
+9. Print score sheets and cut them (everything is already sorted by event and group number)
 
 
 ## Anonymizer
-Anonymizes JSON data
+Anonymizes JSON data for development purposes
 
 ## List of competition CubeToaster has been used in:
 * Shaker Fall 2016
