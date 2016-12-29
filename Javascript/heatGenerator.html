@@ -84,6 +84,39 @@
 			}
 			document.body.innerHTML=html;
 		}
+		function generateHeatList(){
+			var data=[],html="";
+			for(i=0;i<JSON.events.length;++i){
+				for(j=0;j<JSON.events[i].rounds[0].results.length;++j){
+					var competitorID=JSON.events[i].rounds[0].results[j].personId;
+					if(competitorID>JSON.persons.length-1)break;
+					var competitorName=JSON.persons[competitorID].name,
+						eventName=codeToEvent(JSON.events[i].eventId),
+						competitionName=(compName==""?JSON.competitionId:compName),
+					    heatNumber=(~~((j/JSON.events[i].rounds[0].results.length)*eventHeat[JSON.events[i].eventId]))+1;
+					data.push({competitor:competitorName,eventName:eventName,heatNumber:heatNumber});
+				}
+			}
+			data.sort(function(a,b){
+				var nameA=a.competitor.toLowerCase(),nameB=b.competitor.toLowerCase();
+			    if(nameA<nameB)
+			        return-1;
+			    if(nameA>nameB)
+			        return 1;
+			    return 0;
+			});
+
+			var currentCompetitor,i;
+			for(i=0;i<data.length;++i){
+				if(data[i].competitor!=currentCompetitor){
+					currentCompetitor=data[i].competitor;
+					html+="<h3>"+data[i].competitor+"</h3>";
+				}
+				html+=data[i].eventName+": "+data[i].heatNumber+"<br/>";
+			}
+
+			document.body.innerHTML=html;
+		}
 		</script>
 		<meta name="author" content="yuxuibbs,YTCuber"/>
 	</head>
@@ -105,7 +138,8 @@
 					<h2>Step 2: Set number of groups</h2>
 				</div>
 				<span id="numberOfHeats">!</span>
-				<button onclick="submit2()" class="button">Generate</button>
+				<button onclick="submit2()" class="button">Display scoresheets</button>
+				<button onclick="generateHeatList()" class="button">Display heats for competitor</button>
 			</div>
 		</div>
 	</body>
