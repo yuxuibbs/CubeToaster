@@ -14,7 +14,7 @@ Now taking pull requests.
 
 
 ## Website version
-(Available at here)[https://yuxuibbs.github.io/CubeToaster/Javascript/heatGenerator.html]
+[Available here](https://yuxuibbs.github.io/CubeToaster/Javascript/heatGenerator.html)
 
 Issues:
 
