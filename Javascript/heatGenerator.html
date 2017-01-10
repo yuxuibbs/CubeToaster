@@ -1,147 +1,150 @@
 <!doctype html>
 <html>
-	<head>
-		<title>CubeToaster</title>
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-		<style>
-		#step-1,#step-2{
-			position: absolute;
-			top:10px;
-			left:10px;
-			bottom:10px;
-			right:10px;
-		}
-		#step-2{
-			visibility: hidden;
-		}
-		</style>
-		<script>
-		function setGlobal(name,value){
-			window[name]=value;
-		}
-		function submit1(){
-			//Read JSON and timingStations
-			var i;
-			setGlobal("JSON",JSON.parse(document.getElementById("jsoncontent").value));
-			setGlobal("timingStations",document.getElementById("timingstations").value);
-			setGlobal("compName",document.getElementById("compName").value);
+    <head>
+        <title>CubeToaster</title>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <style>
+        #step-1,#step-2{
+            position: absolute;
+            top:10px;
+            left:10px;
+            bottom:10px;
+            right:10px;
+        }
+        #step-2{
+            visibility: hidden;
+        }
+        </style>
+        <script>
+        function setGlobal(name,value){
+            window[name]=value;
+        }
+        function submit1(){
+            //Read JSON and timingStations
+            var i;
+            setGlobal("JSON",JSON.parse(document.getElementById("jsoncontent").value));
+            setGlobal("timingStations",document.getElementById("timingstations").value);
+            setGlobal("compName",document.getElementById("compName").value);
 
-			if(JSON.formatVersion!="CubingUSA Output")
-				alert("Script may not work correctly!");
+            if(JSON.formatVersion!="CubingUSA Output")
+                alert("Script may not work correctly!");
 
-			//Convert to numberOfPersons and numberOfHeats
-			var eventsPersonsMapping=[],eventsHeatsMapping=[];
+            //Convert to numberOfPersons and numberOfHeats
+            var eventsPersonsMapping=[],eventsHeatsMapping=[];
 
-			for(i=0;i<JSON.events.length;++i)
-				eventsPersonsMapping[JSON.events[i].eventId]=JSON.events[i].rounds[0].results.length;
+            for(i=0;i<JSON.events.length;++i)
+                eventsPersonsMapping[JSON.events[i].eventId]=JSON.events[i].rounds[0].results.length;
 
-			Object.keys(eventsPersonsMapping).forEach(function(key){
-				eventsHeatsMapping[key]=getHeats(key,eventsPersonsMapping[key]);
-			});
+            Object.keys(eventsPersonsMapping).forEach(function(key){
+                eventsHeatsMapping[key]=getHeats(key,eventsPersonsMapping[key]);
+            });
 
-			setGlobal("eventHeat",eventsHeatsMapping);
-			setGlobal("eventPerson",eventsPersonsMapping);
+            setGlobal("eventHeat",eventsHeatsMapping);
+            setGlobal("eventPerson",eventsPersonsMapping);
 
-			//Generate and write HTML
-			display1();
+            //Generate and write HTML
+            display1();
 
-			document.getElementById("step-1").style.visibility="hidden";
-			document.getElementById("step-2").style.visibility="visible";
-		}
-		function display1(){
-			var html="<table class='table table-condensed table-hover table-bordered'>";
-			Object.keys(eventHeat).forEach(function(key){
-				if(eventHeat[key]>eventPerson[key])eventHeat[key]=eventPerson[key];
-				html+="<tr><td>"+codeToEvent(key)+"</td><td>"+eventHeat[key]+"</td><td>"+eventPerson[key]+" People</td><td><button class='button' onclick='eventHeat[\""+key+"\"]++;display1();'>+1</button><button class='button' onclick='eventHeat[\""+key+"\"]--;display1();'>-1</button></td></tr>";
-			});
-			document.getElementById("numberOfHeats").innerHTML=html+"</table>";
-		}
-		function getHeats(ev,numPeople){
-			return(~ev.search("bf")||~ev.search("ft"))?0:(~"222,333,333oh,pyram,skewb,".search(ev+",")?Math.round(numPeople/(1.7*timingStations)):Math.round(numPeople/(1.5*timingStations)));
-		}
-		function getFormat(ev){
-			return ~"333ft,333fm,333bf,666,777,444bf,555bf,333mbf,".search(ev+",");
-		}
-		function codeToEvent(ev){
-			return {"222":"2x2x2","333":"Rubiks Cube","444":"4x4x4","555":"5x5x5","666":"6x6x6","777":"7x7x7","333oh":"Rubiks Cube One-Handed","333bf":"Rubiks Cube Blindfolded","333mbf":"Rubiks Cube Multiple Blindfolded","444bf":"4x4x4 Blindfolded","555bf":"5x5x5 Blindfolded","pyram":"Pyraminx"			,"minx":"Megaminx","sq1":"Square-1","clock":"Rubiks clock","333fm":"Fewest moves","skewb":"Skewb"}[ev];
-		}
-		function submit2(){
-			//Generate scoresheet HTML
-			var htmlSnippets=[`<!doctype html><html><head><link rel="stylesheet" type="text/css" href="screen.css" /></head><body>`,`<table> <tr> <th colspan="6" class="compName">competitionName</th> </tr><tr> <th colspan="1" class="personID">competitorID</th> <th colspan="3" class="event">eventName</th> <th colspan="1" class="heat">Group: heatNumber</th> <th colspan="1" class="round">Round: roundNumber</th> </tr><tr> <th colspan="6" class="personName">competitorName</th> </tr><tr class="labels"> <th colspan="1"> </th> <th colspan="3">Results</th> <th colspan="1" class="initial">Comp</th> <th colspan="1" class="initial">Judge</th> </tr><tr class="attempt"> <td colspan="1">1</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="attempt"> <td colspan="1">2</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="cutoffs"> <td colspan="1"></td><td colspan="1">Cutoff: cutoffTime</td><td colspan="1"></td><td colspan="1">Time Limit: timeLimit</td><td colspan="1"></td><td colspan="1"></td></tr><tr class="attempt"> <td colspan="1">3</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="attempt"> <td colspan="1">4</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="attempt"> <td colspan="1">5</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="empty"> <td colspan="6"></td></tr><tr class="attempt"> <td colspan="1">6</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr></table>`,`<table> <tr> <th colspan="6" class="compName">competitionName</th> </tr><tr> <th colspan="1" class="personID">competitorID</th> <th colspan="3" class="event">eventName</th> <th colspan="1" class="heat">Group: heatNumber</th> <th colspan="1" class="round">Round: roundNumber</th> </tr><tr> <th colspan="6" class="personName">competitorName</th> </tr><tr class="labels"> <th colspan="1"> </th> <th colspan="3">Results</th> <th colspan="1" class="initial">Comp</th> <th colspan="1" class="initial">Judge</th> </tr><tr class="attempt"> <td colspan="1">1</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="cutoffs"> <td colspan="1"></td><td colspan="1">Cutoff: cutoffTime</td><td colspan="1"></td><td colspan="1">Time Limit: timeLimit</td><td colspan="1"></td><td colspan="1"></td><tr class="attempt"> <td colspan="1">2</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="attempt"> <td colspan="1">3</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="empty"> <td colspan="6"></td></tr><tr class="attempt"> <td colspan="1">4</td><td colspan="3"> </td><tdcolspan="1"> </td><td colspan="1"> </td></tr></table>`,`</body></html>`],html=htmlSnippets[0],i,j;
+            document.getElementById("step-1").style.visibility="hidden";
+            document.getElementById("step-2").style.visibility="visible";
+        }
+        function display1(){
+            var html="<table class='table table-condensed table-hover table-bordered'>";
+            Object.keys(eventHeat).forEach(function(key){
+                if(eventHeat[key]>eventPerson[key])eventHeat[key]=eventPerson[key];
+                html+="<tr><td>"+codeToEvent(key)+"</td><td>"+eventHeat[key]+"</td><td>"+eventPerson[key]+" People</td><td><button class='button' onclick='eventHeat[\""+key+"\"]++;display1();'>+1</button><button class='button' onclick='eventHeat[\""+key+"\"]--;display1();'>-1</button></td></tr>";
+            });
+            document.getElementById("numberOfHeats").innerHTML=html+"</table>";
+        }
+        function getHeats(ev,numPeople){
+            return(~ev.search("bf")||~ev.search("ft"))?0:(~"222,333,333oh,pyram,skewb,".search(ev+",")?Math.round(numPeople/(1.7*timingStations)):Math.round(numPeople/(1.5*timingStations)));
+        }
+        function getFormat(ev){
+            return ~"333ft,333fm,333bf,666,777,444bf,555bf,333mbf,".search(ev+",");
+        }
+        function codeToEvent(ev){
+            return {"222":"2x2x2","333":"Rubiks Cube","444":"4x4x4","555":"5x5x5","666":"6x6x6","777":"7x7x7","333oh":"Rubiks Cube One-Handed","333bf":"Rubiks Cube Blindfolded","333mbf":"Rubiks Cube Multiple Blindfolded","444bf":"4x4x4 Blindfolded","555bf":"5x5x5 Blindfolded","pyram":"Pyraminx"         ,"minx":"Megaminx","sq1":"Square-1","clock":"Rubiks clock","333fm":"Fewest moves","skewb":"Skewb"}[ev];
+        }
+        function submit2(){
+            //Generate scoresheet HTML
+            var htmlSnippets=[`<!doctype html><html><head><link rel="stylesheet" type="text/css" href="screen.css" /></head><body>`,`<table> <tr> <th colspan="6" class="compName">competitionName</th> </tr><tr> <th colspan="1" class="personID">competitorID</th> <th colspan="3" class="event">eventName</th> <th colspan="1" class="heat">Group: heatNumber</th> <th colspan="1" class="round">Round: roundNumber</th> </tr><tr> <th colspan="6" class="personName">competitorName</th> </tr><tr class="labels"> <th colspan="1"> </th> <th colspan="3">Results</th> <th colspan="1" class="initial">Comp</th> <th colspan="1" class="initial">Judge</th> </tr><tr class="attempt"> <td colspan="1">1</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="attempt"> <td colspan="1">2</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="cutoffs"> <td colspan="1"></td><td colspan="1">Cutoff: cutoffTime</td><td colspan="1"></td><td colspan="1">Time Limit: timeLimit</td><td colspan="1"></td><td colspan="1"></td></tr><tr class="attempt"> <td colspan="1">3</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="attempt"> <td colspan="1">4</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="attempt"> <td colspan="1">5</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="empty"> <td colspan="6"></td></tr><tr class="attempt"> <td colspan="1">6</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr></table>`,`<table> <tr> <th colspan="6" class="compName">competitionName</th> </tr><tr> <th colspan="1" class="personID">competitorID</th> <th colspan="3" class="event">eventName</th> <th colspan="1" class="heat">Group: heatNumber</th> <th colspan="1" class="round">Round: roundNumber</th> </tr><tr> <th colspan="6" class="personName">competitorName</th> </tr><tr class="labels"> <th colspan="1"> </th> <th colspan="3">Results</th> <th colspan="1" class="initial">Comp</th> <th colspan="1" class="initial">Judge</th> </tr><tr class="attempt"> <td colspan="1">1</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="cutoffs"> <td colspan="1"></td><td colspan="1">Cutoff: cutoffTime</td><td colspan="1"></td><td colspan="1">Time Limit: timeLimit</td><td colspan="1"></td><td colspan="1"></td><tr class="attempt"> <td colspan="1">2</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="attempt"> <td colspan="1">3</td><td colspan="3"> </td><td colspan="1"> </td><td colspan="1"> </td></tr><tr class="empty"> <td colspan="6"></td></tr><tr class="attempt"> <td colspan="1">4</td><td colspan="3"> </td><tdcolspan="1"> </td><td colspan="1"> </td></tr></table>`,`</body></html>`],html=htmlSnippets[0],i,j;
 
-			for(i=0;i<JSON.events.length;++i){
-				for(j=0;j<JSON.events[i].rounds[0].results.length;++j){
-					var competitorID=JSON.events[i].rounds[0].results[j].personId;
-					if(competitorID>JSON.persons.length-1)break;
-					var competitorName=JSON.persons[competitorID].name,
-						eventName=codeToEvent(JSON.events[i].eventId),
-						cutoffTime="None",
-						roundNumber=1,
-						timeLimit="None",
-						competitionName=compName==""?JSON.competitionId:compName,
-						htmlTemplate=getFormat(JSON.events[i].eventId)<0?htmlSnippets[2]:htmlSnippets[1];
-					html+=htmlTemplate.replace("eventName",eventName).replace("competitorID",competitorID).replace("competitionName",competitionName).replace("competitorName",competitorName).replace("cutoffTime",cutoffTime).replace("roundNumber",roundNumber).replace("timeLimit",timeLimit).replace("heatNumber",(~~((j/JSON.events[i].rounds[0].results.length)*eventHeat[JSON.events[i].eventId]))+1);
-				}
-			}
-			document.body.innerHTML=html;
-		}
-		function generateHeatList(){
-			var data=[],html="";
-			for(i=0;i<JSON.events.length;++i){
-				for(j=0;j<JSON.events[i].rounds[0].results.length;++j){
-					var competitorID=JSON.events[i].rounds[0].results[j].personId;
-					if(competitorID>JSON.persons.length-1)break;
-					var competitorName=JSON.persons[competitorID].name,
-						eventName=codeToEvent(JSON.events[i].eventId),
-						competitionName=(compName==""?JSON.competitionId:compName),
-					    heatNumber=(~~((j/JSON.events[i].rounds[0].results.length)*eventHeat[JSON.events[i].eventId]))+1;
-					data.push({competitor:competitorName,eventName:eventName,heatNumber:heatNumber});
-				}
-			}
-			data.sort(function(a,b){
-				var nameA=a.competitor.toLowerCase(),nameB=b.competitor.toLowerCase();
-			    if(nameA<nameB)
-			        return-1;
-			    if(nameA>nameB)
-			        return 1;
-			    return 0;
-			});
+            for(i=0;i<JSON.events.length;++i){
+                for(j=0;j<JSON.events[i].rounds[0].results.length;++j){
+                    var competitorID=JSON.events[i].rounds[0].results[j].personId;
+                    if(competitorID>JSON.persons.length-1)break;
+                    var competitorName=JSON.persons[competitorID].name,
+                        eventName=codeToEvent(JSON.events[i].eventId),
+                        cutoffTime="None",
+                        roundNumber=1,
+                        timeLimit="None",
+                        competitionName=compName==""?JSON.competitionId:compName,
+                        htmlTemplate=getFormat(JSON.events[i].eventId)<0?htmlSnippets[2]:htmlSnippets[1];
+                    html+=htmlTemplate.replace("eventName",eventName).replace("competitorID",competitorID).replace("competitionName",competitionName).replace("competitorName",competitorName).replace("cutoffTime",cutoffTime).replace("roundNumber",roundNumber).replace("timeLimit",timeLimit).replace("heatNumber",(~~((j/JSON.events[i].rounds[0].results.length)*eventHeat[JSON.events[i].eventId]))+1);
+                }
+            }
+            document.body.innerHTML=html;
+        }
+        function generateHeatList(){
+            var data=[],html="";
+            for(i=0;i<JSON.events.length;++i){
+                for(j=0;j<JSON.events[i].rounds[0].results.length;++j){
+                    var competitorID=JSON.events[i].rounds[0].results[j].personId;
+                    if(competitorID>JSON.persons.length-1)break;
+                    var competitorName=JSON.persons[competitorID].name,
+                        eventName=codeToEvent(JSON.events[i].eventId),
+                        competitionName=(compName==""?JSON.competitionId:compName),
+                        heatNumber=(~~((j/JSON.events[i].rounds[0].results.length)*eventHeat[JSON.events[i].eventId]))+1;
+                    data.push({competitor:competitorName,eventName:eventName,heatNumber:heatNumber});
+                }
+            }
+            data.sort(function(a,b){
+                var nameA=a.competitor.toLowerCase(),nameB=b.competitor.toLowerCase();
+                if(nameA<nameB)
+                    return-1;
+                if(nameA>nameB)
+                    return 1;
+                return 0;
+            });
 
-			var currentCompetitor,i;
-			for(i=0;i<data.length;++i){
-				if(data[i].competitor!=currentCompetitor){
-					currentCompetitor=data[i].competitor;
-					html+="<h3>"+data[i].competitor+"</h3>";
-				}
-				html+=data[i].eventName+": "+data[i].heatNumber+"<br/>";
-			}
+            var currentCompetitor,i;
+            for(i=0;i<data.length;++i){
+                if(data[i].competitor!=currentCompetitor){
+                    currentCompetitor=data[i].competitor;
+                    html+="<h3>"+data[i].competitor+"</h3>";
+                }
+                html+=data[i].eventName+": "+data[i].heatNumber+"<br/>";
+            }
 
-			document.body.innerHTML=html;
-		}
-		</script>
-		<meta name="author" content="yuxuibbs,YTCuber"/>
-	</head>
-	<body>
-		<div class="container">
-			<div id="step-1">
-				<div class="page-header">
-					<h2>Step 1: Input JSON file</h2>
-				</div>
-				<textarea id="jsoncontent" rows="20" cols="100">
+            document.body.innerHTML=html;
+        }
+        </script>
+        <meta name="author" content="yuxuibbs,YTCuber"/>
+    </head>
+    <body>
+        <div class="container">
+            <div id="step-1">
+                <div class="page-header">
+                    <h1><b>
+                    NOTE: NOT ALL FEATURES CURRENTLY WORK (cubecomps ID != ID on the score sheets). FOR THE MOST UPDATED VERSION, <a href="https://github.com/yuxuibbs/CubeToaster">CLICK HERE</a> AND USE THE PYTHON3 VERSION. 
+                    </b></h1>
+                    <h2>Step 1: Input JSON file</h2>
+                </div>
+                <textarea id="jsoncontent" rows="20" cols="100">
 //Paste content of JSON file here
-				</textarea><br/>
-				Number of timing stations: <input type="text" id="timingstations" value="12"/><br/>
-				Competition name (leave blank for taking the name from JSON): <input type="text" id="compName" value=""/><br/>
-				<button onclick="submit1()" class="button">Continue</button>
-			</div>
-			<div id="step-2">
-				<div class="page-header">
-					<h2>Step 2: Set number of groups</h2>
-				</div>
-				<span id="numberOfHeats">!</span>
-				<button onclick="submit2()" class="button">Display scoresheets</button>
-				<button onclick="generateHeatList()" class="button">Display heats for competitor</button>
-			</div>
-		</div>
-	</body>
+                </textarea><br/>
+                Number of timing stations: <input type="text" id="timingstations" value="12"/><br/>
+                Competition name (leave blank for taking the name from JSON): <input type="text" id="compName" value=""/><br/>
+                <button onclick="submit1()" class="button">Continue</button>
+            </div>
+            <div id="step-2">
+                <div class="page-header">
+                    <h2>Step 2: Set number of groups</h2>
+                </div>
+                <span id="numberOfHeats">!</span>
+                <button onclick="submit2()" class="button">Display scoresheets</button>
+                <button onclick="generateHeatList()" class="button">Display heats for competitor</button>
+            </div>
+        </div>
+    </body>
 </html>
