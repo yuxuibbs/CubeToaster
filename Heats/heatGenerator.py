@@ -61,7 +61,7 @@ def validateYesNo(prompt):
 def validateInputFile(jsonFile):
     print("Fill out inputData.json (you can leave as many things blank as you want)")
     print("There is a recommended number of groups already listed. You can change it if you want to.")
-    print("If you want to use psych sheet data to put all the slower people in the first few groups, change usePsychSheet to yes (all lowercase)")
+    # print("If you want to use psych sheet data to put all the slower people in the first few groups, change usePsychSheet to yes (all lowercase)")
    
     while True:
         if validateYesNo("Type y when done. "):
@@ -129,6 +129,16 @@ def getID():
     xlrd.open_workbook(fileName=fileName)
 
 
+def getStaffList(personList):
+    with open("staff.txt", "w") as f:
+        for person in personList:
+            print(person["name"], file=f)
+    print("Open staff.txt and delete anyone that is NOT on staff")
+    while True:
+        if validateYesNo("Type y when done. "):
+            return readStaffList()
+
+
 def getCompetitionData(jsonFile):
     """
     Parses JSON into a data structure
@@ -137,6 +147,8 @@ def getCompetitionData(jsonFile):
     competitionId = jsonFile["competitionId"]
     persons = {}
     events = {}
+
+    staffList = getStaffList(jsonFile["persons"])
 
     for person in jsonFile["persons"]:
         # remove unnecessary data (WCA ID, country, gender, and dob)
@@ -148,6 +160,10 @@ def getCompetitionData(jsonFile):
         person["name"] = person["name"].title()
         # initialize heat number
         person["heat"] = 0
+        if person["name"] in staffList:
+            person["staff"] = 1
+        else:
+            person["staff"] = 0
         # put person data into a dictionary with id number as key
         persons[person["id"]] = person
 
@@ -159,16 +175,16 @@ def getCompetitionData(jsonFile):
                 results.append(persons[person["personId"]].copy())
             except:
                 print("POSSIBLE ERROR: Make sure all registered competitors are in competitors.txt")
-        results.sort(key=lambda x: x["name"].lower())
+        results.sort(key=lambda x: (-x["staff"], x["name"].lower()))
         event["rounds"][0]["results"] = results
         events[event["eventId"]] = event
 
     return (competitionId, events)
 
 
-def getStaffList():
+def readStaffList():
     staff = []
-    with open("competitors.txt", "r") as f:
+    with open("staff.txt", "r") as f:
         for line in f:
             staff.append(line.strip())
     return staff
@@ -284,7 +300,7 @@ def createInputFile(compData):
         inputData["cutoff"] = ""
         inputData["timeLimit"] = ""
         inputData["peoplePerGroup"] = numPeople / recommendNumHeats
-        inputData["usePsychSheet?"] = "no"
+        # inputData["usePsychSheet?"] = "no"
        
         data[event] = inputData
 
@@ -337,10 +353,6 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict):
                 print("{0} - {1}".format(eventsDict[event], heat), file=f)
             print(file=f)
 
-    # print list of competitors to file
-    with open("competitors.txt", "w") and open("staff.txt", "w") as f:
-        for person in printableHeats:
-            print(person[0], file=f)
 
     # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
     newIDs = {}
@@ -458,7 +470,7 @@ def main():
    
     print()
     printEnding()
-
+    # print(json.dumps(assignedHeats, indent=2))
 
 if __name__ == '__main__':
     main()
