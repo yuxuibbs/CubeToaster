@@ -49,21 +49,22 @@ for person in range(numPeople):
         competitorList[person] = competitorList[person] + '<br>STAFF'
 
 
+while not (numPeople + 1) % 8:
+    competitorList.append(" ")
+    numPeople = len(competitorList)
+
 output = startHTML
 
 for person in range(0, numPeople, 8):
     nameTag = nameTagTemplate
-    try:
-        nameTag = nameTag.replace("name2", competitorList[person + 1])
-        nameTag = nameTag.replace("name1", competitorList[person])
-        nameTag = nameTag.replace("name3", competitorList[person + 2])
-        nameTag = nameTag.replace("name4", competitorList[person + 3])
-        nameTag = nameTag.replace("name5", competitorList[person + 4])
-        nameTag = nameTag.replace("name6", competitorList[person + 5])
-        nameTag = nameTag.replace("name7", competitorList[person + 6])
-        nameTag = nameTag.replace("name8", competitorList[person + 7])
-    except:
-        continue
+    nameTag = nameTag.replace("name1", competitorList[person])
+    nameTag = nameTag.replace("name2", competitorList[person + 1])
+    nameTag = nameTag.replace("name3", competitorList[person + 2])
+    nameTag = nameTag.replace("name4", competitorList[person + 3])
+    nameTag = nameTag.replace("name5", competitorList[person + 4])
+    nameTag = nameTag.replace("name6", competitorList[person + 5])
+    nameTag = nameTag.replace("name7", competitorList[person + 6])
+    nameTag = nameTag.replace("name8", competitorList[person + 7])
     output += nameTag
 
 output += endHTML

@@ -4,8 +4,13 @@ table {
     width: 100%;
 }
 
+table, tr, td {
+    /*for making sure names are centered correctly*/
+    /*border: 40px solid red;*/
+    border: 40px solid white;
+}
+
 tr, td {
-    /*border: 3px solid black;*/
     width: 50%;
     height: 25%;
 }
@@ -20,4 +25,8 @@ tr, td {
     text-align: center;
     font-size: 250%;
     font-weight: bold;
+    
+    /*for name tag paper that is shifted over a little*/
+    /*padding-left: 10px;*/
+    /*padding-top: 5px;*/
 }
