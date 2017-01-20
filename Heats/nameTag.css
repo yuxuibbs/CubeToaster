@@ -1,0 +1,23 @@
+table {
+    border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+}
+
+tr, td {
+    /*border: 3px solid black;*/
+    width: 50%;
+    height: 25%;
+}
+
+@media print {
+    table {
+        page-break-after: always;
+    }
+}
+
+.name {
+    text-align: center;
+    font-size: 250%;
+    font-weight: bold;
+}

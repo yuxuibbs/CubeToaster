@@ -1,8 +1,6 @@
 import math
 import json
 import scoresheetsHtml
-# from urllib.request import urlopen
-# from bs4 import BeautifulSoup
 
 
 ################################################################################
@@ -61,22 +59,13 @@ def validateYesNo(prompt):
 def validateInputFile(jsonFile):
     print("Fill out inputData.json (you can leave as many things blank as you want)")
     print("There is a recommended number of groups already listed. You can change it if you want to.")
-    # print("If you want to use psych sheet data to put all the slower people in the first few groups, change usePsychSheet to yes (all lowercase)")
+    print("Everything is based on numGroups (changing numPeople or peoplePerGroup will not change the number of people in each group.)")
    
     while True:
         if validateYesNo("Type y when done. "):
             inputData = getInputInfo()
             print()
             break
-        '''
-        try:
-            if validateYesNo("Type y when done. "):
-                inputData = getInputInfo()
-            break
-        except:
-            print("ERROR: JSON might not be valid. Make sure it is formatted correctly and try again.")
-            continue
-        '''
     return inputData
 
 
@@ -122,17 +111,12 @@ def getPsychSheet(competitionName, eventsList):
     return psychSheetData
 
 
-def getID():
-    '''
-    Gets correct competitor ID from xls output so it is hopefully correct in cubecomps
-    '''
-    xlrd.open_workbook(fileName=fileName)
-
-
 def getStaffList(personList):
     with open("staff.txt", "w") as f:
-        for person in personList:
-            print(person["name"], file=f)
+        with open("competitorList.txt", "w") as comp:
+            for person in personList:
+                print(person["name"], file=f)
+                print(person["name"], file=comp)
     print("Open staff.txt and delete anyone that is NOT on staff")
     while True:
         if validateYesNo("Type y when done. "):
@@ -199,25 +183,6 @@ def getInputInfo():
 
 ################################################################################
 # Everything related to making/calculating heats
-def specialStaffHeats(jsonFile):
-    print()
-    staffHeats = validateYesNo("Special staff groups? ")
-    if staffHeats:
-        print("Open competitors.txt and delete everyone that is NOT a staff member (competitors.txt should only have staff members who are competing)")
-        createFiles.makeCompetitorList(jsonFile)
-        while True:
-            if validateYesNo("Type y when done. "):
-                staffList = getStaffList()
-                break
-            else:
-                continue
-    return staffList
-
-
-def willMakeCutoff(psychSheetData, compData, inputData):
-    return
-
-
 def calcNumHeats(compData, eventsDict, inputData):
     '''
     Gets number of heats for each event from user
@@ -235,14 +200,6 @@ def calcNumHeats(compData, eventsDict, inputData):
         else:
             print("There will be {0} groups for {1} for {2} people".format(heatsDict[event], eventsDict[event], numPeople))
     return heatsDict
-
-
-def customHeats(compData):
-    '''
-    uses psych sheet data and staff data to assign heats
-    '''
-    # waiting for the WCA Software Team to add psych sheet data into the JSON file
-    # Temporary solution
    
 
 def easyHeats(compData, heatsDict):
@@ -353,7 +310,6 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict):
                 print("{0} - {1}".format(eventsDict[event], heat), file=f)
             print(file=f)
 
-
     # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
     newIDs = {}
     newNum = 1
@@ -420,8 +376,6 @@ def main():
     print()
 
     jsonFile = getDataFile()
-
-    # staffList = specialStaffHeats(jsonFile)
 
     compData = getCompetitionData(jsonFile)
 
