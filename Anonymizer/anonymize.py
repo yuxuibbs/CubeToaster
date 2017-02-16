@@ -24,3 +24,5 @@ for person in jsonFile["persons"]:
 
 fakeData = open('fake gamma.json', 'w')
 fakeData.write(json.dumps(jsonFile, indent=2))
+
+#Checking that I used git properly
