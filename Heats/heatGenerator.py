@@ -318,54 +318,6 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict):
             print(person[0], newIDs[person[0]], file=f)
     return newIDs
 
-#MOVED TO sheetGenerator.py
-# def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs):
-#     '''
-#     Creates string with HTML that contains all of the necessary
-#     score sheets for the first round of the competition
-#     '''
-#     scoreSheetList = []
-#     notAo5Events = ["333ft", "333fm", "333bf", "666", "777", "444bf", "555bf", "333mbf"]
-#     for event in assignedHeats[1]:
-#         if event == "333fm":
-#             continue
-#         cutoff = inputData[event]["cutoff"]
-#         timeLimit = inputData[event]["timeLimit"]
-#         if cutoff == "":
-#             cutoff = "None"
-#         if timeLimit == "":
-#             timeLimit = "None"
-#         for person in assignedHeats[1][event]["rounds"][0]["results"]:
-#             if event in notAo5Events:
-#                 updatedScoreSheetTable = scoresheetsHtml.mo3Table
-#             else:
-#                 updatedScoreSheetTable = scoresheetsHtml.ao5Table
-#             # python and it's weird rules for strings
-#             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", assignedHeats[0])
-#             updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsDict[event])
-#             updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person["heat"]))
-#             updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
-#             # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
-#             # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
-#             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", newIDs[person["name"]])
-#             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", person["name"])
-#             updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
-#             updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
-#             scoreSheetList.append(updatedScoreSheetTable)
-
-#     scoreSheets = str.join("\n", scoreSheetList)
-
-#     return scoresheetsHtml.startHTML + scoreSheets + scoresheetsHtml.endHTML
-
-
-# def sortHeats(assignedHeats):
-#     '''
-#     Sorts people in each event by heat number for easy score sheet cutting and sorting
-#     '''
-#     for event in assignedHeats[1]:
-#         (assignedHeats[1][event]["rounds"][0]["results"]).sort(key=lambda x: x["heat"])
-
-
 ################################################################################
 # Main
 def main():
@@ -412,20 +364,6 @@ def main():
     with open('objs.pickle', 'wb') as f:
         pickle.dump([assignedHeats, heatsDict, eventsDict, inputData, newIDs], f)
     
-
-    '''
-    MOVED TO sheetGenerator.py
-    # score sheets
-    sortHeats(assignedHeats)
-    # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
-    newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs)
-   
-    # getPsychSheet(compData[0], heatsDict)
-
-    # make HTML file with all the score sheets
-    webpage = open('scoresheets.html', 'w')
-    webpage.write(newFile)
-    '''
     print()
     printEnding()
     # print(json.dumps(assignedHeats, indent=2))

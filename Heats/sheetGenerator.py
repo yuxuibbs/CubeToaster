@@ -51,46 +51,44 @@ def sortHeats(assignedHeats):
         (assignedHeats[1][event]["rounds"][0]["results"]).sort(key=lambda x: x["heat"])
 
 def printScoreCardIntro():
-	'''
-	Prints program instructions for user
-	'''
-	print("CubeToaster - Scorecard Generator")
-	print("Type Ctrl-C or Ctrl-Z to quit the program at any time.")
-	print("This program requires the output from heatGenerator.py to function properly. Has heatGenerator.py already been run?")
+    '''
+    Prints program instructions for user
+    '''
+    print("CubeToaster - Scorecard Generator")
+    print("Type Ctrl-C or Ctrl-Z to quit the program at any time.")
+    print("This program requires the output from heatGenerator.py to function properly. Has heatGenerator.py already been run?")
 
 def printScoreCardEnding():
-	'''
-	Prints instructions for what to do after everything is done
-	'''
-	print("SCORECARDS HAVE BEEN GENERATED")
-	print("1. Make sure screen.css is in the same folder as scoresheets.html")
-	print("2. Open scoresheets.html")
-	print("3. Print to file (save as PDF) with 4 sheets per page")
-	print("4. Print score sheets and cut them (everything is already sorted by event and group number)")
-	print()
-	print("MAKE SURE COMPETITOR ID'S IN testCompetitorID.txt MATCHES CUBECOMPS COMPETITOR ID'S")
+    '''
+    Prints instructions for what to do after everything is done
+    '''
+    print("SCORECARDS HAVE BEEN GENERATED")
+    print("1. Make sure screen.css is in the same folder as scoresheets.html")
+    print("2. Open scoresheets.html")
+    print("3. Print to file (save as PDF) with 4 sheets per page")
+    print("4. Print score sheets and cut them (everything is already sorted by event and group number)")
+    print()
+    print("MAKE SURE COMPETITOR ID'S IN testCompetitorID.txt MATCHES CUBECOMPS COMPETITOR ID'S")
 
 def main():
-	# Print introductory prompt and confirm that heats have been generated.
-	printScoreCardIntro();
-	if not (heatGenerator.validateYesNo("Type y for yes, n for no. ")):
-		sys.exit("Please run heatGenerator.py first!")
-	#Restore output from heatGenerator.py to properly generate scoresheets. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
-	with open('objs.pickle', 'rb') as f:
-		assignedHeats, heatsDict, eventsDict, inputData, newIDs = pickle.load(f)
-	sortHeats(assignedHeats)
-	# CHANGE WHEN CUBECOMPS TAKES JSON STUFF
-	newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs)
+    # Print introductory prompt and confirm that heats have been generated.
+    printScoreCardIntro();
+    if not (heatGenerator.validateYesNo("Type y for yes, n for no. ")):
+        sys.exit("Please run heatGenerator.py first!")
+    #Restore output from heatGenerator.py to properly generate scoresheets. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
+    with open('objs.pickle', 'rb') as f:
+        assignedHeats, heatsDict, eventsDict, inputData, newIDs = pickle.load(f)
+    sortHeats(assignedHeats)
+    # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
+    newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs)
    
-	# getPsychSheet(compData[0], heatsDict) --This was left as a comment in heatGenerator.py
-
-	# make HTML file with all the score sheets
-	webpage = open('scoresheets.html', 'w')
-	webpage.write(newFile)
-	print()
-	printScoreCardEnding()
+    # make HTML file with all the score sheets
+    webpage = open('scoresheets.html', 'w')
+    webpage.write(newFile)
+    print()
+    printScoreCardEnding()
 
 
 
 if __name__ == '__main__':
-	main()
+    main()

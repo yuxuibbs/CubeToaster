@@ -1,12 +1,7 @@
 # CubeToaster
 Generates groups (heats) for WCA competitions to save time for organizers.
 
-Outputs score sheets sorted by group number and event and a txt file with everyone's heat numbers.
-
-1. Run heatsGenerator.py
-2. Double check the information (especially competitor ID)
-3. Print stuff
-4. Cut the score sheets in order
+Outputs score sheets sorted by group number and event and some files with everyone's heat numbers.
 
 Project started out as project 4 for SI 206 (was due on 12/02/2016).
 
@@ -14,7 +9,7 @@ Now taking pull requests.
 
 
 ## Website version
-[Available here](https://yuxuibbs.github.io/CubeToaster/Javascript/heatGenerator.html)
+Old version of CubeToaster is [available here](https://yuxuibbs.github.io/CubeToaster/Javascript/heatGenerator.html)
 
 Issues:
 
@@ -36,29 +31,26 @@ Generates groups based on JSON input (currently works for CubingUSA only)
 
 4. Run heatGenerator.py
 
-5. Enter prompts as necessary (might have to edit two files)
+5. Follow the prompts as necessary
 
-6. Make sure screen.css is in the same folder as scoresheets.html
+6. Run sheetGenerator.py
 
-7. Open scoresheets.html
+7. Make sure screen.css is in the same folder as scoresheets.html
 
-8. Print to file (save as PDF) with 4 sheets per page
+8. Open scoresheets.html
 
-9. Print score sheets and cut them (everything is already sorted by event and group number)
+9. Print to file (save as PDF) with 4 sheets per page
+
+10. Print score sheets and cut them (everything is already sorted by event and group number)
+
+11. (optional) run generateNameTags.py to get name tags (might have to mess with the CSS)
 
 
 **Issues:**
 
 * Competitor ID might be wrong (fails when more than 1 person has the same name)
+* There is a chance staff and a non-staff competitor with the same name will be in the same group
 
 
 ## Anonymizer
 Anonymizes JSON data for development purposes
-
-
-## List of competition CubeToaster has been used in:
-* Shaker Fall 2016
-
-Future competitions:
-* Dayton Winter 2017
-* MCC Alpha 2017
