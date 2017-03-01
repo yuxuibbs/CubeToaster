@@ -48,8 +48,7 @@ for person in range(numPeople):
     if competitorList[person] in staffList:
         competitorList[person] = competitorList[person] + '<br>STAFF'
 
-
-while not (numPeople + 1) % 8:
+while not (numPeople % 8 == 0):
     competitorList.append(" ")
     numPeople = len(competitorList)
 
@@ -72,3 +71,5 @@ output += endHTML
 
 with open("nameTags.html", "w") as f:
     print(output, file=f)
+
+print("Name Tags have been generated. They can be found in NameTags.html")

@@ -2,6 +2,7 @@ import math
 import json
 import scoresheetsHtml
 import pickle
+import csv
 
 
 ################################################################################
@@ -307,6 +308,14 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict):
                 print("{0} - {1}".format(eventsDict[event], heat), file=f)
             print(file=f)
 
+    # print heat sheet to csv file
+    with open("printableGroups.csv", "w", newline="") as f:
+        columnNames = ["name"] + list(eventsDict.keys())
+        heatWriter = csv.DictWriter(f, fieldnames=columnNames, delimiter=",")
+        heatWriter.writeheader()
+        for person in competitorHeats:
+            heatWriter.writerow(person)
+
     # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
     newIDs = {}
     newNum = 1
@@ -360,7 +369,8 @@ def main():
     # heats
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
     newIDs = makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict)
-    #Save assignedHeats, heatsDict, eventsDict, inputData, newIDs to files for sheetGenerator.py to read. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
+    
+    # Save assignedHeats, heatsDict, eventsDict, inputData, newIDs to files for sheetGenerator.py to read. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'wb') as f:
         pickle.dump([assignedHeats, heatsDict, eventsDict, inputData, newIDs], f)
     
