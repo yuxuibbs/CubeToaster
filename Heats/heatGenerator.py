@@ -308,6 +308,8 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict):
                 print("{0} - {1}".format(eventsDict[event], heat), file=f)
             print(file=f)
 
+    # sort by first name
+    competitorHeats.sort(key=lambda x: x['name'])
     # print heat sheet to csv file
     with open("printableGroups.csv", "w", newline="") as f:
         columnNames = ["name"] + list(eventsDict.keys())
