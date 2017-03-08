@@ -14,8 +14,8 @@ ao5Table = '''
         <tr>
           <th colspan="1" class="personID">competitorID</th>
           <th colspan="3" class="event">eventName</th>
-          <th colspan="1" class="heat">Group: heatNumber</th>
-          <th colspan="1" class="round">Round: roundNumber</th>
+          <th colspan="1" class="heat">G: heatNumber</th>
+          <th colspan="1" class="round">R: roundNumber</th>
         </tr>
         <tr>
           <th colspan="6" class="personName">competitorName</th>
@@ -85,8 +85,8 @@ mo3Table = '''
         <tr>
           <th colspan="1" class="personID">competitorID</th>
           <th colspan="3" class="event">eventName</th>
-          <th colspan="1" class="heat">Group: heatNumber</th>
-          <th colspan="1" class="round">Round: roundNumber</th>
+          <th colspan="1" class="heat">G: heatNumber</th>
+          <th colspan="1" class="round">R: roundNumber</th>
         </tr>
         <tr>
           <th colspan="6" class="personName">competitorName</th>

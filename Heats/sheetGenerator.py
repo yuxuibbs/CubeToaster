@@ -38,6 +38,23 @@ def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs):
             updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
             updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
             scoreSheetList.append(updatedScoreSheetTable)
+        if (len(assignedHeats[1][event]["rounds"][0]["results"]) % 4):
+            if event in notAo5Events:
+                updatedScoreSheetTable = scoresheetsHtml.mo3Table
+            else:
+                updatedScoreSheetTable = scoresheetsHtml.ao5Table
+            for blankScoreSheet in range(4 - (len(assignedHeats[1][event]["rounds"][0]["results"]) % 4)):
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", assignedHeats[0])
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", r".")
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", r".")
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
+                # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
+                # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", r".")
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", r".")
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", r".")
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", r".")
+                scoreSheetList.append(updatedScoreSheetTable)
 
     scoreSheets = str.join("\n", scoreSheetList)
 
