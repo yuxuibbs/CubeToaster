@@ -178,6 +178,10 @@ def getInputInfo():
     f.close()
     return inputData
 
+def changeCompetitionName(jsonData):
+    compName = input("Input competition name: ")
+    jsonData['competitionId'] = compName
+
 
 ################################################################################
 # Everything related to making/calculating heats
@@ -336,6 +340,8 @@ def main():
     print()
 
     jsonFile = getDataFile()
+
+    changeCompetitionName(jsonFile)
 
     compData = getCompetitionData(jsonFile)
 
