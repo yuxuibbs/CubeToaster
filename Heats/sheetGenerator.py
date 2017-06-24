@@ -35,12 +35,12 @@ def makeScoreSheets(compName, assignedHeats, heatsDict, eventsDict, inputData, n
             # python and it's weird rules for strings
             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
             updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsDict[event])
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", person[0])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person[0]))
             updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
             # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
             # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", newIDs[person[1]])
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", person[1])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", str(person[1]))
             updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
             updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
             scoreSheetList.append(updatedScoreSheetTable)
@@ -80,7 +80,7 @@ def readAndSortHeats(inputData):
         for row in heatReader:
             for event in inputData:
                 if event != "333fm" and len(row[event]):
-                    heatAndName = (row[event], row["name"])
+                    heatAndName = (int(row[event]), row["name"])
                     assignedHeats[event].append(heatAndName)
 
     for event in assignedHeats:
