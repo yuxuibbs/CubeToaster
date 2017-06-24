@@ -1,7 +1,54 @@
 startHTML = '''
   <html>
     <head>
-      <link rel="stylesheet" type="text/css" href="scoresheets.css" />
+      <style>
+        table {
+          border-collapse: collapse;
+          height: 100%;
+          width: 100%;
+        }
+        table, th, td {
+          border: 3px solid black;
+        }
+        @media print {
+          table {
+            page-break-after: always;
+          }
+        }
+        .cutoffs td {
+          border: 0;
+          font-weight: bold;
+        }
+        .compName {
+          font-size: 48pt;
+          font-weight: bold;
+        }
+        .labels {
+          font-size: 24pt;
+          font-weight: bold;
+        }
+        .attempt {
+          font-size: 36pt;
+          font-weight: bold;
+          text-align: center;
+        }
+        .event, .personID {
+          font-size: 24pt;
+          font-weight: bold;
+          width: 60px;
+        }
+        .round, .heat {
+          font-size: 24pt;
+          font-weight: bold;
+        }
+        .personName {
+          font-size: 40pt;
+          font-weight: bold;
+        }
+        .initial {
+          width: 120px;
+        }
+      </style>
     </head>
     <body>
 '''

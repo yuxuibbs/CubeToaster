@@ -20,9 +20,10 @@ def printEnding():
     '''
     Prints instructions for what to do after everything is done
     '''
-    print("HEATS HAVE BEEN GENERATED")
-    print("1. Open printableGroups.txt to view")
-    print("2. To generate scorecards, run sheetGenerator.py and follow prompts")
+    print("GROUPS HAVE BEEN GENERATED")
+    print("1. Open printableGroups.csv to view group assignments.") 
+    print("2. Make sure people with the same first name (or similar names) are not in the same group. You can edit the assignments in the csv file before generating scorecards and still have correct scorecards.")
+    print("3. To generate scorecards, run sheetGenerator.py and follow prompts")
 
 
 ################################################################################
@@ -81,32 +82,6 @@ def getDataFile():
     fileData = json.loads(f.read())
     f.close()
     return fileData
-
-
-def getPsychSheet(competitionName, eventsList):
-    '''
-    Gets the psych sheet data from Stachu's website
-    Returns [willMakeCutoff, willNotMakeCutoff]
-    '''
-    psychSheetData = {}
-    stachuPsychSheet = "http://psychsheets.azurewebsites.net/"
-    baseURL = stachuPsychSheet + "/" + competitionName + "/"
-    for event in eventsList:
-        url = baseURL + event
-        html = urlopen(url).read()
-        soup = BeautifulSoup(html, "html.parser")
-        # code from https://stackoverflow.com/questions/2870667/how-to-convert-an-html-table-to-an-array-in-python
-        result = []
-        allrows = soup.findAll('tr')
-        for row in allrows:
-            result.append([])
-            allcols = row.findAll('td')
-            for col in allcols:
-                thestrings = [s for s in col.findAll(text=True)]
-                thetext = ''.join(thestrings)
-                result[-1].append(thetext)
-        psychSheetData[event] = result
-    return psychSheetData
 
 
 def getStaffList(personList):
@@ -303,14 +278,6 @@ def makePrintableHeatSheet(assignedHeats, jsonFile, heatsDict, eventsDict):
     for person in printableHeats:
         person[1].sort(key=lambda x: x[0])
     printableHeats.sort()
-   
-    # print heat sheet to file
-    with open("printableGroups.txt", "w") as f:
-        for person in printableHeats:
-            print(person[0], file=f)
-            for event, heat in person[1]:
-                print("{0} - {1}".format(eventsDict[event], heat), file=f)
-            print(file=f)
 
     # sort by first name
     competitorHeats.sort(key=lambda x: x['name'])
@@ -380,7 +347,7 @@ def main():
     
     # Save assignedHeats, heatsDict, eventsDict, inputData, newIDs to files for sheetGenerator.py to read. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'wb') as f:
-        pickle.dump([assignedHeats, heatsDict, eventsDict, inputData, newIDs], f)
+        pickle.dump([assignedHeats[0], heatsDict, eventsDict, inputData, newIDs], f)
     
     print()
     printEnding()

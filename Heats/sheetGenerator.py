@@ -4,47 +4,54 @@ import json
 import scoresheetsHtml
 import sys
 import pickle
+import csv
 
-def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs):
+def makeScoreSheets(compName, assignedHeats, heatsDict, eventsDict, inputData, newIDs):
     '''
     Creates string with HTML that contains all of the necessary
     score sheets for the first round of the competition
     '''
+    print(assignedHeats)
+
     scoreSheetList = []
     notAo5Events = ["333ft", "333fm", "333bf", "666", "777", "444bf", "555bf", "333mbf"]
-    for event in assignedHeats[1]:
+    for event in assignedHeats:
+        # skip FMC
         if event == "333fm":
             continue
+        # set cutoff and time limit
         cutoff = inputData[event]["cutoff"]
         timeLimit = inputData[event]["timeLimit"]
         if cutoff == "":
             cutoff = "None"
         if timeLimit == "":
             timeLimit = "None"
-        for person in assignedHeats[1][event]["rounds"][0]["results"]:
+        for person in assignedHeats[event]:
+            # figure out event format (ao5 or mo3)
             if event in notAo5Events:
                 updatedScoreSheetTable = scoresheetsHtml.mo3Table
             else:
                 updatedScoreSheetTable = scoresheetsHtml.ao5Table
             # python and it's weird rules for strings
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", assignedHeats[0])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
             updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsDict[event])
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person["heat"]))
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", person[0])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
             # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
             # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", newIDs[person["name"]])
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", person["name"])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", newIDs[person[1]])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", person[1])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
             updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
             scoreSheetList.append(updatedScoreSheetTable)
-        if (len(assignedHeats[1][event]["rounds"][0]["results"]) % 4):
+        # add extra blank sheets as needed so that new heats start on new page
+        if len(assignedHeats[event]) % 4:
             if event in notAo5Events:
                 updatedScoreSheetTable = scoresheetsHtml.mo3Table
             else:
                 updatedScoreSheetTable = scoresheetsHtml.ao5Table
-            for blankScoreSheet in range(4 - (len(assignedHeats[1][event]["rounds"][0]["results"]) % 4)):
-                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", assignedHeats[0])
+            for blankScoreSheet in range(4 - (len(assignedHeats[event]) % 4)):
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
                 updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", r".")
                 updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", r".")
                 updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
@@ -60,12 +67,27 @@ def makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs):
 
     return scoresheetsHtml.startHTML + scoreSheets + scoresheetsHtml.endHTML
 
-def sortHeats(assignedHeats):
+def readAndSortHeats(inputData):
     '''
     Sorts people in each event by heat number for easy score sheet cutting and sorting
     '''
-    for event in assignedHeats[1]:
-        (assignedHeats[1][event]["rounds"][0]["results"]).sort(key=lambda x: x["heat"])
+    assignedHeats = {}
+    for event in inputData:
+        assignedHeats[event] = []
+
+    with open("printableGroups.csv", 'r', newline = '') as input_file:
+        heatReader = csv.DictReader(input_file, delimiter=',', quotechar ='"')
+        for row in heatReader:
+            for event in inputData:
+                if event != "333fm" and len(row[event]):
+                    heatAndName = (row[event], row["name"])
+                    assignedHeats[event].append(heatAndName)
+
+    for event in assignedHeats:
+        assignedHeats[event].sort(key=lambda x: x[0])
+
+    return assignedHeats
+
 
 def printScoreCardIntro():
     '''
@@ -94,10 +116,10 @@ def main():
         sys.exit("Please run heatGenerator.py first!")
     #Restore output from heatGenerator.py to properly generate scoresheets. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'rb') as f:
-        assignedHeats, heatsDict, eventsDict, inputData, newIDs = pickle.load(f)
-    sortHeats(assignedHeats)
+        compName, heatsDict, eventsDict, inputData, newIDs = pickle.load(f)
+    assignedHeats = readAndSortHeats(inputData)
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
-    newFile = makeScoreSheets(assignedHeats, heatsDict, eventsDict, inputData, newIDs)
+    newFile = makeScoreSheets(compName, assignedHeats, heatsDict, eventsDict, inputData, newIDs)
    
     # make HTML file with all the score sheets
     webpage = open('scoresheets.html', 'w')

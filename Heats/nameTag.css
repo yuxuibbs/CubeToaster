@@ -27,6 +27,6 @@ tr, td {
     font-weight: bold;
     
     /*for name tag paper that is shifted over a little*/
-    /*padding-left: 10px;*/
-    /*padding-top: 5px;*/
+    padding-left: 5px;
+    padding-top: 5px;
 }
