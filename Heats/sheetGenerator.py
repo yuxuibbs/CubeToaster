@@ -6,7 +6,7 @@ import sys
 import pickle
 import csv
 
-def makeScoreSheets(compName, assignedHeats, heatsDict, eventsDict, inputData, newIDs):
+def makeScoreSheets(compName, assignedHeats, heatsDict, eventsList, inputData, newIDs):
     '''
     Creates string with HTML that contains all of the necessary
     score sheets for the first round of the competition
@@ -34,7 +34,7 @@ def makeScoreSheets(compName, assignedHeats, heatsDict, eventsDict, inputData, n
                 updatedScoreSheetTable = scoresheetsHtml.ao5Table
             # python and it's weird rules for strings
             updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsDict[event])
+            updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsList[event])
             updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person[0]))
             updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
             # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
@@ -116,11 +116,11 @@ def main():
         sys.exit("Please run heatGenerator.py first!")
     #Restore output from heatGenerator.py to properly generate scoresheets. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'rb') as f:
-        compName, heatsDict, eventsDict, inputData, newIDs = pickle.load(f)
+        compName, heatsDict, eventsList, inputData, newIDs = pickle.load(f)
     assignedHeats = readAndSortHeats(inputData)
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
-    newFile = makeScoreSheets(compName, assignedHeats, heatsDict, eventsDict, inputData, newIDs)
-   
+    newFile = makeScoreSheets(compName, assignedHeats, heatsDict, eventsList, inputData, newIDs)
+
     # make HTML file with all the score sheets
     webpage = open('scoresheets.html', 'w')
     webpage.write(newFile)
