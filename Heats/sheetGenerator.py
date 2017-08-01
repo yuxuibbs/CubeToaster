@@ -6,13 +6,11 @@ import sys
 import pickle
 import csv
 
-def makeScoreSheets(compName, assignedHeats, heatsDict, eventsList, inputData, newIDs):
+def makeScoreSheets(compName, assignedHeats, allEventsDict, inputData, newIDs, dataType):
     '''
     Creates string with HTML that contains all of the necessary
     score sheets for the first round of the competition
     '''
-    print(assignedHeats)
-
     scoreSheetList = []
     notAo5Events = ["333ft", "333fm", "333bf", "666", "777", "444bf", "555bf", "333mbf"]
     for event in assignedHeats:
@@ -26,48 +24,87 @@ def makeScoreSheets(compName, assignedHeats, heatsDict, eventsList, inputData, n
             cutoff = "None"
         if timeLimit == "":
             timeLimit = "None"
-        for person in assignedHeats[event]:
-            # figure out event format (ao5 or mo3)
-            if event in notAo5Events:
-                updatedScoreSheetTable = scoresheetsHtml.mo3Table
-            else:
-                updatedScoreSheetTable = scoresheetsHtml.ao5Table
-            # python and it's weird rules for strings
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", eventsList[event])
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person[0]))
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
-            # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
-            # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", newIDs[person[1]])
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", str(person[1]))
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
-            updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
-            scoreSheetList.append(updatedScoreSheetTable)
-        # add extra blank sheets as needed so that new heats start on new page
-        if len(assignedHeats[event]) % 4:
-            if event in notAo5Events:
-                updatedScoreSheetTable = scoresheetsHtml.mo3Table
-            else:
-                updatedScoreSheetTable = scoresheetsHtml.ao5Table
-            for blankScoreSheet in range(4 - (len(assignedHeats[event]) % 4)):
+
+        if dataType == 'json':
+            for person in assignedHeats[event]:
+                # figure out event format (ao5 or mo3)
+                if event in notAo5Events:
+                    updatedScoreSheetTable = scoresheetsHtml.mo3Table
+                else:
+                    updatedScoreSheetTable = scoresheetsHtml.ao5Table
+                # python and it's weird rules for strings
                 updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
-                updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", r".")
-                updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", r".")
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", allEventsDict[event])
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person[0]))
                 updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
                 # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
                 # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
-                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", r".")
-                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", r".")
-                updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", r".")
-                updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", r".")
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", newIDs[person[1]])
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", str(person[1]))
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
                 scoreSheetList.append(updatedScoreSheetTable)
+            # add extra blank sheets as needed so that new heats start on new page
+            if len(assignedHeats[event]) % 4:
+                if event in notAo5Events:
+                    updatedScoreSheetTable = scoresheetsHtml.mo3Table
+                else:
+                    updatedScoreSheetTable = scoresheetsHtml.ao5Table
+                for blankScoreSheet in range(4 - (len(assignedHeats[event]) % 4)):
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
+                    # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
+                    # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", r".")
+                    scoreSheetList.append(updatedScoreSheetTable)
+        else:
+            for person in assignedHeats:
+                # figure out event format (ao5 or mo3)
+                if person[event] in notAo5Events:
+                    updatedScoreSheetTable = scoresheetsHtml.mo3Table
+                else:
+                    updatedScoreSheetTable = scoresheetsHtml.ao5Table
+                # python and it's weird rules for strings
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", allEventsDict[event])
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", str(person[0]))
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
+                # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
+                # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", newIDs[person[1]])
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", str(person[1]))
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", cutoff)
+                updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", timeLimit)
+                scoreSheetList.append(updatedScoreSheetTable)
+            # add extra blank sheets as needed so that new heats start on new page
+            if len(assignedHeats[event]) % 4:
+                if event in notAo5Events:
+                    updatedScoreSheetTable = scoresheetsHtml.mo3Table
+                else:
+                    updatedScoreSheetTable = scoresheetsHtml.ao5Table
+                for blankScoreSheet in range(4 - (len(assignedHeats[event]) % 4)):
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName)
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("eventName", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("heatNumber", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("roundNumber", str(1))
+                    # updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", person["id"])
+                    # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorID", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("competitorName", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("cutoffTime", r".")
+                    updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", r".")
+                    scoreSheetList.append(updatedScoreSheetTable)
 
     scoreSheets = str.join("\n", scoreSheetList)
 
     return scoresheetsHtml.startHTML + scoreSheets + scoresheetsHtml.endHTML
 
-def readAndSortHeats(inputData):
+def readAndSortHeats(inputData, dataType):
     '''
     Sorts people in each event by heat number for easy score sheet cutting and sorting
     '''
@@ -80,7 +117,10 @@ def readAndSortHeats(inputData):
         for row in heatReader:
             for event in inputData:
                 if event != "333fm" and len(row[event]):
-                    heatAndName = (int(row[event]), row["name"])
+                    if dataType == 'json':
+                        heatAndName = (int(row[event]), row["name"])
+                    else:
+                        heatAndName = (int(row[event]), row["Name"])
                     assignedHeats[event].append(heatAndName)
 
     for event in assignedHeats:
@@ -114,14 +154,15 @@ def main():
     printScoreCardIntro();
     if not (heatGenerator.validateYesNo("Type y for yes, n for no. ")):
         sys.exit("Please run heatGenerator.py first!")
-    #Restore output from heatGenerator.py to properly generate scoresheets. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
+    # Restore output from heatGenerator.py to properly generate scoresheets. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'rb') as f:
-        compName, heatsDict, eventsList, inputData, newIDs = pickle.load(f)
-    assignedHeats = readAndSortHeats(inputData)
+        compName, allEventsDict, inputData, newIDs, dataType = pickle.load(f)
+    
+    assignedHeats = readAndSortHeats(inputData, dataType)
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
-    newFile = makeScoreSheets(compName, assignedHeats, heatsDict, eventsList, inputData, newIDs)
+    newFile = makeScoreSheets(compName, assignedHeats, allEventsDict, inputData, newIDs, dataType)
 
-    # make HTML file with all the score sheets
+    # Make HTML file with all the score sheets
     webpage = open('scoresheets.html', 'w')
     webpage.write(newFile)
     print()

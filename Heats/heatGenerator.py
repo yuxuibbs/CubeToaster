@@ -55,14 +55,16 @@ def validateYesNo(prompt):
         return False
 
 
-def validateInputFile(jsonFile):
+def validateInputFile():
     print('Fill out inputData.json (you can leave as many things blank as you want)')
     print('There is a recommended number of groups already listed. You can change it if you want to.')
     print('Everything is based on numGroups (changing numPeople or peoplePerGroup will not change the number of people in each group.)')
 
     while True:
         if validateYesNo('Type y when done. '):
-            inputData = getInputInfo()
+            f = open('inputData.json', 'r')
+            inputData = json.loads(f.read())
+            f.close()
             print()
             break
     return inputData
@@ -78,18 +80,19 @@ def getJSONDataFile():
     if not fileName.endswith('.json'):
         fileName = fileName + '.json'
     f = open(fileName, 'r')
+    # read json data
     fileData = json.loads(f.read())
     f.close()
     return fileData
 
-def getCompEvents(header, eventsList):
+def getCompEvents(header, eventsDict):
     '''
     Gets events list from header of csv file
     '''
-    events = []
+    events = {}
     for event in header:
-        if event in eventsList:
-            events.append(event)
+        if event in eventsDict:
+            events[event] = eventsDict[event]
     return events
 
 
@@ -111,7 +114,7 @@ def readCSVDataFile(fileName, eventsList):
 
     with open(fileName, 'r', newline = '') as input_file:
         dataReader = csv.DictReader(input_file, delimiter=',', quotechar ="'")
-        compEventsList = getCompEvents(dataReader.fieldnames, eventsList)
+        compEventsDict = getCompEvents(dataReader.fieldnames, eventsList)
         # predict cubecomps ID
         predictedID = 1
         for row in dataReader:
@@ -131,7 +134,7 @@ def readCSVDataFile(fileName, eventsList):
             del fileData[personName]['Birth Date']
             del fileData[personName]['Guests']
             del fileData[personName]['Gender']
-    return [fileData, compEventsList]
+    return [fileData, compEventsDict]
 
 
 def getStaffList(personList, fileType):
@@ -157,22 +160,22 @@ def getStaffList(personList, fileType):
             return readStaffList()
 
 
-def getCompetitionData(jsonFile):
+def getCompetitionData(jsonFileData):
     '''
     Parses JSON into a data structure
-    Returns (competitionId, events)
+    Returns (competitionId, compData)
     '''
     # let user choose competition name
     compName = input('Input competition name (this is the name that will appear on all score cards): ')
-    jsonFile['competitionId'] = compName
+    jsonFileData['competitionId'] = compName
 
-    competitionId = jsonFile['competitionId']
+    competitionId = jsonFileData['competitionId']
     persons = {}
-    events = {}
+    compData = {}
 
-    staffList = getStaffList(jsonFile['persons'], 'json')
+    staffList = getStaffList(jsonFileData['persons'], 'json')
 
-    for person in jsonFile['persons']:
+    for person in jsonFileData['persons']:
         # remove unnecessary data (WCA ID, country, gender, and dob)
         del person['wcaId']
         del person['countryId']
@@ -189,7 +192,7 @@ def getCompetitionData(jsonFile):
         # put person data into a dictionary with id number as key
         persons[person['id']] = person
 
-    for event in jsonFile['events']:
+    for event in jsonFileData['events']:
         results = []
         # replace id in events part of JSON with the person's data
         for person in event['rounds'][0]['results']:
@@ -199,9 +202,9 @@ def getCompetitionData(jsonFile):
                 print('POSSIBLE ERROR: Make sure all registered competitors are in competitors.txt')
         results.sort(key=lambda x: (-x['staff'], x['name'].lower()))
         event['rounds'][0]['results'] = results
-        events[event['eventId']] = event
+        compData[event['eventId']] = event
 
-    return (competitionId, events)
+    return (competitionId, compData)
 
 
 def readStaffList():
@@ -212,13 +215,6 @@ def readStaffList():
     return staff
 
 
-def getInputInfo():
-    f = open('inputData.json', 'r')
-    inputData = json.loads(f.read())
-    f.close()
-    return inputData
-
-
 ################################################################################
 # Everything related to making/calculating heats
 def calcNumHeats(compData, inputData, dataType):
@@ -226,33 +222,33 @@ def calcNumHeats(compData, inputData, dataType):
     Gets number of heats for each event from user
     recommended number of people per heat: ceil(1.5*numStations) to the nearest even number
     '''
-    heatsDict = {}
+    numPeoplePerHeatPerEvent = {}
     if dataType == 'json':
         for event in compData[1]:
             numPeople = len(compData[1][event]['rounds'][0]['results'])
             if event == '333fm' or event == '333mbf':
-                heatsDict[event] = 1
+                numPeoplePerHeatPerEvent[event] = 1
             else:
-                heatsDict[event] = inputData[event]['numGroups']
-            if heatsDict[event] == 1:
+                numPeoplePerHeatPerEvent[event] = inputData[event]['numGroups']
+            if numPeoplePerHeatPerEvent[event] == 1:
                 print('There will be 1 group for {0} for {1} people'.format(event, numPeople))
             else:
-                print('There will be {0} groups for {1} for {2} people'.format(heatsDict[event], event, numPeople))
+                print('There will be {0} groups for {1} for {2} people'.format(numPeoplePerHeatPerEvent[event], event, numPeople))
     else:
         for event in compData:
             numPeople = compData[event]
             if event == '333fm' or event == '333mbf':
-                heatsDict[event] = 1
+                numPeoplePerHeatPerEvent[event] = 1
             else:
-                heatsDict[event] = inputData[event]['numGroups']
-            if heatsDict[event] == 1:
+                numPeoplePerHeatPerEvent[event] = inputData[event]['numGroups']
+            if numPeoplePerHeatPerEvent[event] == 1:
                 print('There will be 1 group for {0} for {1} people'.format(event, numPeople))
             else:
-                print('There will be {0} groups for {1} for {2} people'.format(heatsDict[event], event, numPeople))
-    return heatsDict
+                print('There will be {0} groups for {1} for {2} people'.format(numPeoplePerHeatPerEvent[event], event, numPeople))
+    return numPeoplePerHeatPerEvent
 
 
-def easyHeats(compData, heatsDict, dataType):
+def easyHeats(compData, numPeoplePerHeatPerEvent, numPeopleDict, dataType):
     '''
     Goes straight down list of competitors from 1 to numPeopleInHeats
     '''
@@ -262,17 +258,17 @@ def easyHeats(compData, heatsDict, dataType):
     if len(staffList) < len(compData[1][event]['rounds'][0]['results']) * 0.6:
         staff = True
     '''
+    print("numPeoplePerHeatPerEvent", numPeoplePerHeatPerEvent)
     if dataType == 'json':
-        for event in heatsDict:
+        for event in numPeoplePerHeatPerEvent:
             for i, person in enumerate(compData[1][event]['rounds'][0]['results']):
-                if (heatsDict[event] != 0):
-                    person['heat'] = (i % heatsDict[event]) + 1
+                if (numPeoplePerHeatPerEvent[event] != 0):
+                    person['heat'] = (i % numPeoplePerHeatPerEvent[event]) + 1
     else:
-        for event in heatsDict:
-            for i, person in enumerate(compData):
-                if (heatsDict[event] != 0):
-                    person[event] = (i % heatsDict[event]) + 1
-
+        for person in range(compData):
+            for event in numPeople:
+                for i in range(numPeopleDict[event]):
+                    # USE NUM PEOPLE AND MOD BY NUM PEOPLE PER HEAT
     return compData
 
 
@@ -299,6 +295,8 @@ def numPeoplePerEvent(compData, eventsList):
         for event in eventsList:
             if compData[person][event] == '1':
                 peoplePerEvent[event] += 1
+            else:
+                del compData[person][event]
     
     return peoplePerEvent
 
@@ -356,7 +354,7 @@ def createInputFile(compData, dataType):
         print(json.dumps(data, indent=4), file=f)
 
 
-def makePrintableHeatSheet(assignedHeats, inputFile, eventsList, dataType):
+def makePrintableHeatSheet(assignedHeats, inputFile, eventsDict, dataType):
     '''
     Gets all the heats for each competitor and turns it into a printable format
     Makes a list of [name, [list of events with heat numbers]]
@@ -398,7 +396,7 @@ def makePrintableHeatSheet(assignedHeats, inputFile, eventsList, dataType):
         competitorHeats.sort(key=lambda x: x['name'])
         # print heat sheet to csv file
         with open('printableGroups.csv', 'w', newline='') as f:
-            columnNames = ['name'] + eventsList
+            columnNames = ['name'] + list(eventsDict.keys())
             heatWriter = csv.DictWriter(f, fieldnames=columnNames, delimiter=',')
             heatWriter.writeheader()
             for person in competitorHeats:
@@ -427,7 +425,7 @@ def makePrintableHeatSheet(assignedHeats, inputFile, eventsList, dataType):
                 print(person, newIDs[person['Name']], file=f)
         # print heat sheet to csv file
         with open('printableGroups.csv', 'w', newline='') as f:
-            columnNames = ['Name'] + eventsList
+            columnNames = ['Name'] + list(eventsDict.keys())
             heatWriter = csv.DictWriter(f, fieldnames=columnNames, delimiter=',')
             heatWriter.writeheader()
             for person in assignedHeats:
@@ -439,32 +437,33 @@ def makePrintableHeatSheet(assignedHeats, inputFile, eventsList, dataType):
 
 
 ################################################################################
-def jsonHeats(eventsList, dataType):
-    jsonFile = getJSONDataFile()
+def jsonHeats(allEventsDict, dataType):
+    jsonFileData = getJSONDataFile()
 
-    compData = getCompetitionData(jsonFile)
+    compData = getCompetitionData(jsonFileData)
 
     # get user input to make heats
     createInputFile(compData, dataType)
     print()
-    inputData = validateInputFile(jsonFile)
+
+    inputData = validateInputFile()
     # figure out how many heats there will be for each event
-    heatsDict = calcNumHeats(compData, inputData, dataType)
+    numPeoplePerHeatPerEvent = calcNumHeats(compData, inputData, dataType)
     # assign heats
-    assignedHeats = easyHeats(compData, heatsDict, dataType)
+    assignedHeats = easyHeats(compData, numPeoplePerHeatPerEvent, None, dataType)
 
     # make output files for heats
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
-    newIDs = makePrintableHeatSheet(assignedHeats, jsonFile, eventsList, dataType)
+    newIDs = makePrintableHeatSheet(assignedHeats, jsonFileData, allEventsDict, dataType)
 
-    # Save assignedHeats, heatsDict, eventsList, inputData, newIDs to files for sheetGenerator.py to read. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
+    # Save variables to files for sheetGenerator.py to read. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'wb') as f:
-        pickle.dump([assignedHeats[0], eventsList, inputData, newIDs], f)
+        pickle.dump([assignedHeats[0], allEventsDict, inputData, newIDs, dataType], f)
 
 
-def csvHeats(eventsList, dataType):
+def csvHeats(allEventsDict, dataType):
     fileName = getCSVDataFile()
-    [compData, compEventsList] = readCSVDataFile(fileName, eventsList)
+    [compData, compEventsDict] = readCSVDataFile(fileName, allEventsDict)
 
     # let user choose competition name
     compName = input('Input competition name (this is the name that will appear on all score cards): ')
@@ -474,15 +473,15 @@ def csvHeats(eventsList, dataType):
     addStaffData(compData, staffList)
 
     # figure out how many people are in each event
-    numPeopleDict = numPeoplePerEvent(compData, compEventsList)
-    
+    numPeopleDict = numPeoplePerEvent(compData, compEventsDict)
+    print("numPeopleDict:", numPeopleDict)
     # get user input to make heats
     createInputFile(numPeopleDict, dataType)
     print()
-    inputData = validateInputFile('inputData.json')
+    inputData = validateInputFile()
 
     # figure out how many heats there will be for each event
-    heatsDict = calcNumHeats(numPeopleDict, inputData, dataType)
+    numPeoplePerHeatPerEvent = calcNumHeats(numPeopleDict, inputData, dataType)
 
     # convert compData into list of dictionaries so it is sortable
     compDataList = []
@@ -492,15 +491,15 @@ def csvHeats(eventsList, dataType):
     compDataList.sort(key=lambda x: (-x['Staff'], x['firstName'].lower()))
 
     # assign heats
-    assignedHeats = easyHeats(compDataList, heatsDict, dataType)
+    assignedHeats = easyHeats(compDataList, numPeoplePerHeatPerEvent, dataType)
 
     # make output files for heats
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
-    newIDs = makePrintableHeatSheet(assignedHeats, fileName, eventsList, dataType)
+    newIDs = makePrintableHeatSheet(assignedHeats, fileName, allEventsDict, dataType)
 
-    # Save assignedHeats, heatsDict, eventsList, inputData, newIDs to files for sheetGenerator.py to read. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
+    # Save variables to files for sheetGenerator.py to read. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'wb') as f:
-        pickle.dump([compName, compDataList, inputData, newIDs], f)
+        pickle.dump([compName, allEventsDict, inputData, newIDs, dataType], f)
 
 
 
@@ -512,16 +511,31 @@ def main():
     printIntro()
     print()
 
-    eventsList = ['222', '333', '333oh', '333bf', '333fm', '333ft', '333mbf',
-                  '444', '444bf', '555', '555bf', '666', '777', 'clock',
-                  'minx', 'pyram', 'skewb', 'sq1']
-    
+    allEventsDict = {"222"   : "2x2 Cube",
+                     "333"   : "Rubik's Cube",
+                     "333oh" : "Rubik's Cube: One-Handed",
+                     "333bf" : "Rubik's Cube: Blindfolded",
+                     "333fm" : "Rubik's Cube: Fewest moves",
+                     "333ft" : "Rubik's Cube: With feet",
+                     "333mbf": "Rubik's Cube: Multiple Blindfolded",
+                     "444"   : "4x4 Cube",
+                     "444bf" : "4x4 Cube: Blindfolded",
+                     "555"   : "5x5 Cube",
+                     "555bf" : "5x5 Cube: Blindfolded",
+                     "666"   : "6x6 Cube",
+                     "777"   : "7x7 Cube",
+                     "clock" : "Rubik's Clock",
+                     "minx"  : "Megaminx",
+                     "pyram" : "Pyraminx",
+                     "skewb" : "Skewb",
+                     "sq1"   : "Square-1"}
+
     if validateYesNo('Are you using a json file? (y or n) '):
         dataType = 'json'
-        jsonHeats(eventsList, dataType)
+        jsonHeats(allEventsDict, dataType)
     else:
         dataType = 'csv'
-        csvHeats(eventsList, dataType)
+        csvHeats(allEventsDict, dataType)
 
 
     print()
