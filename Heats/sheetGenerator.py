@@ -63,9 +63,9 @@ def makeScoreSheets(compName, assignedHeats, allEventsDict, inputData, newIDs, d
                     updatedScoreSheetTable = updatedScoreSheetTable.replace("timeLimit", r".")
                     scoreSheetList.append(updatedScoreSheetTable)
         else:
-            for person in assignedHeats:
+            for person in assignedHeats[event]:
                 # figure out event format (ao5 or mo3)
-                if person[event] in notAo5Events:
+                if event in notAo5Events:
                     updatedScoreSheetTable = scoresheetsHtml.mo3Table
                 else:
                     updatedScoreSheetTable = scoresheetsHtml.ao5Table

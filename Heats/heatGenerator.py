@@ -268,11 +268,11 @@ def easyHeats(compData, numHeatsPerEvent, numPeopleDict, dataType):
         for event in numHeatsPerEvent:
             # event has more than 1 heat
             if numHeatsPerEvent[event] > 1:
-                participantNumber = 1
+                participantNumber = 0
                 for competitor in compData:
                     # competitor is registered for this event
                     if event in competitor:
-                        competitor[event] = participantNumber % numHeatsPerEvent[event]
+                        competitor[event] = (participantNumber % numHeatsPerEvent[event]) + 1
                         participantNumber += 1
     return compData
 
@@ -507,9 +507,6 @@ def csvHeats(allEventsDict, dataType):
         pickle.dump([compName, allEventsDict, inputData, newIDs, dataType], f)
 
 
-
-
-
 ################################################################################
 # Main
 def main():
@@ -541,7 +538,6 @@ def main():
     else:
         dataType = 'csv'
         csvHeats(allEventsDict, dataType)
-
 
     print()
     printEnding()
