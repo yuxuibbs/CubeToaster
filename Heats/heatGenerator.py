@@ -222,33 +222,33 @@ def calcNumHeats(compData, inputData, dataType):
     Gets number of heats for each event from user
     recommended number of people per heat: ceil(1.5*numStations) to the nearest even number
     '''
-    numPeoplePerHeatPerEvent = {}
+    numHeatsPerEvent = {}
     if dataType == 'json':
         for event in compData[1]:
             numPeople = len(compData[1][event]['rounds'][0]['results'])
             if event == '333fm' or event == '333mbf':
-                numPeoplePerHeatPerEvent[event] = 1
+                numHeatsPerEvent[event] = 1
             else:
-                numPeoplePerHeatPerEvent[event] = inputData[event]['numGroups']
-            if numPeoplePerHeatPerEvent[event] == 1:
+                numHeatsPerEvent[event] = inputData[event]['numGroups']
+            if numHeatsPerEvent[event] == 1:
                 print('There will be 1 group for {0} for {1} people'.format(event, numPeople))
             else:
-                print('There will be {0} groups for {1} for {2} people'.format(numPeoplePerHeatPerEvent[event], event, numPeople))
+                print('There will be {0} groups for {1} for {2} people'.format(numHeatsPerEvent[event], event, numPeople))
     else:
         for event in compData:
             numPeople = compData[event]
             if event == '333fm' or event == '333mbf':
-                numPeoplePerHeatPerEvent[event] = 1
+                numHeatsPerEvent[event] = 1
             else:
-                numPeoplePerHeatPerEvent[event] = inputData[event]['numGroups']
-            if numPeoplePerHeatPerEvent[event] == 1:
+                numHeatsPerEvent[event] = inputData[event]['numGroups']
+            if numHeatsPerEvent[event] == 1:
                 print('There will be 1 group for {0} for {1} people'.format(event, numPeople))
             else:
-                print('There will be {0} groups for {1} for {2} people'.format(numPeoplePerHeatPerEvent[event], event, numPeople))
-    return numPeoplePerHeatPerEvent
+                print('There will be {0} groups for {1} for {2} people'.format(numHeatsPerEvent[event], event, numPeople))
+    return numHeatsPerEvent
 
 
-def easyHeats(compData, numPeoplePerHeatPerEvent, numPeopleDict, dataType):
+def easyHeats(compData, numHeatsPerEvent, numPeopleDict, dataType):
     '''
     Goes straight down list of competitors from 1 to numPeopleInHeats
     '''
@@ -258,17 +258,22 @@ def easyHeats(compData, numPeoplePerHeatPerEvent, numPeopleDict, dataType):
     if len(staffList) < len(compData[1][event]['rounds'][0]['results']) * 0.6:
         staff = True
     '''
-    print("numPeoplePerHeatPerEvent", numPeoplePerHeatPerEvent)
+    # print("numHeatsPerEvent", numHeatsPerEvent)
     if dataType == 'json':
-        for event in numPeoplePerHeatPerEvent:
+        for event in numHeatsPerEvent:
             for i, person in enumerate(compData[1][event]['rounds'][0]['results']):
-                if (numPeoplePerHeatPerEvent[event] != 0):
-                    person['heat'] = (i % numPeoplePerHeatPerEvent[event]) + 1
+                if (numHeatsPerEvent[event] != 0):
+                    person['heat'] = (i % numHeatsPerEvent[event]) + 1
     else:
-        for person in range(compData):
-            for event in numPeople:
-                for i in range(numPeopleDict[event]):
-                    # USE NUM PEOPLE AND MOD BY NUM PEOPLE PER HEAT
+        for event in numHeatsPerEvent:
+            # event has more than 1 heat
+            if numHeatsPerEvent[event] > 1:
+                participantNumber = 1
+                for competitor in compData:
+                    # competitor is registered for this event
+                    if event in competitor:
+                        competitor[event] = participantNumber % numHeatsPerEvent[event]
+                        participantNumber += 1
     return compData
 
 
@@ -448,9 +453,9 @@ def jsonHeats(allEventsDict, dataType):
 
     inputData = validateInputFile()
     # figure out how many heats there will be for each event
-    numPeoplePerHeatPerEvent = calcNumHeats(compData, inputData, dataType)
+    numHeatsPerEvent = calcNumHeats(compData, inputData, dataType)
     # assign heats
-    assignedHeats = easyHeats(compData, numPeoplePerHeatPerEvent, None, dataType)
+    assignedHeats = easyHeats(compData, numHeatsPerEvent, None, dataType)
 
     # make output files for heats
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
@@ -474,14 +479,14 @@ def csvHeats(allEventsDict, dataType):
 
     # figure out how many people are in each event
     numPeopleDict = numPeoplePerEvent(compData, compEventsDict)
-    print("numPeopleDict:", numPeopleDict)
+    # print("numPeopleDict:", numPeopleDict)
     # get user input to make heats
     createInputFile(numPeopleDict, dataType)
     print()
     inputData = validateInputFile()
 
     # figure out how many heats there will be for each event
-    numPeoplePerHeatPerEvent = calcNumHeats(numPeopleDict, inputData, dataType)
+    numHeatsPerEvent = calcNumHeats(numPeopleDict, inputData, dataType)
 
     # convert compData into list of dictionaries so it is sortable
     compDataList = []
@@ -491,7 +496,7 @@ def csvHeats(allEventsDict, dataType):
     compDataList.sort(key=lambda x: (-x['Staff'], x['firstName'].lower()))
 
     # assign heats
-    assignedHeats = easyHeats(compDataList, numPeoplePerHeatPerEvent, dataType)
+    assignedHeats = easyHeats(compDataList, numHeatsPerEvent, numPeopleDict, dataType)
 
     # make output files for heats
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
