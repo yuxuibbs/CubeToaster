@@ -52,7 +52,7 @@ def validateYesNo(prompt):
     if response == 'y' or response == 'yes':
         return True
     else:
-        return False
+        return True
 
 
 def validateInputFile():
@@ -154,7 +154,7 @@ def getStaffList(personList, fileType):
                     print(person, file=comp)
 
     print('Open staff.txt and delete anyone that is NOT on staff')
-    
+
     while True:
         if validateYesNo('Type y when done. '):
             return readStaffList()
@@ -302,7 +302,7 @@ def numPeoplePerEvent(compData, eventsList):
                 peoplePerEvent[event] += 1
             else:
                 del compData[person][event]
-    
+
     return peoplePerEvent
 
 ################################################################################
@@ -430,11 +430,11 @@ def makePrintableHeatSheet(assignedHeats, inputFile, eventsDict, dataType):
                 print(person, newIDs[person['Name']], file=f)
         # print heat sheet to csv file
         with open('printableGroups.csv', 'w', newline='') as f:
-            columnNames = ['Name'] + list(eventsDict.keys())
+            columnNames = ['Name', 'firstName'] + list(eventsDict.keys())
             heatWriter = csv.DictWriter(f, fieldnames=columnNames, delimiter=',')
             heatWriter.writeheader()
             for person in assignedHeats:
-                del person['firstName']
+                # del person['firstName']
                 del person['Staff']
                 del person['ID']
                 heatWriter.writerow(person)

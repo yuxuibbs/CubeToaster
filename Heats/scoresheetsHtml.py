@@ -70,8 +70,8 @@ ao5Table = '''
         <tr class="labels">
           <th colspan="1"> </th>
           <th colspan="3">Results</th>
-          <th colspan="1" class="initial">Comp</th>
           <th colspan="1" class="initial">Judge</th>
+          <th colspan="1" class="initial">Comp</th>
         </tr>
         <tr class="attempt">
           <td colspan="1">1</td>
@@ -141,8 +141,8 @@ mo3Table = '''
         <tr class="labels">
           <th colspan="1"> </th>
           <th colspan="3">Results</th>
-          <th colspan="1" class="initial">Comp</th>
           <th colspan="1" class="initial">Judge</th>
+          <th colspan="1" class="initial">Comp</th>
         </tr>
         <tr class="attempt">
           <td colspan="1">1</td>
