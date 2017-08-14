@@ -50,9 +50,9 @@ def validateYesNo(prompt):
     while not response in acceptedList:
         response = input(prompt).strip().lower()
     if response == 'y' or response == 'yes':
-        return True
+        return 'y'
     else:
-        return True
+        return 'n'
 
 
 def validateInputFile():
@@ -60,13 +60,11 @@ def validateInputFile():
     print('There is a recommended number of groups already listed. You can change it if you want to.')
     print('Everything is based on numGroups (changing numPeople or peoplePerGroup will not change the number of people in each group.)')
 
-    while True:
-        if validateYesNo('Type y when done. '):
-            f = open('inputData.json', 'r')
-            inputData = json.loads(f.read())
-            f.close()
-            print()
-            break
+    if validateYesNo('Type y when done. ') == 'y':
+        f = open('inputData.json', 'r')
+        inputData = json.loads(f.read())
+        f.close()
+        print()
     return inputData
 
 
@@ -155,9 +153,8 @@ def getStaffList(personList, fileType):
 
     print('Open staff.txt and delete anyone that is NOT on staff')
 
-    while True:
-        if validateYesNo('Type y when done. '):
-            return readStaffList()
+    if validateYesNo('Type y when done. ') == 'y':
+        return readStaffList()
 
 
 def getCompetitionData(jsonFileData):
@@ -532,7 +529,7 @@ def main():
                      "skewb" : "Skewb",
                      "sq1"   : "Square-1"}
 
-    if validateYesNo('Are you using a json file? (y or n) '):
+    if validateYesNo('Are you using a json file? (y or n) ') == 'y':
         dataType = 'json'
         jsonHeats(allEventsDict, dataType)
     else:
