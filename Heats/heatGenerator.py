@@ -425,6 +425,14 @@ def makePrintableHeatSheet(assignedHeats, inputFile, eventsDict, dataType):
         with open('testCompetitorID.txt', 'w') as f:
             for person in assignedHeats:
                 print(person, newIDs[person['Name']], file=f)
+        # print heats by person
+        with open('printableGroups.txt', 'w', newline="") as f:
+            for person in assignedHeats:
+                print(person['Name'], file=f)
+                for event in eventsDict:
+                    if event in person:
+                        print(event, '-', person[event], file=f)
+                print(file=f)
         # print heat sheet to csv file
         with open('printableGroups.csv', 'w', newline='') as f:
             columnNames = ['Name', 'firstName'] + list(eventsDict.keys())
