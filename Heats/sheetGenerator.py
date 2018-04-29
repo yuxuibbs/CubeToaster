@@ -42,7 +42,7 @@ def makeScoreSheets(compName, assignedHeats, allEventsDict, inputData, newIDs, d
     score sheets for the first round of the competition
     '''
     scoreSheetList = []
-    notAo5Events = ["333ft", "333fm", "333bf", "666", "777", "444bf", "555bf", "333mbf"]
+    notAo5Events = ["333fm", "333bf", "666", "777", "444bf", "555bf", "333mbf"]
     for event in assignedHeats:
         # skip FMC
         if event == "333fm":
