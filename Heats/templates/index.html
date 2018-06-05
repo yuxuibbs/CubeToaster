@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CubeToaster</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>CubeToaster</h1>
+    </header>
+    <div class="errorMessages">
+        {% for message in get_flashed_messages() %}
+            <strong>{{ message }}</strong><br>
+        {% endfor %}
+    </div>
+    <div class="heatGenerator">
+        <h2>Generate Groups</h2>
+        <p>Upload the WCA registration csv file or CubingUSA json file to automatically sort competitors into groups</p>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="form" value="registration">
+            {{ registration.file }}
+        <input type="submit">
+    </div>
+    <div class="sheetGenerator">
+        <h2>Generate Scoresheets</h2>
+        <p>Input the csv file and automatically generate scoresheets that are sorted by event and group number (organizers just need to cut the scoresheets)</p>
+        <p><a href="static/sample.csv" download>Sample csv file</a> if you don't want to use the output of "Generate Groups" for group assignments</p>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="form" value="heats">
+            {{ heat.file }}
+        <input type="submit">
+    </div>
+    <img src="static/cubetoaster.png" alt="image of a cube coming out of a toaster">
+</body>
+</html>
