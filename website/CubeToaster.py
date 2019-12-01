@@ -3,9 +3,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, SelectMultipleField, widgets, FileField
 from wtforms.validators import Required
 import os
-import pandas as pd
-import numpy as np
-import jellyfish
+import csv
+import json
+# import jellyfish
 
 
 
@@ -35,16 +35,156 @@ allEventsDict = {"222"   : "2x2 Cube",
                  "skewb" : "Skewb",
                  "sq1"   : "Square-1"}
 
+startHTML = '''
+  <html>
+    <head>
+      <style>
+        table {
+          border-collapse: collapse;
+          height: 100%;
+          width: 100%;
+        }
 
-input_file = '/home/yuxuan/CubeToaster/Heats/ImaginationStation.csv'
+        table, th, td {
+          border: 3px solid black;
+        }
 
-num_heats = {'222'   : 4,
-             '333'   : 8,
-             '333oh' : 2,
-             '555'   : 3,
-             '666'   : 2,
-             'minx'  : 2
-            }
+        @media print {
+          .outer-table {
+            page-break-after: always;
+          }
+        }
+
+        .cutoffs td {
+          border: 0;
+          font-weight: bold;
+        }
+
+        .compName {
+          font-size: 48pt;
+          font-weight: bold;
+        }
+
+        .labels {
+          font-size: 24pt;
+          font-weight: bold;
+        }
+
+        .attempt {
+          font-size: 36pt;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .event, .personID, .scrambler {
+          font-size: 24pt;
+          font-weight: bold;
+          width: 60px;
+        }
+
+        .round, .heat {
+          font-size: 24pt;
+          font-weight: bold;
+        }
+
+        .personName {
+          font-size: 40pt;
+          font-weight: bold;
+        }
+
+        .attemptNumber {
+          width: 60px;
+        }
+
+        .initial {
+          width: 100px;
+        }
+      </style>
+    </head>
+    <body>
+'''
+
+ao5Table = '''
+      <table>
+        <tr>
+          <th colspan="6" class="compName">competitionName</th>
+        </tr>
+        <tr>
+          <th colspan="1" class="personID"></th>
+          <th colspan="3" class="event">eventName</th>
+          <th colspan="1" class="heat">G: </th>
+          <th colspan="1" class="round">R: roundNumber</th>
+        </tr>
+        <tr>
+          <th colspan="6" class="personName">competitorName</th>
+        </tr>
+        <tr class="labels">
+          <th colspan="1" class="scrambler">Scr</th>
+          <th colspan="1" class="attemptNumber">#</th>
+          <th colspan="2">Results</th>
+          <th colspan="1" class="initial">Judge</th>
+          <th colspan="1" class="initial">Comp</th>
+        </tr>
+        <tr class="attempt">
+          <td colspan="1"> </td>
+          <td colspan="1">1</td>
+          <td colspan="2"> </td>
+          <td colspan="1"> </td>
+          <td colspan="1"> </td>
+        </tr>
+        <tr class="attempt">
+          <td colspan="1"> </td>
+          <td colspan="1">2</td>
+          <td colspan="2"> </td>
+          <td colspan="1"> </td>
+          <td colspan="1"> </td>
+        </tr>
+        <tr class="cutoffs">
+          <td colspan="1"></td>
+          <td colspan="1"></td>
+          <td colspan="1">Cutoff: cutoffTime</td>
+          <td colspan="1">Time Limit: timeLimit</td>
+          <td colspan="1"></td>
+          <td colspan="1"></td>
+        </tr>
+        <tr class="attempt">
+          <td colspan="1"> </td>
+          <td colspan="1">3</td>
+          <td colspan="2"> </td>
+          <td colspan="1"> </td>
+          <td colspan="1"> </td>
+        </tr>
+        <tr class="attempt">
+          <td colspan="1"> </td>
+          <td colspan="1">4</td>
+          <td colspan="2"> </td>
+          <td colspan="1"> </td>
+          <td colspan="1"> </td>
+        </tr>
+        <tr class="attempt">
+          <td colspan="1"> </td>
+          <td colspan="1">5</td>
+          <td colspan="2"> </td>
+          <td colspan="1"> </td>
+          <td colspan="1"> </td>
+        </tr>
+        <tr class="empty">
+          <td colspan="6"></td>
+        </tr>
+        <tr class="attempt">
+          <td colspan="1"> </td>
+          <td colspan="1">E</td>
+          <td colspan="2"> </td>
+          <td colspan="1"> </td>
+          <td colspan="1"> </td>
+        </tr>
+      </table>
+'''
+
+endHTML = '''
+    </body>
+  </html>
+'''
 
 
 #################################################################################
@@ -56,7 +196,13 @@ class CheckboxField(SelectMultipleField):
     option_widget = widgets.CheckboxInput()
 
 class RegistrationForm(FlaskForm):
-    file = FileField('Registration file from WCA website:', validators = [Required()])
+    # compId = StringField('Competition ID from WCA website:', validators = [Required()])
+    compName = StringField('Competition name to use in scorecards:', validators = [Required()])
+    roundNum = StringField('Round number:', validators = [Required()])
+    event = StringField('Event:', validators = [Required()])
+    cutoff = StringField('Cutoff:', validators = [Required()])
+    timeLimit = StringField('Time limit:', validators = [Required()])
+    names = StringField('Insert list of people separated by comma:', validators = [Required()])
     submit = SubmitField('Submit')
 
 class UserInputForm(FlaskForm):
@@ -64,80 +210,60 @@ class UserInputForm(FlaskForm):
     numStations = IntegerField('Number of timing/judging stations per stage:', validators = [Required()])
     staff = CheckboxField('Select staff members:')
 
-
-# upload file
-# detect file type
-# read file
-# get data from file
-# calculate default number of heats
-# get user input 
-#   competition name
-#       string
-#   staff members
-#       checkbox?
-#   number of heats
-#       arrow thingys that are prepopulated with recommended values
-#       use javascript to dynamically change values?
-# calculate actual number of heats
-# assign heats
-# reassign IDs
-# make printable heat sheet
-# display printable heat sheet
-# make printable scoresheets
-# display printable scoresheets
-
-
 #################################################################################
 # Helper functions
+# def createDataStructure(data):
+#     compName = data['shortName']
+#     people = data['persons']
+#     compEvents = data['events']
+def addScoreSheet(updatedScoreSheetTable, compName, eventName, roundNum, name, cutoff, timeLimit):
+    updatedScoreSheetTable = updatedScoreSheetTable.replace("competitionName", compName
+                                                  ).replace("eventName", eventName
+                                                  ).replace("roundNumber", roundNum
+                                                  ).replace("cutoffTime", cutoff
+                                                  ).replace("timeLimit", timeLimit
+                                                  ).replace("competitorName", name)
+    return updatedScoreSheetTable
 
-def create_heats(df, event, num_heats):
-    counter = 0
-    for row_num, registration_status in enumerate(df[event]):
-        if registration_status != '0':
-            df.loc[row_num, event] = counter % num_heats + 1
-            counter += 1
+def makeScoreSheets(compName, roundNum, event, names, cutoff, timeLimit):
+    '''
+    Creates string with HTML that contains all of the necessary
+    score sheets for the first round of the competition
+    '''
+    scoreSheetList = []
+    updatedScoreSheetTable = ao5Table
+    for num, person in enumerate(names.split(',')):
+        if num % 4 == 0:
+            if num:
+                scoreSheetList.append('</table>')
+            scoreSheetList.append('<table>')
+            if num < 2:
+                scoreSheetList.append('<tr>')
+        scoreSheetList.append(addScoreSheet(updatedScoreSheetTable, compName, event, roundNum, person, cutoff, timeLimit))
 
-def read_input_file(input_file):
-    comp_events = []
-    df = pd.read_csv(input_file, dtype=str, sep=',').drop(['Status', 'Country', 'Birth Date', 'Gender', 'Email', 'Guests', 'IP'], axis=1)
-    # print(text)
 
-    df['staff'] = 0
+    scoreSheets = str.join("\n", scoreSheetList)
 
-    for event in allEventsDict:
-        if event in df:
-            comp_events.append(event)
-            create_heats(df, event, num_heats[event])
+    return startHTML + scoreSheets + endHTML
 
-    df['FirstName'] = (df['Name'].str.split(expand=True)[0])
-    df['MRA'] = df['FirstName'].apply(jellyfish.match_rating_codex)
-    import sys
-    print(sys.getsizeof(df))
-    print(df.head(50))
 
-    for event in comp_events:
-        grouped_df = df.groupby(event)
-        for key, item in grouped_df:
-            if key != '0':
-                print(key)
-                print(grouped_df.get_group(key)[['Name', event, 'MRA']].sort_values(by='MRA'))
-                print()
-                print()
-    return df
 ###############################################################################
 ## Routes and view functions
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
     registration_form = RegistrationForm()
-    user_input_form = UserInputForm
-    if form.validate_on_submit():
-        entered_filename = request.files['file'].filename
-        if len(entered_filename.split('.')) > 1 and entered_filename.split('.')[1] == "csv":
-            input_file = request.files['file']
-            df = read_input_file(input_file)
-
-        return render_template('view_heats.html', form=user_input_form, output=df)
+    if registration_form.validate_on_submit() and request.method == 'POST':
+        # data = json.loads(requests.get('https://www.worldcubeassociation.org/api/v0/competitions/MichiganCubingClubDelta2019/wcif').text)
+        # createDataStructure(data)
+        # entered_filename = request.files['file'].filename
+        # if len(entered_filename.split('.')) > 1 and entered_filename.split('.')[1] == "csv":
+        #     input_file = request.files['file']
+        #     dataReader = csv.DictReader(input_file, delimiter=',', quotechar ="'")
+        #     for row in dataReader:
+        #         print(row)
+        data = makeScoreSheets(request.form.get('compName'), request.form.get('roundNum'), request.form.get('event'), request.form.get('names'), request.form.get('cutoff'), request.form.get('timeLimit'))
+        return render_template('view_heats.html', data=data)
     return render_template('index.html', form=registration_form)
 
 # @app.route('/userInput', methods = ['GET', 'POST'])

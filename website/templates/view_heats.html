@@ -6,22 +6,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='CubeToaster.css') }}">
 </head>
 <body>
-<h1>CubeToaster - Heat Generator</h1>
 {% block content %}
-  {{ output }}
-  <form method="POST" enctype="multipart/form-data">
-      {{ form.hidden_tag() }}
-
-      {% for message in get_flashed_messages() %}
-        {{ message }}
-      {% endfor %}
-      
-      {{ form.compName.label }} {{ form.compName() }}
-      {{ form.numStations.label }} {{ form.numStations() }}
-      {{ form.staffList.label }} {{ form.staffList() }}
-
-      {{ form.submit() }}
-  </form>
+  {{ data | safe }}
 {% endblock %}
 
 </body>

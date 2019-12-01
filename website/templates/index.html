@@ -7,7 +7,6 @@
 </head>
 <body>
 <h1>CubeToaster - Heat Generator</h1>
-<p>Takes in a JSON (CubingUSA registration) or CSV (WCA registration) file and outputs an HTML website with all the score sheets for the competition sorted by heat number</p>
 {% block content %}
   <form method="POST" enctype="multipart/form-data">
       {{ form.hidden_tag() }}
@@ -16,8 +15,19 @@
         {{ message }}
       {% endfor %}
       
-      {{ form.file }}
-
+      {{ form.compName.label }} {{ form.compName() }}
+      </br>
+      {{ form.roundNum.label }} {{ form.roundNum() }}
+      </br>
+      {{ form.event.label }} {{ form.event() }}
+      </br>
+      {{ form.cutoff.label }} {{ form.cutoff() }}
+      </br>
+      {{ form.timeLimit.label }} {{ form.timeLimit() }}
+      </br>
+      {{ form.names.label }} {{ form.names() }}
+      </br>
+      
       {{ form.submit() }}
   </form>
 {% endblock %}

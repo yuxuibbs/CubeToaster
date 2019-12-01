@@ -22,6 +22,14 @@ class RegistrationDataInputForm(FlaskForm):
 class HeatInputForm(FlaskForm):
     file = FileField()
 
+
+def runSheetGenerator():
+    pass
+
+def runHeatGenerator():
+    pass
+
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     registrationForm = RegistrationDataInputForm()
