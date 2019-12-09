@@ -1,3 +1,9 @@
 .heat-form label {
 	display: block;
 }
+
+.reminder a {
+	color: red;
+	font-weight: bold;
+}
+

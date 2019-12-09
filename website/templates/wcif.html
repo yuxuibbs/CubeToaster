@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#compId').on('keyup', function() {
+          console.log($('#compId').val());
+          let api_link = 'https://www.worldcubeassociation.org/api/v0/competitions/' + $('#compId input').val() + '/wcif';
+          $("#compInfo").text(api_link);
+          $("#compInfo").attr('href', api_link);
+        });
+      });
+    </script>
+    <p class="reminder">
+      <a href="https://www.worldcubeassociation.org/users/sign_in">Make sure you are logged into the WCA website first</a>
+    </p>
+    <form method="POST" enctype="multipart/form-data" target="_blank">
+        <div class="form-group" id="compId">
+            {{ form.compId.label }} {{ form.compId() }}  
+        </div>
+        <p>Copy/paste the contents from this link:</p>
+        <a id="compInfo" href="" target="_blank"></a>
+        <div class="form-group" id="compInfoJson">
+            {{ form.compInfo.label }} <textarea name="compInfo" class="form-control rounded-0" rows="10"></textarea>  
+        </div>
+        <div class="form-group">
+            {{ form.event.label }} {{ form.event() }}  
+        </div>
+        {{ form.submit() }}
+    </form>
+{% endblock %}

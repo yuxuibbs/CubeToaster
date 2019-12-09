@@ -1,10 +1,11 @@
 from flask import Flask, request, render_template, redirect, url_for, flash, make_response
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField, SelectMultipleField, widgets, FileField
+from wtforms import StringField, IntegerField, SubmitField, SelectField, widgets
 from wtforms.validators import Required
 import os
 import csv
 import json
+import requests
 # import jellyfish
 
 
@@ -50,7 +51,7 @@ startHTML = '''
         }
 
         @media print {
-          .outer-table {
+          table {
             page-break-after: always;
           }
         }
@@ -189,12 +190,6 @@ endHTML = '''
 
 #################################################################################
 # Forms
-
-# enable checkboxes so user can select multiple items
-class CheckboxField(SelectMultipleField):
-    widget = widgets.ListWidget(prefix_label = False)
-    option_widget = widgets.CheckboxInput()
-
 class RegistrationForm(FlaskForm):
     # compId = StringField('Competition ID from WCA website:', validators = [Required()])
     compName = StringField('Competition name to use in scorecards:', validators = [Required()])
@@ -205,10 +200,29 @@ class RegistrationForm(FlaskForm):
     names = StringField('Insert list of people separated by comma:', validators = [Required()])
     submit = SubmitField('Submit')
 
-class UserInputForm(FlaskForm):
-    compName = StringField('Competition Name:', validators = [Required()])
-    numStations = IntegerField('Number of timing/judging stations per stage:', validators = [Required()])
-    staff = CheckboxField('Select staff members:')
+class WCIFInputForm(FlaskForm):
+    compId = StringField('Competition ID (the same one that is used on the WCA website):', validators = [Required()])
+    compInfo = StringField('Competition Info:', validators = [Required()])
+    event = SelectField("Select the event you want to see a psych sheet for", choices = [
+      ("222"   , "2x2 Cube"),
+      ("333"   , "Rubik's Cube"),
+      ("333oh" , "Rubik's Cube: One-Handed"),
+      ("333bf" , "Rubik's Cube: Blindfolded"),
+      ("333fm" , "Rubik's Cube: Fewest moves"),
+      ("333ft" , "Rubik's Cube: With feet"),
+      ("333mbf", "Rubik's Cube: Multiple Blindfolded"),
+      ("444"   , "4x4 Cube"),
+      ("444bf" , "4x4 Cube: Blindfolded"),
+      ("555"   , "5x5 Cube"),
+      ("555bf" , "5x5 Cube: Blindfolded"),
+      ("666"   , "6x6 Cube"),
+      ("777"   , "7x7 Cube"),
+      ("clock" , "Rubik's Clock"),
+      ("minx"  , "Megaminx"),
+      ("pyram" , "Pyraminx"),
+      ("skewb" , "Skewb"),
+      ("sq1"   , "Square-1")], validators = [Required()])
+    submit = SubmitField('Submit')
 
 #################################################################################
 # Helper functions
@@ -233,12 +247,6 @@ def makeScoreSheets(compName, roundNum, event, names, cutoff, timeLimit):
     scoreSheetList = []
     updatedScoreSheetTable = ao5Table
     for num, person in enumerate(names.split(',')):
-        if num % 4 == 0:
-            if num:
-                scoreSheetList.append('</table>')
-            scoreSheetList.append('<table>')
-            if num < 2:
-                scoreSheetList.append('<tr>')
         scoreSheetList.append(addScoreSheet(updatedScoreSheetTable, compName, event, roundNum, person, cutoff, timeLimit))
 
 
@@ -250,27 +258,34 @@ def makeScoreSheets(compName, roundNum, event, names, cutoff, timeLimit):
 ###############################################################################
 ## Routes and view functions
 
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/')
 def home():
+  return render_template("index.html")
+
+@app.route('/scorecards', methods = ['GET', 'POST'])
+def scorecards():
     registration_form = RegistrationForm()
     if registration_form.validate_on_submit() and request.method == 'POST':
-        # data = json.loads(requests.get('https://www.worldcubeassociation.org/api/v0/competitions/MichiganCubingClubDelta2019/wcif').text)
-        # createDataStructure(data)
-        # entered_filename = request.files['file'].filename
-        # if len(entered_filename.split('.')) > 1 and entered_filename.split('.')[1] == "csv":
-        #     input_file = request.files['file']
-        #     dataReader = csv.DictReader(input_file, delimiter=',', quotechar ="'")
-        #     for row in dataReader:
-        #         print(row)
-        data = makeScoreSheets(request.form.get('compName'), request.form.get('roundNum'), request.form.get('event'), request.form.get('names'), request.form.get('cutoff'), request.form.get('timeLimit'))
+        data = makeScoreSheets(requests.form.get('compName'), request.form.get('roundNum'), request.form.get('event'), request.form.get('names'), request.form.get('cutoff'), request.form.get('timeLimit'))
         return render_template('view_heats.html', data=data)
-    return render_template('index.html', form=registration_form)
+    return render_template('scorecards.html', form=registration_form)
 
-# @app.route('/userInput', methods = ['GET', 'POST'])
-# def getInput():
-#     form = UserInputForm()
-
-
+@app.route('/wcif', methods = ['GET', 'POST'])
+def wcif():
+  wcif_form = WCIFInputForm()
+  print(wcif_form.validate_on_submit())
+  print(request.method)
+  if request.method == 'POST':
+    data = json.loads(request.form.get('compInfo'))
+    info = []
+    for person in data["persons"]:
+      if "personalBests" in person:
+        for event in person["personalBests"]:
+          if event["eventId"] == request.form.get("event") and event["type"] == "average":
+            info.append((int(event["best"]) / 100, person["name"]))
+    info.sort()
+    return render_template("psych_sheet.html", info=info)
+  return render_template("wcif.html", form=wcif_form)
 
 
 

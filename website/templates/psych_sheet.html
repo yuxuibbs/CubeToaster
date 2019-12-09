@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th scope="col">Name</th>
+		<th scope="col">Result (in seconds)</th>
+	</tr>
+</thead>
+{% for result in info %}
+<tr>
+	<td>{{ result[1] }}</td>
+	<td>{{ result[0] }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
