@@ -264,11 +264,11 @@ def home():
 
 @app.route('/scorecards', methods = ['GET', 'POST'])
 def scorecards():
-    registration_form = RegistrationForm()
-    if registration_form.validate_on_submit() and request.method == 'POST':
-        data = makeScoreSheets(requests.form.get('compName'), request.form.get('roundNum'), request.form.get('event'), request.form.get('names'), request.form.get('cutoff'), request.form.get('timeLimit'))
+    form = RegistrationForm()
+    if form.validate_on_submit() and request.method == 'POST':
+        data = makeScoreSheets(request.form.get('compName'), request.form.get('roundNum'), request.form.get('event'), request.form.get('names'), request.form.get('cutoff'), request.form.get('timeLimit'))
         return render_template('view_heats.html', data=data)
-    return render_template('scorecards.html', form=registration_form)
+    return render_template('scorecards.html', form=form)
 
 @app.route('/wcif', methods = ['GET', 'POST'])
 def wcif():
@@ -290,4 +290,5 @@ def wcif():
 
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', port = int(os.getenv('PORT', 5001)))
+    # app.run(host = '0.0.0.0', port = int(os.getenv('PORT', 5001)))
+    app.run()
