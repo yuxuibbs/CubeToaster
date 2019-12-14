@@ -435,13 +435,13 @@ def makePrintableHeatSheet(assignedHeats, inputFile, eventsDict, dataType):
                 print(file=f)
         # print heat sheet to csv file
         with open('printableGroups.csv', 'w', newline='') as f:
-            columnNames = ['Name', 'firstName'] + list(eventsDict.keys())
+            columnNames = ['Name', 'ID'] + list(eventsDict.keys())
             heatWriter = csv.DictWriter(f, fieldnames=columnNames, delimiter=',')
             heatWriter.writeheader()
             for person in assignedHeats:
-                # del person['firstName']
+                del person['firstName']
                 del person['Staff']
-                del person['ID']
+                # del person['ID']
                 heatWriter.writerow(person)
         return newIDs
 

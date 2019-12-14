@@ -13,8 +13,7 @@ def addScoreSheet(updatedScoreSheetTable, compName, allEventsDict, event,
                                                   ).replace("eventName", allEventsDict[event]
                                                   ).replace("heatNumber", str(person[0])
                                                   ).replace("roundNumber", str(1)
-                                                  # ).replace("competitorID", person["id"])
-    # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
+                                                  # ).replace("competitorID", person["id"]
                                                   ).replace("competitorID", newIDs[person[1]]
                                                   ).replace("competitorName", str(person[1])
                                                   ).replace("cutoffTime", cutoff
@@ -27,8 +26,7 @@ def addBlankScoresheet(updatedScoreSheetTable, compName):
                                                   ).replace("eventName", r"."
                                                   ).replace("heatNumber", r"."
                                                   ).replace("roundNumber", str(1)
-                                                  # ).replace("competitorID", person["id"])
-    # REMOVE WHEN CUBECOMPS TAKES JSON STUFF
+                                                  # ).replace("competitorID", person["id"]
                                                   ).replace("competitorID", r"."
                                                   ).replace("competitorName", r"."
                                                   ).replace("cutoffTime", r"."
@@ -150,7 +148,6 @@ def main():
     # Restore output from heatGenerator.py to properly generate scoresheets. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'rb') as f:
         compName, allEventsDict, inputData, newIDs, dataType = pickle.load(f)
-
     assignedHeats = readAndSortHeats(inputData, dataType)
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
     newFile = makeScoreSheets(compName, assignedHeats, allEventsDict, inputData, newIDs, dataType)
