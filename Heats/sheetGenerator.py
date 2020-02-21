@@ -148,7 +148,15 @@ def main():
     # Restore output from heatGenerator.py to properly generate scoresheets. Done with help from http://stackoverflow.com/questions/6568007/how-do-i-save-and-restore-multiple-variables-in-python
     with open('objs.pickle', 'rb') as f:
         compName, allEventsDict, inputData, newIDs, dataType = pickle.load(f)
+    # use ID's in the csv
+    newIDs = {}
+    with open("printableGroups.csv", 'r', newline = '') as input_file:
+        heatReader = csv.DictReader(input_file, delimiter=',', quotechar ='"')
+        for row in heatReader:
+            newIDs[row['Name']] = row['ID']
+
     assignedHeats = readAndSortHeats(inputData, dataType)
+
     # CHANGE WHEN CUBECOMPS TAKES JSON STUFF
     newFile = makeScoreSheets(compName, assignedHeats, allEventsDict, inputData, newIDs, dataType)
 
